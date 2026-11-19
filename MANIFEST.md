@@ -80,4 +80,4 @@ cost calibration, experiment design; plus the three batch launcher stdout logs.
 
 - Secrets scan (2026-11-19): zero matches across all published files.
 - Tool repo at v1.0.1: https://github.com/KlldYKG/agent-acceptance
-- Zenodo DOI (dataset archive): [ZENODO-DOI]
+- Zenodo DOI (dataset archive): 10.5281/zenodo.24363393 (concept DOI; version v1: 10.5281/zenodo.24363394)
