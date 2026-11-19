@@ -40,7 +40,16 @@ the execution server; they contain no logic beyond loops over task lists and
 `export DEEPSEEK_API_KEY=<redacted>`, and are omitted to keep the package
 free of any credential-bearing file.
 
-## runs/ (7 runs, 63 tasks, 84 gate rounds)
+## runs/ (two-tier release)
+
+- **This GitHub repository** carries 7 representative A0-era runs (63 tasks, 84
+  gate rounds) for browsing: aider/opencode flash A0 runs plus the v4-pro C run.
+- **The Zenodo archive** (`aa_runs_full.tar.gz`, 51 MB) contains the complete
+  set: 46 runs / 468 task instances — the A0 baseline arm (5 chains × 3 repeats
+  × 2 adapters = 300 task instances), the 6 A1 intervention runs on the C/D
+  chains, the v4-pro model-tier runs, and the RQ3 ablation runs. The superseded
+  pre-fix mutation archive (`_oldmut_afull`) is excluded and documented in
+  `analysis/RQ3_ABLATION_CN.md`.
 
 | Directory | Contents |
 |---|---|
@@ -51,8 +60,9 @@ free of any credential-bearing file.
 Per run: `chain_log.json` (authoritative per-round verdicts + usage costs),
 `meta.json`, per-task `transcript_r*.txt/log`, `diff.patch`, `gold_result.json`.
 A-full and RQ3 mutation-phase raw outputs were produced on the Linux execution
-server and are archived with the same schema; the ablation report
-(`analysis/RQ3_ABLATION_CN.md`) documents which local runs were superseded.
+server and are included in the Zenodo archive with the same schema; the
+ablation report (`analysis/RQ3_ABLATION_CN.md`) documents which local runs were
+superseded.
 
 ## figures/
 
