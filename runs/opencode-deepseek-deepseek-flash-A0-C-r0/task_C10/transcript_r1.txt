@@ -1,0 +1,194 @@
+{
+  "exit_code": 0,
+  "seconds": 18.5,
+  "transcript": "\u001b[0m\n> build · deepseek-flash\n\u001b[0m\n\u001b[0m✱ \u001b[0mGrep \"MATERIALIZED\"\u001b[90m in . · 0 matches\u001b[0m\n\u001b[0m\n\u001b[0m$ \u001b[0mls \"C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\"\nĿ¼: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\n\n\nMode                 LastWriteTime         Length Name                                                                 \n----                 -------------         ------ ----                                                                 \nd-----        2026/11/17     11:46                .github                                                              \nd-----        2026/11/17     11:47                .pytest_cache                                                        \nd-----        2026/11/17     11:46                docs                                                                 \nd-----        2026/11/17     11:46                examples                                                             \nd-----        2026/11/17     11:46                sqlparse                                                             \nd-----        2026/11/17     12:20                tests                                                                \n-a----        2026/11/17     11:46            124 .gitignore                                                           \n-a----        2026/11/17     11:46           1074 .readthedocs.yaml                                                    \n-a----        2026/11/17     11:46           3313 AUTHORS                                                              \n-a----        2026/11/17     12:19          21279 CHANGELOG                                                            \n-a----        2026/11/17     11:46            409 CONTRIBUTING.md                                                      \n-a----        2026/11/17     11:46           1562 LICENSE                                                              \n-a----        2026/11/17     11:46            606 Makefile                                                             \n-a----        2026/11/17     12:20            203 opencode.json                                                        \n-a----        2026/11/17     11:46           1936 pyproject.toml                                                       \n-a----        2026/11/17     11:46           2395 README.rst                                                           \n-a----        2026/11/17     11:46            534 SECURITY.md                                                          \n-a----        2026/11/17     11:46            295 TODO                                                                 \n-a----        2026/11/17     11:46            319 tox.ini\n\u001b[0m\n\u001b[0m✱ \u001b[0mGrep \"MATCHED|LAST|LATERAL|MATERIAL\"\u001b[90m in sqlparse/keywords.py · 4 matches\u001b[0m\n\u001b[0m\n\u001b[0m$ \u001b[0mls \"C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\"; ls \"C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\"\nĿ¼: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\n\n\nMode                 LastWriteTime         Length Name                                                                 \n----                 -------------         ------ ----                                                                 \nd-----        2026/11/17     11:46                engine                                                               \nd-----        2026/11/17     11:46                filters                                                              \n-a----        2026/11/17     11:46           5908 cli.py                                                               \n-a----        2026/11/17     11:46            354 exceptions.py                                                        \n-a----        2026/11/17     11:46           7764 formatter.py                                                         \n-a----        2026/11/17     12:20          30581 keywords.py                                                          \n-a----        2026/11/17     11:46           5989 lexer.py                                                             \n-a----        2026/11/17     11:46          21111 sql.py                                                               \n-a----        2026/11/17     11:46           1850 tokens.py                                                            \n-a----        2026/11/17     11:46           3567 utils.py                                                             \n-a----        2026/11/17     11:46           2402 __init__.py                                                          \n-a----        2026/11/17     11:46            632 __main__.py                                                          \n-a----        2026/11/17     12:20          30581 keywords.py\n\u001b[0m\n\u001b[0m→ \u001b[0mRead sqlparse/keywords.py\u001b[90m [offset=330, limit=30]\u001b[0m\n\u001b[0m→ \u001b[0mRead sqlparse/keywords.py\u001b[90m [offset=359, limit=30]\u001b[0m\n\u001b[0m✱ \u001b[0mGrep \"LATERAL|MAXVALUE\"\u001b[90m in tests · 0 matches\u001b[0m\n\u001b[0m\n\u001b[0m$ \u001b[0mls \"C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\"\nĿ¼: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\n\n\nMode                 LastWriteTime         Length Name                                                                 \n----                 -------------         ------ ----                                                                 \nd-----        2026/11/17     11:51                files                                                                \n-a----        2026/11/17     11:46           1618 conftest.py                                                          \n-a----        2026/11/17     11:46           3655 test_cli.py                                                          \n-a----        2026/11/17     11:46          23568 test_grouping.py                                                     \n-a----        2026/11/17     11:46            460 test_keywords.py                                                     \n-a----        2026/11/17     11:51          18543 test_parse.py                                                        \n-a----        2026/11/17     12:08          15395 test_regressions.py                                                  \n-a----        2026/11/17     12:01           6798 test_tokenize.py                                                     \n-a----        2026/11/17     11:46            280 test_utils.py                                                        \n-a----        2026/11/17     11:46              0 __init__.py\n\u001b[0m\n\u001b[0m→ \u001b[0mRead tests/test_keywords.py\n\u001b[0m\n\u001b[0m$ \u001b[0mSelect-String -Path \"C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\" -Pattern \"Keyword\" | Select-Object -First 20\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:18:\n    assert tokens[0] == (T.Keyword.DML, 'select')\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:37:\ndef test_tokenize_inline_keywords():\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:42:\n    assert tokens[0][0] == T.Keyword.DDL\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:80:\n    token = sql.Token(T.Keyword, 'foo')\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:81:\n    tst = \"<Keyword 'foo' at 0x\"\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:83:\n    token = sql.Token(T.Keyword, '1234567890')\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:84:\n    tst = \"<Keyword '123456...' at 0x\"\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:89:\n    token = sql.Token(T.Keyword, 'foo')\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:117\n:    t1 = sql.Token(T.Keyword, 'foo')\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:120\n:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 0) == t1\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:122\n:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 1) is None\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:161\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:167\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:175\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:182\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:202\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:208\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:214\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:220\n:    assert p.tokens[0].ttype is T.Keyword\nC:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py:248\n:    assert p.tokens[0].ttype == T.Keyword.TZCast\n\u001b[0m\n\u001b[0m→ \u001b[0mRead tests/test_tokenize.py\u001b[90m [offset=140, limit=100]\u001b[0m\n\u001b[0m\n\u001b[0m← \u001b[0mEdit sqlparse/keywords.py\nIndex: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\n===================================================================\n--- C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\n+++ C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\n@@ -358,8 +358,9 @@\n \n # 'M': tokens.Keyword,\n 'MAP': tokens.Keyword,\n 'MATCH': tokens.Keyword,\n+'MATERIALIZED': tokens.Keyword,\n 'MAXEXTENTS': tokens.Keyword,\n 'MAXVALUE': tokens.Keyword,\n 'MESSAGE_LENGTH': tokens.Keyword,\n 'MESSAGE_OCTET_LENGTH': tokens.Keyword,\n\n\u001b[0m\n\u001b[0m← \u001b[0mEdit tests/test_tokenize.py\nIndex: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\n===================================================================\n--- C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\n+++ C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\n@@ -201,8 +201,14 @@\n     assert len(p.tokens) == 1\n     assert p.tokens[0].ttype is T.Keyword\n \n \n+def test_parse_materialized():\n+    p = sqlparse.parse('MATERIALIZED')[0]\n+    assert len(p.tokens) == 1\n+    assert p.tokens[0].ttype is T.Keyword\n+\n+\n def test_parse_group_by():\n     p = sqlparse.parse('GROUP BY')[0]\n     assert len(p.tokens) == 1\n     assert p.tokens[0].ttype is T.Keyword\n\n\u001b[0m\n\u001b[0m$ \u001b[0mpython -m pytest tests/test_tokenize.py tests/test_keywords.py -q 2>&1 | Select-Object -Last 20\n................................................................         [100%]\n64 passed in 0.11s\n\u001b[0m\nAdded `MATERIALIZED` as a keyword in `sqlparse/keywords.py:362` and added `test_parse_materialized` in `tests/test_tokenize.py`. All 64 tokenizer/keyword tests pass.\n",
+  "tokens_in": 5884,
+  "tokens_out": 1543,
+  "token_source": "adapter",
+  "extra": {
+    "early_reaped": false,
+    "usage_detail": {
+      "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+      "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+      "cost": 0.002223096,
+      "tokens_input": 5884,
+      "tokens_output": 1543,
+      "tokens_reasoning": 167,
+      "tokens_cache_read": 104832,
+      "tokens_cache_write": 0,
+      "time_created": 1794889244453
+    },
+    "cmd": [
+      "<opencode>",
+      "run",
+      "--model",
+      "<model>",
+      "<stdin:prompt>"
+    ]
+  }
+}
+---- TRANSCRIPT ----
+[0m
+> build · deepseek-flash
+[0m
+[0m✱ [0mGrep "MATERIALIZED"[90m in . · 0 matches[0m
+[0m
+[0m$ [0mls "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     11:46                .github                                                              
+d-----        2026/11/17     11:47                .pytest_cache                                                        
+d-----        2026/11/17     11:46                docs                                                                 
+d-----        2026/11/17     11:46                examples                                                             
+d-----        2026/11/17     11:46                sqlparse                                                             
+d-----        2026/11/17     12:20                tests                                                                
+-a----        2026/11/17     11:46            124 .gitignore                                                           
+-a----        2026/11/17     11:46           1074 .readthedocs.yaml                                                    
+-a----        2026/11/17     11:46           3313 AUTHORS                                                              
+-a----        2026/11/17     12:19          21279 CHANGELOG                                                            
+-a----        2026/11/17     11:46            409 CONTRIBUTING.md                                                      
+-a----        2026/11/17     11:46           1562 LICENSE                                                              
+-a----        2026/11/17     11:46            606 Makefile                                                             
+-a----        2026/11/17     12:20            203 opencode.json                                                        
+-a----        2026/11/17     11:46           1936 pyproject.toml                                                       
+-a----        2026/11/17     11:46           2395 README.rst                                                           
+-a----        2026/11/17     11:46            534 SECURITY.md                                                          
+-a----        2026/11/17     11:46            295 TODO                                                                 
+-a----        2026/11/17     11:46            319 tox.ini
+[0m
+[0m✱ [0mGrep "MATCHED|LAST|LATERAL|MATERIAL"[90m in sqlparse/keywords.py · 4 matches[0m
+[0m
+[0m$ [0mls "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse"; ls "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py"
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     11:46                engine                                                               
+d-----        2026/11/17     11:46                filters                                                              
+-a----        2026/11/17     11:46           5908 cli.py                                                               
+-a----        2026/11/17     11:46            354 exceptions.py                                                        
+-a----        2026/11/17     11:46           7764 formatter.py                                                         
+-a----        2026/11/17     12:20          30581 keywords.py                                                          
+-a----        2026/11/17     11:46           5989 lexer.py                                                             
+-a----        2026/11/17     11:46          21111 sql.py                                                               
+-a----        2026/11/17     11:46           1850 tokens.py                                                            
+-a----        2026/11/17     11:46           3567 utils.py                                                             
+-a----        2026/11/17     11:46           2402 __init__.py                                                          
+-a----        2026/11/17     11:46            632 __main__.py                                                          
+-a----        2026/11/17     12:20          30581 keywords.py
+[0m
+[0m→ [0mRead sqlparse/keywords.py[90m [offset=330, limit=30][0m
+[0m→ [0mRead sqlparse/keywords.py[90m [offset=359, limit=30][0m
+[0m✱ [0mGrep "LATERAL|MAXVALUE"[90m in tests · 0 matches[0m
+[0m
+[0m$ [0mls "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests"
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     11:51                files                                                                
+-a----        2026/11/17     11:46           1618 conftest.py                                                          
+-a----        2026/11/17     11:46           3655 test_cli.py                                                          
+-a----        2026/11/17     11:46          23568 test_grouping.py                                                     
+-a----        2026/11/17     11:46            460 test_keywords.py                                                     
+-a----        2026/11/17     11:51          18543 test_parse.py                                                        
+-a----        2026/11/17     12:08          15395 test_regressions.py                                                  
+-a----        2026/11/17     12:01           6798 test_tokenize.py                                                     
+-a----        2026/11/17     11:46            280 test_utils.py                                                        
+-a----        2026/11/17     11:46              0 __init__.py
+[0m
+[0m→ [0mRead tests/test_keywords.py
+[0m
+[0m$ [0mSelect-String -Path "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py" -Pattern "Keyword" | Select-Object -First 20
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:18:
+    assert tokens[0] == (T.Keyword.DML, 'select')
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:37:
+def test_tokenize_inline_keywords():
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:42:
+    assert tokens[0][0] == T.Keyword.DDL
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:80:
+    token = sql.Token(T.Keyword, 'foo')
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:81:
+    tst = "<Keyword 'foo' at 0x"
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:83:
+    token = sql.Token(T.Keyword, '1234567890')
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:84:
+    tst = "<Keyword '123456...' at 0x"
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:89:
+    token = sql.Token(T.Keyword, 'foo')
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:117
+:    t1 = sql.Token(T.Keyword, 'foo')
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:120
+:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 0) == t1
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:122
+:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 1) is None
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:161
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:167
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:175
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:182
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:202
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:208
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:214
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:220
+:    assert p.tokens[0].ttype is T.Keyword
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py:248
+:    assert p.tokens[0].ttype == T.Keyword.TZCast
+[0m
+[0m→ [0mRead tests/test_tokenize.py[90m [offset=140, limit=100][0m
+[0m
+[0m← [0mEdit sqlparse/keywords.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py
+@@ -358,8 +358,9 @@
+ 
+ # 'M': tokens.Keyword,
+ 'MAP': tokens.Keyword,
+ 'MATCH': tokens.Keyword,
++'MATERIALIZED': tokens.Keyword,
+ 'MAXEXTENTS': tokens.Keyword,
+ 'MAXVALUE': tokens.Keyword,
+ 'MESSAGE_LENGTH': tokens.Keyword,
+ 'MESSAGE_OCTET_LENGTH': tokens.Keyword,
+
+[0m
+[0m← [0mEdit tests/test_tokenize.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py
+@@ -201,8 +201,14 @@
+     assert len(p.tokens) == 1
+     assert p.tokens[0].ttype is T.Keyword
+ 
+ 
++def test_parse_materialized():
++    p = sqlparse.parse('MATERIALIZED')[0]
++    assert len(p.tokens) == 1
++    assert p.tokens[0].ttype is T.Keyword
++
++
+ def test_parse_group_by():
+     p = sqlparse.parse('GROUP BY')[0]
+     assert len(p.tokens) == 1
+     assert p.tokens[0].ttype is T.Keyword
+
+[0m
+[0m$ [0mpython -m pytest tests/test_tokenize.py tests/test_keywords.py -q 2>&1 | Select-Object -Last 20
+................................................................         [100%]
+64 passed in 0.11s
+[0m
+Added `MATERIALIZED` as a keyword in `sqlparse/keywords.py:362` and added `test_parse_materialized` in `tests/test_tokenize.py`. All 64 tokenizer/keyword tests pass.

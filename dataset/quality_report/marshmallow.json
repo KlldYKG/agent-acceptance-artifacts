@@ -1,0 +1,18 @@
+{
+  "repo": "marshmallow-code/marshmallow",
+  "name": "marshmallow",
+  "head": "777ff66039fd939fc509226a33586bc3209df301",
+  "ok_clone": true,
+  "ok_install": true,
+  "ok_pytest": true,
+  "pytest_seconds": 2.6,
+  "passed": 1192,
+  "failed": null,
+  "errors": null,
+  "skipped": null,
+  "notes": [],
+  "clone_seconds": 7.4,
+  "install_seconds": 46.1,
+  "installed_packages": 11,
+  "pytest_summary": "1192 passed in 1.60s"
+}

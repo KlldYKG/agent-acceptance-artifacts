@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 89,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti..."
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "........................................................................ [ 80%]\n........F.........                                                       [100%]\n================================== FAILURES ===================================\n___________________ test_datetime_argument_optional_metavar ___________________\n\nrunner = <click.testing.CliRunner object at 0x000001FAACACFEE0>\n\n    def test_datetime_argument_optional_metavar(runner):\n        \"\"\"``DateTime`` arguments behave the same way as ``Choice``.\"\"\"\n    \n        @click.command()\n        @click.argument(\"when\", type=click.DateTime(formats=[\"%Y-%m-%d\"]), required=False)\n        def cli(when):\n            pass\n    \n        result = runner.invoke(cli, [\"--help\"])\n>       assert \"Usage: cli [OPTIONS] [%Y-%m-%d]\\n\" in result.output\nE       AssertionError: assert 'Usage: cli [OPTIONS] [%Y-%m-%d]\\n' in 'Usage: cli [OPTIONS] [[%Y-%m-%d]]\\n\\nOptions:\\n  --help  Show this message and exit.\\n'\nE        +  where 'Usage: cli [OPTIONS] [[%Y-%m-%d]]\\n\\nOptions:\\n  --help  Show this message and exit.\\n' = <Result okay>.output\n\ntests\\test_basic.py:608: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...\n1 failed, 89 passed in 0.27s\n\n"
+}

@@ -1,0 +1,61 @@
+diff --git a/tests/test_auth.py b/tests/test_auth.py
+index 5632569..3702c22 100644
+--- a/tests/test_auth.py
++++ b/tests/test_auth.py
+@@ -3,6 +3,7 @@ Unit tests for auth classes.
+ 
+ Integration tests also exist in tests/client/test_auth.py
+ """
++import hashlib
+ from urllib.request import parse_keqv_list
+ 
+ import pytest
+@@ -103,6 +104,47 @@ def test_digest_auth_with_401_nonce_counting():
+         flow.send(response)
+ 
+ 
++def test_digest_auth_with_401_rfc_2069():
++    auth = httpx.DigestAuth(username="user", password="pass")
++    request = httpx.Request("GET", "https://www.example.com")
++
++    # The initial request should not include an auth header.
++    flow = auth.sync_auth_flow(request)
++    request = next(flow)
++    assert "Authorization" not in request.headers
++
++    # A challenge without a 'qop' directive means the server is using
++    # RFC 2069 mode, so the client must build an RFC 2069 style header.
++    headers = {
++        "WWW-Authenticate": (
++            'Digest realm="realm@example.com", nonce="abc", opaque="xyz"'
++        )
++    }
++    response = httpx.Response(
++        content=b"Auth required", status_code=401, headers=headers, request=request
++    )
++    request = flow.send(response)
++    assert request.headers["Authorization"].startswith("Digest")
++
++    digest_data = parse_keqv_list(request.headers["Authorization"].split(", "))
++
++    # The 'qop', 'nc' and 'cnonce' fields must not appear in RFC 2069 mode.
++    assert "qop" not in digest_data
++    assert "nc" not in digest_data
++    assert "cnonce" not in digest_data
++
++    # The RFC 2069 response digest is H(HA1:nonce:HA2), with HA1 hashed once.
++    ha1 = hashlib.md5(b"user:realm@example.com:pass").hexdigest()
++    ha2 = hashlib.md5(b"GET:/").hexdigest()
++    expected = hashlib.md5(f"{ha1}:abc:{ha2}".encode()).hexdigest()
++    assert digest_data["response"] == f'"{expected}"'
++
++    # No other requests are made.
++    response = httpx.Response(content=b"Hello, world!", status_code=200)
++    with pytest.raises(StopIteration):
++        flow.send(response)
++
++
+ def set_cookies(request: httpx.Request) -> httpx.Response:
+     headers = {
+         "Set-Cookie": "session=.session_value...",
+

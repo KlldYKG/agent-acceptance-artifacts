@@ -1,0 +1,341 @@
+[
+  {
+    "id": "B1",
+    "repo": "marshmallow",
+    "fix": "39e7c833",
+    "issue": "2891",
+    "desc": "ValidationError with uppercase file URLs [fix 8dc078e2+测试 c62b9113，经合并提交提取]",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_validate.py"
+    ],
+    "before": {
+      "passed": 194,
+      "failed": 5,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_validate.py::test_url_accepts_valid_file_urls[FILE:///tmp/tmp1234]",
+        "FAILED tests/test_validate.py::test_url_accepts_valid_file_urls[FILE:///C:/Users/test/file.txt]",
+        "FAILED tests/test_validate.py::test_url_accepts_valid_file_urls[FILE:///home/user/documents/test.pdf]",
+        "FAILED tests/test_validate.py::test_url_accepts_valid_file_urls[FILE:///tmp/test%20file.txt]",
+        "FAILED tests/test_validate.py::test_url_accepts_valid_file_urls[FILE:///] - m..."
+      ],
+      "seconds": 1.4
+    },
+    "after": {
+      "passed": 199,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.3
+    }
+  },
+  {
+    "id": "B2",
+    "repo": "marshmallow",
+    "fix": "fea54285",
+    "issue": "2925",
+    "desc": "Make Number and Mapping abstract base classes",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_fields.py",
+      "tests/test_serialization.py"
+    ],
+    "before": {
+      "passed": 222,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_fields.py::TestAbstractBaseFields::test_number_cannot_be_instantiated",
+        "FAILED tests/test_fields.py::TestAbstractBaseFields::test_mapping_cannot_be_instantiated"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 224,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "B3",
+    "repo": "marshmallow",
+    "fix": "19ca8dce",
+    "issue": "2868",
+    "desc": "Fix Constant field rejecting None during load",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_deserialization.py"
+    ],
+    "before": {
+      "passed": 379,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_constant_none_allows_none_value"
+      ],
+      "seconds": 1.6
+    },
+    "after": {
+      "passed": 380,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  },
+  {
+    "id": "B4",
+    "repo": "marshmallow",
+    "fix": "070dde08",
+    "issue": "2900/2915",
+    "desc": "Fix Constant required=True ValueError",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_deserialization.py"
+    ],
+    "before": {
+      "passed": 380,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_constant_with_required"
+      ],
+      "seconds": 1.6
+    },
+    "after": {
+      "passed": 381,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  },
+  {
+    "id": "B5",
+    "repo": "marshmallow",
+    "fix": "65374df0",
+    "issue": "2869",
+    "desc": "Fix OneOf.options() phantom entries",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_validate.py"
+    ],
+    "before": {
+      "passed": 198,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_validate.py::test_oneof_options - AssertionError: assert [(..."
+      ],
+      "seconds": 1.4
+    },
+    "after": {
+      "passed": 199,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "B6",
+    "repo": "marshmallow",
+    "fix": "252090c7",
+    "issue": "PR2903",
+    "desc": "Fix nested partial prefix attr_name vs data_key",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_deserialization.py"
+    ],
+    "before": {
+      "passed": 381,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_deserialization.py::TestValidation::test_nested_partial_tuple_with_data_key"
+      ],
+      "seconds": 1.6
+    },
+    "after": {
+      "passed": 382,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  },
+  {
+    "id": "B7",
+    "repo": "marshmallow",
+    "fix": "024b5d09",
+    "issue": "PR2902",
+    "desc": "Fix Enum by-name lookup to actual members",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_deserialization.py"
+    ],
+    "before": {
+      "passed": 382,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_enum_field_by_symbol_rejects_non_member_attributes[mro]",
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_enum_field_by_symbol_rejects_non_member_attributes[__class__]",
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_enum_field_by_symbol_rejects_non_member_attributes[__members__]"
+      ],
+      "seconds": 1.7
+    },
+    "after": {
+      "passed": 385,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  },
+  {
+    "id": "B8",
+    "repo": "marshmallow",
+    "fix": "72ac4a04",
+    "issue": "PR2904",
+    "desc": "Reject booleans in from_timestamp_ms",
+    "verdict": "VALID*",
+    "gold_files": [
+      "tests/test_deserialization.py",
+      "tests/test_utils.py"
+    ],
+    "before": {
+      "passed": 404,
+      "failed": 5,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_boolean_timestamp_field_deserialization[True-timestamp_ms]",
+        "FAILED tests/test_deserialization.py::TestFieldDeserialization::test_boolean_timestamp_field_deserialization[False-timestamp_ms]",
+        "FAILED tests/test_utils.py::test_from_timestamp_with_overflow_value - Asserti...",
+        "FAILED tests/test_utils.py::test_from_timestamp_ms_rejects_booleans[True] - F...",
+        "FAILED tests/test_utils.py::test_from_timestamp_ms_rejects_booleans[False] - ..."
+      ],
+      "seconds": 1.7
+    },
+    "after": {
+      "passed": 408,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_utils.py::test_from_timestamp_with_overflow_value - Asserti..."
+      ],
+      "seconds": 1.6
+    }
+  },
+  {
+    "id": "B9",
+    "repo": "marshmallow",
+    "fix": "f07eadc8",
+    "issue": "2936",
+    "desc": "Email validator IDN support",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_validate.py"
+    ],
+    "before": {
+      "passed": 215,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_validate.py::test_email_idn_invalid[user@-m\\xfcnchen.de] - ...",
+        "FAILED tests/test_validate.py::test_email_idn_invalid[user@m\\xfcnchen-.de] - ..."
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 217,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "B10",
+    "repo": "marshmallow",
+    "fix": "902f99c4",
+    "issue": "PR3016",
+    "desc": "URL validator fragment after empty path",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_validate.py"
+    ],
+    "before": {
+      "passed": 217,
+      "failed": 4,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_validate.py::test_url_absolute_valid[http://example.org#fragment]",
+        "FAILED tests/test_validate.py::test_url_absolute_valid[http://user@example.com#fragment]",
+        "FAILED tests/test_validate.py::test_url_relative_valid[#frag] - marshmallow.e...",
+        "FAILED tests/test_validate.py::test_url_relative_only_valid[#frag] - marshmal..."
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 221,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "B11",
+    "repo": "marshmallow",
+    "fix": "5761beab",
+    "issue": "pluck",
+    "desc": "Fix Pluck handling of empty data_key",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_fields.py"
+    ],
+    "before": {
+      "passed": 108,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_fields.py::TestPluckFiekd::test_pluck_empty_data_key[False]",
+        "FAILED tests/test_fields.py::TestPluckFiekd::test_pluck_empty_data_key[True]"
+      ],
+      "seconds": 1.3
+    },
+    "after": {
+      "passed": 110,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.3
+    }
+  }
+]

@@ -1,0 +1,31 @@
+diff --git a/sqlparse/keywords.py b/sqlparse/keywords.py
+index dfafedb..35ae276 100644
+--- a/sqlparse/keywords.py
++++ b/sqlparse/keywords.py
+@@ -263,6 +263,7 @@ KEYWORDS = {
+     'EXISTING': tokens.Keyword,
+     'EXISTS': tokens.Keyword,
+     'EXPLAIN': tokens.Keyword,
++    'EXTENSION': tokens.Keyword,
+     'EXTERNAL': tokens.Keyword,
+     'EXTRACT': tokens.Keyword,
+ 
+diff --git a/tests/test_tokenize.py b/tests/test_tokenize.py
+index 8ec12d8..67a52d2 100644
+--- a/tests/test_tokenize.py
++++ b/tests/test_tokenize.py
+@@ -207,6 +207,13 @@ def test_parse_order_by():
+     assert p.tokens[0].ttype is T.Keyword
+ 
+ 
++@pytest.mark.parametrize('s', ['EXTENSION', 'extension'])
++def test_parse_extension(s):
++    p = sqlparse.parse(s)[0]
++    assert len(p.tokens) == 1
++    assert p.tokens[0].ttype is T.Keyword
++
++
+ def test_parse_window_as():
+     p = sqlparse.parse('WINDOW w AS')[0]
+     assert len(p.tokens) == 5
+

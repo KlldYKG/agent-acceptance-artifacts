@@ -1,0 +1,111 @@
+{
+  "run_id": "opencode-deepseek-deepseek-flash-A0-A-r1",
+  "tasks": [
+    {
+      "task": "A1",
+      "desc": "Fix RFC 2069 mode digest authentication",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 112.8,
+            "tokens_in": 20754,
+            "tokens_out": 2874,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.009315851999999998,
+                "tokens_input": 20754,
+                "tokens_output": 2874,
+                "tokens_reasoning": 5174,
+                "tokens_cache_read": 457984,
+                "tokens_cache_write": 0,
+                "time_created": 1794891107940
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "46fe24cf524b7cb3d2f653803aaf07493c703c3c",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A2",
+      "desc": "Fix client.send() timeout new Request instance",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 121.6,
+            "tokens_in": 32296,
+            "tokens_out": 4708,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.010778087999999996,
+                "tokens_input": 32296,
+                "tokens_output": 4708,
+                "tokens_reasoning": 1993,
+                "tokens_cache_read": 637696,
+                "tokens_cache_write": 0,
+                "time_created": 1794891223548
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "8e37b2b964bd26dd65cff74ed4c18ef1a06560b3",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 9,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    }
+  ]
+}

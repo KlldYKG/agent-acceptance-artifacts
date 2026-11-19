@@ -1,0 +1,557 @@
+{
+  "run_id": "opencode-deepseek-deepseek-flash-A0-C-r0",
+  "tasks": [
+    {
+      "task": "C1",
+      "desc": "Recognize -> as single operator",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 22.6,
+            "tokens_in": 14093,
+            "tokens_out": 1588,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.0036760380000000004,
+                "tokens_input": 14093,
+                "tokens_output": 1588,
+                "tokens_reasoning": 403,
+                "tokens_cache_read": 122496,
+                "tokens_cache_write": 0,
+                "time_created": 1794887206195
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "e72485f8ee31db67681b61b6c3619d58c2a11f55",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 80,
+              "failed": 5,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_parse.py::test_json_operators[->>] - AssertionError: assert...",
+              "FAILED tests/test_parse.py::test_json_operators[#>] - AssertionError: assert ...",
+              "FAILED tests/test_parse.py::test_json_operators[#>>] - AssertionError: assert...",
+              "FAILED tests/test_parse.py::test_json_operators[@>] - AssertionError: assert ...",
+              "FAILED tests/test_parse.py::test_json_operators[<@] - AssertionError: assert ..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "C2",
+      "desc": "Split CASE clauses within BEGIN block",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 265.3,
+            "tokens_in": 28481,
+            "tokens_out": 5040,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.012046109999999997,
+                "tokens_input": 28481,
+                "tokens_output": 5040,
+                "tokens_reasoning": 3827,
+                "tokens_cache_read": 817920,
+                "tokens_cache_write": 0,
+                "time_created": 1794887229219
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "22ca2508959a2616cd8ee1fa724797b0d33b867a",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 38,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "C3",
+      "desc": "CTE formatting idempotency (whitespace)",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 493.9,
+            "tokens_in": 99585,
+            "tokens_out": 16773,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.04902963000000001,
+                "tokens_input": 99585,
+                "tokens_output": 16773,
+                "tokens_reasoning": 13826,
+                "tokens_cache_read": 5244160,
+                "tokens_cache_write": 0,
+                "time_created": 1794887496015
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "b80e96855c9ee66d58e9d5a0d2c3f760c7887307",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 59,
+              "failed": 3,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_format.py::TestFormat::test_strip_comments_multi - Assertio...",
+              "FAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_whitespace",
+              "FAILED tests/test_format.py::test_compact[case when foo then 1 else bar end-case\\n    when foo then 1\\n    else bar\\nend-case when foo then 1 else bar end]"
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "C4",
+      "desc": "Add EXTENSION keyword",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 82.7,
+            "tokens_in": 14605,
+            "tokens_out": 2970,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.005476758000000001,
+                "tokens_input": 14605,
+                "tokens_output": 2970,
+                "tokens_reasoning": 1059,
+                "tokens_cache_read": 289536,
+                "tokens_cache_write": 0,
+                "time_created": 1794887991413
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "430725d537de32d2507fe229b7ee93653c870a9c",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "C5",
+      "desc": "strip_comments removes comment-only statements",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 441.7,
+            "tokens_in": 93577,
+            "tokens_out": 10108,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.034948349999999996,
+                "tokens_input": 93577,
+                "tokens_output": 10108,
+                "tokens_reasoning": 11337,
+                "tokens_cache_read": 2681600,
+                "tokens_cache_write": 0,
+                "time_created": 1794888075047
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "d63cb0095de3a2119e2e302b4ea0eba56fdd8f40",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 59,
+              "failed": 4,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_format.py::TestFormat::test_strip_comments_multi - Assertio...",
+              "FAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_whitespace",
+              "FAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_hint",
+              "FAILED tests/test_format.py::test_compact[case when foo then 1 else bar end-case\\n    when foo then 1\\n    else bar\\nend-case when foo then 1 else bar end]"
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "C6",
+      "desc": "Semicolons inside BEGIN...END not split",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 228.7,
+            "tokens_in": 56473,
+            "tokens_out": 7782,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.021270054000000004,
+                "tokens_input": 56473,
+                "tokens_output": 7782,
+                "tokens_reasoning": 5258,
+                "tokens_cache_read": 1658368,
+                "tokens_cache_write": 0,
+                "time_created": 1794888518090
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "4e1af5be40db4fffc946356d972e96e574b68198",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 40,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_split.py::test_split_if_exists_in_begin_end - AssertionErro..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "C7",
+      "desc": "BEGIN TRANSACTION split regression",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 165.8,
+            "tokens_in": 31465,
+            "tokens_out": 6957,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.016990878,
+                "tokens_input": 31465,
+                "tokens_output": 6957,
+                "tokens_reasoning": 7804,
+                "tokens_cache_read": 1138176,
+                "tokens_cache_write": 0,
+                "time_created": 1794888748600
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "ec2fea565c78b212acbad0303c5f4534265195e8",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 42,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_split.py::test_split_if_exists_in_begin_end - AssertionErro..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "C8",
+      "desc": "DoS protection raises SQLParseError",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 140.4,
+            "tokens_in": 27807,
+            "tokens_out": 7214,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.014886450000000002,
+                "tokens_input": 27807,
+                "tokens_output": 7214,
+                "tokens_reasoning": 6229,
+                "tokens_cache_read": 883200,
+                "tokens_cache_write": 0,
+                "time_created": 1794888915759
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "6391b0c00f9aa06a3e9ee12ab04865e7548c2ab7",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 5,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "C9",
+      "desc": "Stack-based splitter for FOR/IF/WHILE blocks",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 185.1,
+            "tokens_in": 49718,
+            "tokens_out": 12731,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.026073875999999996,
+                "tokens_input": 49718,
+                "tokens_output": 12731,
+                "tokens_reasoning": 7615,
+                "tokens_cache_read": 2136192,
+                "tokens_cache_write": 0,
+                "time_created": 1794889057935
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "455d443c6441c8062d75bbdd9a5e1cda392d2370",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 49,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "C10",
+      "desc": "Recognize MATERIALIZED as keyword [金测试自写：authored]",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 18.5,
+            "tokens_in": 5884,
+            "tokens_out": 1543,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.002223096,
+                "tokens_input": 5884,
+                "tokens_output": 1543,
+                "tokens_reasoning": 167,
+                "tokens_cache_read": 104832,
+                "tokens_cache_write": 0,
+                "time_created": 1794889244453
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "cf20e819e4b06dfa8f327674d901c939eff98207",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 87,
+              "failed": 2,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_regressions.py::test_primary_key_issue740 - AssertionError:...",
+              "FAILED tests/test_regressions.py::test_max_recursion - RecursionError: maximu..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    }
+  ]
+}

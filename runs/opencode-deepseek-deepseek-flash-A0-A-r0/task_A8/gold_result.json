@@ -1,0 +1,13 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "errors": 1,
+    "skipped": 0
+  },
+  "fail_nodes": [],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "\n=================================== ERRORS ====================================\n________________ ERROR collecting tests/models/test_whatwg.py _________________\ntests\\models\\test_whatwg.py:13: in <module>\n    with open(\"tests/models/whatwg.json\", \"r\", encoding=\"utf-8\") as input:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   FileNotFoundError: [Errno 2] No such file or directory: 'tests/models/whatwg.json'\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.52s\n\n"
+}

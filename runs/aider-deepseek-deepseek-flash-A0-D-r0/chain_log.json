@@ -1,0 +1,287 @@
+{
+  "run_id": "aider-deepseek-deepseek-flash-A0-D-r0",
+  "tasks": [
+    {
+      "task": "D1",
+      "desc": "Do not let the GC close a borrowed stdout",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 267.6,
+            "tokens_in": 26100,
+            "tokens_out": 28000,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "f82cc53226976c0e24d179df7d493cc9b1cf3c95",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 227,
+              "failed": 2,
+              "errors": 0,
+              "skipped": 11
+            },
+            "fail_nodes": [
+              "FAILED tests/test_termui.py::test_get_pager_file_missing_pager_keeps_borrowed_stream_open",
+              "FAILED tests/test_termui.py::test_echo_via_pager_tty_pager_missing - ValueErr..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "D2",
+      "desc": "Fix double-bracketing of choices in synopsis",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 374.1,
+            "tokens_in": 130100,
+            "tokens_out": 60000,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "a8337a16cdcbed0d9dee8a348ee719e12b5540d6",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 89,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "D3",
+      "desc": "Fix package_name resolution module vs distribution",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 269.9,
+            "tokens_in": 139100,
+            "tokens_out": 33900,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "451b386149134941c9ac449c71b152e4bbbcb5e8",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 90,
+              "failed": 3,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...",
+              "FAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution",
+              "FAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors"
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "D4",
+      "desc": "Warn when an argument name collides with other parameters",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 536.7,
+            "tokens_in": 266400,
+            "tokens_out": 63900,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "cad17a444300322d599d8f25a1f45fed6f633acd",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 753,
+              "failed": 23,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_basic.py::test_param_named_help[no-collision] - AssertionEr...",
+              "FAILED tests/test_basic.py::test_param_named_help[argument] - AssertionError:...",
+              "FAILED tests/test_basic.py::test_param_named_help[option] - AssertionError: a...",
+              "FAILED tests/test_basic.py::test_param_named_help[custom-flags] - AssertionEr...",
+              "FAILED tests/test_basic.py::test_param_squatting_help_option_name - Failed: D...",
+              "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...",
+              "FAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution",
+              "FAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors",
+              "FAILED tests/test_basic.py::test_custom_version_option[args0] - AttributeErro...",
+              "FAILED tests/test_basic.py::test_custom_version_option[args1] - AttributeErro...",
+              "FAILED tests/test_basic.py::test_custom_version_option_receives_context - Att...",
+              "FAILED tests/test_info_dict.py::test_parameter[Argument] - AssertionError: as...",
+              "FAILED tests/test_info_dict.py::test_command[Command] - AssertionError: asser...",
+              "FAILED tests/test_info_dict.py::test_command[Group] - AssertionError: assert ...",
+              "FAILED tests/test_info_dict.py::test_command[Nested Group] - AssertionError: ...",
+              "FAILED tests/test_info_dict.py::test_context - AssertionError: assert {'allow...",
+              "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[None] - TypeE...",
+              "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[empty] - Type...",
+              "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[single-line]",
+              "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[multi-line]",
+              "FAILED tests/test_info_dict.py::test_argument_to_info_dict_nargs - TypeError:...",
+              "FAILED tests/test_info_dict.py::test_command_to_info_dict_multiple_arguments",
+              "FAILED tests/test_options.py::test_argument_sharing_param_name_warning - User..."
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "task": "D5",
+      "desc": "Validate style() color arguments",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 73.0,
+            "tokens_in": 23300,
+            "tokens_out": 11700,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "10037a0496bb0d314d8d6d4cd28af38b56356490",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 62,
+              "failed": 38,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [
+              "FAILED tests/test_utils/test_style.py::test_styling[styles44-\\x1b[38;5;0mx y\\x1b[0m]",
+              "FAILED tests/test_utils/test_style.py::test_styling[styles45-\\x1b[48;5;0mx y\\x1b[0m]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-fg] - Fail...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-bg] - Fail...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[banana-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[banana-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[BLACK-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[BLACK-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[red-fg] - T...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[red-bg] - T...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[True-fg] - ...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[True-bg] - ...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[False-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[False-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-1-fg] - Ty...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-1-bg] - Ty...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[256-fg] - T...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[256-bg] - T...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[0.0-fg] - F...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[0.0-bg] - F...",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value9-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value9-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value10-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value10-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value11-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value11-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value12-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value12-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value13-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value13-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value14-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value14-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value15-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value15-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value16-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value16-bg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value17-fg]",
+              "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value17-bg]"
+            ],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    }
+  ]
+}

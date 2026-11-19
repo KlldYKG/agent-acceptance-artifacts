@@ -1,0 +1,168 @@
+[0m
+> build · deepseek-v4-pro
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree" && dir
+����λ�� ��:1 �ַ�: 100
++ ... p\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree" && dir
++                                                                    ~~
+��ǡ�&&�����Ǵ˰汾�е���Ч���ָ�����
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+[0m
+[0m$ [0mGet-ChildItem -Force | Select-Object Name, Mode
+Name              Mode  
+----              ----  
+.git              d--h--
+.github           d-----
+docs              d-----
+examples          d-----
+sqlparse          d-----
+tests             d-----
+.flake8           -a----
+.gitignore        -a----
+.readthedocs.yaml -a----
+AUTHORS           -a----
+CHANGELOG         -a----
+CONTRIBUTING.md   -a----
+LICENSE           -a----
+Makefile          -a----
+opencode.json     -a----
+pyproject.toml    -a----
+README.rst        -a----
+SECURITY.md       -a----
+TODO              -a----
+[0m
+[0m$ [0mGet-ChildItem -Recurse sqlparse | Select-Object FullName
+FullName                                                                                                               
+--------                                                                                                               
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\engine          
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\cli.py          
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\exceptions.py   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\formatter.py    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\keywords.py     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\lexer.py        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\sql.py          
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\tokens.py       
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\utils.py        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\__init__.py     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\__main__.py     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\engine\filter...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\engine\groupi...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\engine\statem...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\engine\__init...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\align...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\other...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\outpu...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\reind...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\right...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\token...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\filters\__ini...
+[0m
+[0m→ [0mRead sqlparse/keywords.py
+[0m
+[0m$ [0mGet-ChildItem -Recurse tests | Select-Object FullName
+FullName                                                                                                               
+--------                                                                                                               
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files              
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\conftest.py        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_cli.py        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_format.py     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_grouping.py   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_keywords.py   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_parse.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_regressions.py
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_split.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_tokenize.py   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_utils.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\__init__.py        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\begintag.sql 
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\begintag_2...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\casewhen_p...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\dashcommen...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\encoding_g...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\encoding_u...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\function.sql 
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\function_p...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\function_p...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\function_p...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\function_p...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\huge_selec...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\multiple_c...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\mysql_hand...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\stream.sql   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\test_cp125...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\files\_Make_DirE...
+[0m
+[0m→ [0mRead tests/test_keywords.py
+[0m→ [0mRead tests/test_tokenize.py
+[0m→ [0mRead sqlparse/lexer.py
+[0m→ [0mRead pyproject.toml
+[0m
+[0m← [0mEdit sqlparse/keywords.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\keywords.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\keywords.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\sqlparse\keywords.py
+@@ -262,8 +262,9 @@
+ 'EXECUTE': tokens.Keyword,
+ 'EXISTING': tokens.Keyword,
+ 'EXISTS': tokens.Keyword,
+ 'EXPLAIN': tokens.Keyword,
++'EXTENSION': tokens.Keyword,
+ 'EXTERNAL': tokens.Keyword,
+ 'EXTRACT': tokens.Keyword,
+ 
+ 'FALSE': tokens.Keyword,
+
+[0m
+[0m← [0mEdit tests/test_tokenize.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_tokenize.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_tokenize.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-v4-pro-A0-C-r0_fwphufda\tree\tests\test_tokenize.py
+@@ -200,8 +200,15 @@
+     assert len(p.tokens) == 1
+     assert p.tokens[0].ttype is T.Keyword
+ 
+ 
++def test_parse_extension():
++    p = sqlparse.parse('CREATE EXTENSION IF NOT EXISTS hstore')[0]
++    assert p.tokens[0].ttype is T.Keyword.DDL
++    assert p.tokens[2].ttype is T.Keyword
++    assert p.tokens[2].value == 'EXTENSION'
++
++
+ def test_parse_order_by():
+     p = sqlparse.parse('ORDER BY')[0]
+     assert len(p.tokens) == 1
+     assert p.tokens[0].ttype is T.Keyword
+
+[0m
+[0m$ [0mpython -m pytest tests/test_tokenize.py::test_parse_extension -q
+.                                                                        [100%]
+1 passed in 0.07s
+[0m
+[0m$ [0mpython -m pytest tests/test_tokenize.py tests/test_keywords.py -q
+....................................................................     [100%]
+68 passed in 0.10s
+[0m
+[0m$ [0mpython -m flake8 sqlparse/keywords.py tests/test_tokenize.py
+C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\python.exe: No module named flake8
+[0m
+[0m$ [0mpython -m pytest -q
+...............................................................x........ [ 15%]
+.....x.................................................................. [ 31%]
+........................................................................ [ 46%]
+........................................................................ [ 62%]
+.............................................................X.......... [ 77%]
+........................................................................ [ 93%]
+................................                                         [100%]
+461 passed, 2 xfailed, 1 xpassed in 1.59s
+[0m
+Done. Added the `EXTENSION` keyword and a test:
+
+- `sqlparse/keywords.py:266` — added `'EXTENSION': tokens.Keyword,`
+- `tests/test_tokenize.py:204` — added `test_parse_extension` verifying `CREATE EXTENSION` tokenizes `EXTENSION` as a keyword.
+
+Full suite passes (461 passed).

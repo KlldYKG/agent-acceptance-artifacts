@@ -1,0 +1,65 @@
+diff --git a/httpx/_auth.py b/httpx/_auth.py
+index 6613250..13bff20 100644
+--- a/httpx/_auth.py
++++ b/httpx/_auth.py
+@@ -280,7 +280,7 @@ class DigestAuth(Auth):
+ 
+         qop = self._resolve_qop(challenge.qop, request=request)
+         if qop is None:
+-            digest_data = [HA1, challenge.nonce, HA2]
++            digest_data = [challenge.nonce, HA2]
+         else:
+             digest_data = [challenge.nonce, nc_value, cnonce, qop, HA2]
+         key_digest = b":".join(digest_data)
+diff --git a/tests/test_auth.py b/tests/test_auth.py
+index 5632569..a3c6a41 100644
+--- a/tests/test_auth.py
++++ b/tests/test_auth.py
+@@ -3,6 +3,7 @@ Unit tests for auth classes.
+ 
+ Integration tests also exist in tests/client/test_auth.py
+ """
++import hashlib
+ from urllib.request import parse_keqv_list
+ 
+ import pytest
+@@ -103,6 +104,38 @@ def test_digest_auth_with_401_nonce_counting():
+         flow.send(response)
+ 
+ 
++def test_digest_auth_rfc_2069_response():
++    auth = httpx.DigestAuth(username="user", password="pass")
++    request = httpx.Request("GET", "https://www.example.com/")
++
++    flow = auth.sync_auth_flow(request)
++    request = next(flow)
++
++    # An RFC 2069 challenge is one that does not include a 'qop' field.
++    headers = {
++        "WWW-Authenticate": 'Digest realm="realm", nonce="nonce", opaque="opaque"'
++    }
++    response = httpx.Response(
++        content=b"Auth required", status_code=401, headers=headers, request=request
++    )
++    request = flow.send(response)
++
++    authorization = request.headers["Authorization"]
++    assert authorization.startswith("Digest ")
++    fields = parse_keqv_list(authorization[len("Digest ") :].split(", "))
++
++    # The 'qop', 'nc' and 'cnonce' fields are only used for RFC 2617 responses.
++    assert "qop" not in fields
++    assert "nc" not in fields
++    assert "cnonce" not in fields
++
++    # See https://www.rfc-editor.org/rfc/rfc2069#section-2.1.2
++    ha1 = hashlib.md5(b"user:realm:pass").hexdigest()
++    ha2 = hashlib.md5(b"GET:/").hexdigest()
++    expected_response = hashlib.md5(f"{ha1}:nonce:{ha2}".encode()).hexdigest()
++    assert fields["response"] == expected_response
++
++
+ def set_cookies(request: httpx.Request) -> httpx.Response:
+     headers = {
+         "Set-Cookie": "session=.session_value...",
+

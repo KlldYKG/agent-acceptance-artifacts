@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="5" time="1.185" timestamp="2026-11-16T19:36:55.640169+08:00" hostname="livil"><testcase classname="tests.test_dos_prevention.TestDoSPrevention" name="test_large_tuple_list_performance" time="0.361"><failure message="Failed: DID NOT RAISE SQLParseError">self = &lt;tests.test_dos_prevention.TestDoSPrevention object at 0x000002376E063250&gt;
+
+    def test_large_tuple_list_performance(self):
+        """Test that parsing a large list of tuples raises SQLParseError."""
+        # Generate SQL with many tuples (like Django composite primary key queries)
+        sql = '''
+        SELECT "composite_pk_comment"."tenant_id", "composite_pk_comment"."comment_id"
+        FROM "composite_pk_comment"
+        WHERE ("composite_pk_comment"."tenant_id", "composite_pk_comment"."comment_id") IN ('''
+    
+        # Generate 5000 tuples - this should trigger MAX_GROUPING_TOKENS
+        tuples = []
+        for i in range(1, 5001):
+            tuples.append(f"(1, {i})")
+    
+        sql += ", ".join(tuples) + ")"
+    
+        # Should raise SQLParseError due to token limit
+&gt;       with pytest.raises(SQLParseError, match="Maximum number of tokens exceeded"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE SQLParseError
+
+tests\test_dos_prevention.py:28: Failed</failure></testcase><testcase classname="tests.test_dos_prevention.TestDoSPrevention" name="test_deeply_nested_groups_limited" time="0.055"><failure message="Failed: DID NOT RAISE SQLParseError">self = &lt;tests.test_dos_prevention.TestDoSPrevention object at 0x000002376E063750&gt;
+
+    def test_deeply_nested_groups_limited(self):
+        """Test that deeply nested groups raise SQLParseError."""
+        # Create deeply nested parentheses
+        sql = "SELECT " + "(" * 200 + "1" + ")" * 200
+    
+        # Should raise SQLParseError due to depth limit
+&gt;       with pytest.raises(SQLParseError, match="Maximum grouping depth exceeded"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE SQLParseError
+
+tests\test_dos_prevention.py:37: Failed</failure></testcase><testcase classname="tests.test_dos_prevention.TestDoSPrevention" name="test_very_large_token_list_limited" time="0.534"><failure message="Failed: DID NOT RAISE SQLParseError">self = &lt;tests.test_dos_prevention.TestDoSPrevention object at 0x000002376E0D8510&gt;
+
+    def test_very_large_token_list_limited(self):
+        """Test that very large token lists raise SQLParseError."""
+        # Create a SQL with many identifiers
+        identifiers = []
+        for i in range(15000):  # More than MAX_GROUPING_TOKENS
+            identifiers.append(f"col{i}")
+    
+        sql = f"SELECT {', '.join(identifiers)} FROM table1"
+    
+        # Should raise SQLParseError due to token limit
+&gt;       with pytest.raises(SQLParseError, match="Maximum number of tokens exceeded"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE SQLParseError
+
+tests\test_dos_prevention.py:50: Failed</failure></testcase><testcase classname="tests.test_dos_prevention.TestDoSPrevention" name="test_normal_sql_still_works" time="0.002" /><testcase classname="tests.test_dos_prevention.TestDoSPrevention" name="test_reasonable_tuple_list_works" time="0.033" /></testsuite></testsuites>

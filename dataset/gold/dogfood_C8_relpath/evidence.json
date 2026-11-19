@@ -1,0 +1,57 @@
+{
+  "schema": "agent-acceptance/evidence@v0",
+  "base_sha": "da67ac1^",
+  "head_sha": "da67ac1",
+  "strength": "PARTIAL",
+  "verdict": "EVIDENCE_OK",
+  "tests": [
+    {
+      "test": "tests.test_dos_prevention.TestDoSPrevention::test_large_tuple_list_performance",
+      "on_base": "failed",
+      "on_pr": "passed",
+      "verdict": "VALID",
+      "note": ""
+    },
+    {
+      "test": "tests.test_dos_prevention.TestDoSPrevention::test_deeply_nested_groups_limited",
+      "on_base": "failed",
+      "on_pr": "passed",
+      "verdict": "VALID",
+      "note": ""
+    },
+    {
+      "test": "tests.test_dos_prevention.TestDoSPrevention::test_very_large_token_list_limited",
+      "on_base": "failed",
+      "on_pr": "passed",
+      "verdict": "VALID",
+      "note": ""
+    },
+    {
+      "test": "tests.test_dos_prevention.TestDoSPrevention::test_normal_sql_still_works",
+      "on_base": "passed",
+      "on_pr": "passed",
+      "verdict": "PRE-PASS",
+      "note": ""
+    },
+    {
+      "test": "tests.test_dos_prevention.TestDoSPrevention::test_reasonable_tuple_list_works",
+      "on_base": "passed",
+      "on_pr": "passed",
+      "verdict": "PRE-PASS",
+      "note": ""
+    }
+  ],
+  "counts": {
+    "VALID": 3,
+    "PRE-PASS": 2,
+    "BROKEN": 0,
+    "ERROR": 0
+  },
+  "mutation": {
+    "status": "SKIPPED",
+    "score": null,
+    "killed": 0,
+    "survived": 0,
+    "survivor_samples": []
+  }
+}

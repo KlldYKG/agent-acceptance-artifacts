@@ -1,0 +1,360 @@
+[0m
+> build · deepseek-flash
+[0m
+[0m✱ [0mGrep "json.dumps|json.loads|JSON"[90m in . · 20 matches[0m
+[0m
+[0m$ [0mls; echo "---"; git log --oneline -5
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     12:25                .github                                                              
+d-----        2026/11/17     12:26                .pytest_cache                                                        
+d-----        2026/11/17     12:26                .ruff_cache                                                          
+d-----        2026/11/17     12:25                docs                                                                 
+d-----        2026/11/17     12:25                httpx                                                                
+d-----        2026/11/17     12:25                scripts                                                              
+d-----        2026/11/17     12:29                tests                                                                
+-a----        2026/11/17     12:25            132 .gitignore                                                           
+-a----        2026/11/17     12:30          52065 CHANGELOG.md                                                         
+-a----        2026/11/17     12:25           1520 LICENSE.md                                                           
+-a----        2026/11/17     12:25           1494 mkdocs.yml                                                           
+-a----        2026/11/17     12:49            203 opencode.json                                                        
+-a----        2026/11/17     12:25           3748 pyproject.toml                                                       
+-a----        2026/11/17     12:25           5004 README.md                                                            
+-a----        2026/11/17     12:25           4728 README_chinese.md                                                    
+-a----        2026/11/17     12:25            708 requirements.txt                                                     
+---
+2ef0e73 exp A7 round 1
+eb3ae0d exp A6 round 1
+2375fa4 exp A5 round 1
+d41c622 exp A4 round 1
+8e7e0ab exp A3 round 1
+[0m
+[0m→ [0mRead httpx/_content.py[90m [offset=160, limit=30][0m
+[0m✱ [0mGrep "json_dumps|JSON|json="[90m in tests · 1 match[0m
+[0m→ [0mRead tests/test_content.py[90m [offset=150, limit=40][0m
+[0m
+[0m$ [0mrg -n 'b.\{.*": ' tests httpx
+rg : �޷�����rg����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ������
+һ�Ρ�
+����λ�� ��:1 �ַ�: 1
++ rg -n 'b.\{.*": ' tests httpx
++ ~~
+    + CategoryInfo          : ObjectNotFound: (rg:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+[0m
+[0m✱ [0mGrep "Hello\": \"world"[90m in tests · 6 matches[0m
+[0m✱ [0mGrep "application/json"[90m in tests · 14 matches[0m
+[0m→ [0mRead tests/models/test_requests.py[90m [offset=55, limit=30][0m
+[0m
+[0m← [0mEdit httpx/_content.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_content.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_content.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_content.py
+@@ -173,9 +173,9 @@
+     return headers, ByteStream(body)
+ 
+ 
+ def encode_json(json: Any) -> Tuple[Dict[str, str], ByteStream]:
+-    body = json_dumps(json).encode("utf-8")
++    body = json_dumps(json, separators=(",", ":")).encode("utf-8")
+     content_length = str(len(body))
+     content_type = "application/json"
+     headers = {"Content-Length": content_length, "Content-Type": content_type}
+     return headers, ByteStream(body)
+
+[0m
+[0m← [0mEdit tests/test_content.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\test_content.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\test_content.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\test_content.py
+@@ -172,13 +172,13 @@
+     async_content = b"".join([part async for part in request.stream])
+ 
+     assert request.headers == {
+         "Host": "www.example.com",
+-        "Content-Length": "19",
++        "Content-Length": "18",
+         "Content-Type": "application/json",
+     }
+-    assert sync_content == b'{"Hello": "world!"}'
+-    assert async_content == b'{"Hello": "world!"}'
++    assert sync_content == b'{"Hello":"world!"}'
++    assert async_content == b'{"Hello":"world!"}'
+ 
+ 
+ @pytest.mark.anyio
+ async def test_urlencoded_content():
+
+[0m
+[0m← [0mEdit tests/models/test_requests.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
+@@ -61,9 +61,9 @@
+     request = httpx.Request("POST", "http://example.org", json={"test": 123})
+     request.read()
+ 
+     assert request.headers["Content-Type"] == "application/json"
+-    assert request.content == b'{"test": 123}'
++    assert request.content == b'{"test":123}'
+ 
+ 
+ def test_headers():
+     request = httpx.Request("POST", "http://example.org", json={"test": 123})
+
+[0m
+[0m← [0mEdit tests/models/test_requests.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
+@@ -70,9 +70,9 @@
+ 
+     assert request.headers == {
+         "Host": "example.org",
+         "Content-Type": "application/json",
+-        "Content-Length": "13",
++        "Content-Length": "12",
+     }
+ 
+ 
+ def test_read_and_stream_data():
+
+[0m
+[0m→ [0mRead tests/models/test_requests.py[90m [offset=180, limit=18][0m
+[0m→ [0mRead tests/test_main.py[90m [offset=40, limit=25][0m
+[0m
+[0m← [0mEdit tests/models/test_requests.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\models\test_requests.py
+@@ -182,14 +182,14 @@
+     pickle_request = pickle.loads(pickle.dumps(request))
+     assert pickle_request.method == "POST"
+     assert pickle_request.url.path == "/"
+     assert pickle_request.headers["Content-Type"] == "application/json"
+-    assert pickle_request.content == b'{"test": 123}'
++    assert pickle_request.content == b'{"test":123}'
+     assert pickle_request.stream is not None
+     assert request.headers == {
+         "Host": "example.org",
+         "Content-Type": "application/json",
+-        "content-length": "13",
++        "content-length": "12",
+     }
+ 
+ 
+ @pytest.mark.anyio
+
+[0m
+[0m$ [0mpython -m pytest tests/test_content.py tests/models/test_requests.py -q 2>&1 | Select-Object -Last 20
+...............................................................          [100%]
+63 passed in 0.78s
+[0m
+[0m$ [0mpython -m pytest -q 2>&1 | Select-Object -Last 15
+assert ca_bundle is not None and ca_bundle.endswith("tests")
+    
+        del os.environ["SSL_CERT_DIR"]
+        os.environ["SSL_CERT_FILE"] = str(TESTS_DIR / "test_utils.py")
+        # SSL_CERT_FILE is correctly set, SSL_CERT_DIR is not set.
+        ca_bundle = get_ca_bundle_from_env()
+>       assert ca_bundle is not None and ca_bundle.endswith("tests/test_utils.py")
+E       AssertionError: assert ('C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\\tree\\tests\\test_utils.py' is not None and False)
+E        +  where False = <built-in method endswith of str object at 0x000002719CF0D9D0>('tests/test_utils.py')
+E        +    where <built-in method endswith of str object at 0x000002719CF0D9D0> = 'C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\\tree\\tests\\test_utils.py'.endswith
+
+tests\test_utils.py:156: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\client\test_auth.py:295: netrc files without a password are valid from Python >= 3.11
+41 failed, 706 passed, 1 skipped in 15.06s
+[0m
+[0m$ [0mpython -m pytest -q 2>&1 | Select-String -Pattern '^FAILED'
+(no output)
+[0m
+[0m$ [0mpython -m pytest -q *> "$env:TEMP\pytest_out.txt"; Get-Content "$env:TEMP\pytest_out.txt" | Select-String -Pattern 'FAILED|failed' | ForEach-Object { $_.Line }
+E       Failed: DID NOT RAISE DecodingError
+tests\models\test_responses.py:892: Failed
+E       Failed: DID NOT RAISE DecodingError
+tests\models\test_responses.py:912: Failed
+E       Failed: DID NOT RAISE DecodingError
+tests\test_decoders.py:156: Failed
+E           Failed: DID NOT RAISE TypeError
+tests\test_multipart.py:376: Failed
+55 failed, 692 passed, 1 skipped in 27.91s
+[0m
+[0m$ [0mSelect-String -Path "$env:TEMP\pytest_out.txt" -Pattern '^\s*FAILED' | ForEach-Object { $_.Line }
+(no output)
+[0m
+[0m$ [0mGet-Content "$env:TEMP\pytest_out.txt" -Tail 90
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+httpx\_client.py:1029: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+httpx\_transports\default.py:230: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [WinError 10048] 通常每个套接字地址(协议/网络地址/端口)只允许使用一次�?
+
+httpx\_transports\default.py:84: ConnectError
+______________________________ test_logging_ssl _______________________________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x000001F3BB0C60D0>
+
+    def test_logging_ssl(caplog):
+        caplog.set_level(logging.DEBUG)
+        with httpx.Client():
+            pass
+    
+        cafile = certifi.where()
+>       assert caplog.record_tuples == [
+            (
+                "httpx",
+                logging.DEBUG,
+                "load_ssl_context verify=True cert=None trust_env=True http2=False",
+            ),
+            (
+                "httpx",
+                logging.DEBUG,
+                f"load_verify_locations cafile='{cafile}'",
+            ),
+        ]
+E       assert [('httpx', 10...cacert.pem'")] == [('httpx', 10...cacert.pem'")]
+E         
+E         At index 1 diff: ('httpx', 10, "load_verify_locations cafile='C:\\\\Users\\\\xzcac\\\\.workbuddy\\\\binaries\\\\python\\\\versions\\\\3.13.12\\\\Lib\\\\site-packages\\\\certifi\\\\cacert.pem'") != ('httpx', 10, "load_verify_locations cafile='C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\site-packages\\certifi\\cacert.pem'")
+E         Use -v to get more diff
+
+tests\test_utils.py:129: AssertionError
+------------------------------ Captured log call ------------------------------
+DEBUG    httpx:_config.py:78 load_ssl_context verify=True cert=None trust_env=True http2=False
+DEBUG    httpx:_config.py:144 load_verify_locations cafile='C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\site-packages\\certifi\\cacert.pem'
+___________________________ test_get_ssl_cert_file ____________________________
+
+    def test_get_ssl_cert_file():
+        # Two environments is not set.
+        assert get_ca_bundle_from_env() is None
+    
+        os.environ["SSL_CERT_DIR"] = str(TESTS_DIR)
+        # SSL_CERT_DIR is correctly set, SSL_CERT_FILE is not set.
+        ca_bundle = get_ca_bundle_from_env()
+        assert ca_bundle is not None and ca_bundle.endswith("tests")
+    
+        del os.environ["SSL_CERT_DIR"]
+        os.environ["SSL_CERT_FILE"] = str(TESTS_DIR / "test_utils.py")
+        # SSL_CERT_FILE is correctly set, SSL_CERT_DIR is not set.
+        ca_bundle = get_ca_bundle_from_env()
+>       assert ca_bundle is not None and ca_bundle.endswith("tests/test_utils.py")
+E       AssertionError: assert ('C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\\tree\\tests\\test_utils.py' is not None and False)
+E        +  where False = <built-in method endswith of str object at 0x000001F3BAFF47B0>('tests/test_utils.py')
+E        +    where <built-in method endswith of str object at 0x000001F3BAFF47B0> = 'C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\\tree\\tests\\test_utils.py'.endswith
+
+tests\test_utils.py:156: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\client\test_auth.py:295: netrc files without a password are valid from Python >= 3.11
+55 failed, 692 passed, 1 skipped in 27.91s
+[0m
+[0m✱ [0mGrep "\{\"test\":|\{\"Hello\":"[90m in tests · 13 matches[0m
+[0m
+[0m$ [0mGet-Content CHANGELOG.md -Head 60
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## Unreleased
+
+### Fixed
+
+* Improved error messaging for `InvalidURL` exceptions. (#3250)
+* Respect the `http1` argument while configuring proxy transports. (#3023)
+
+## 0.26.0 (20th December, 2023)
+
+### Added
+
+* The `proxy` argument was added. You should use the `proxy` argument instead of the deprecated `proxies`, or use `mounts=` for more complex configurations. (#2879)
+
+### Deprecated
+
+* The `proxies` argument is now deprecated. It will still continue to work, but it will be removed in the future. (#2879)
+
+### Fixed
+
+* Fix cases of double escaping of URL path components. Allow / as a safe character in the query portion. (#2990)
+* Handle `NO_PROXY` envvar cases when a fully qualified URL is supplied as the value. (#2741)
+* Allow URLs where username or password contains unescaped '@'. (#2986)
+* Ensure ASGI `raw_path` does not include URL query component. (#2999)
+* Ensure `Response.iter_text()` cannot yield empty strings. (#2998)
+
+## 0.25.2 (24th November, 2023)
+
+### Added
+
+* Add missing type hints to few `__init__()` methods. (#2938)
+
+## 0.25.1 (3rd November, 2023)
+
+### Added
+
+* Add support for Python 3.12. (#2854)
+* Add support for httpcore 1.0 (#2885)
+
+### Fixed
+
+* Raise `ValueError` on `Response.encoding` being set after `Response.text` has been accessed. (#2852)
+
+## 0.25.0 (11th September, 2023)
+
+### Removed
+
+* Drop support for Python 3.7. (#2813)
+
+### Added
+
+* Support HTTPS proxies. (#2845)
+* Change the type of `Extensions` from `Mapping[Str, Any]` to `MutableMapping[Str, Any]`. (#2803)
+* Add `socket_options` argument to `httpx.HTTPTransport` and `httpx.AsyncHTTPTransport` classes. (#2716)
+* The `Response.raise_for_status()` method now returns the response instance. For example: `data = httpx.get('...').raise_for_status().json()`. (#2776)
+[0m
+[0m$ [0mpython -m ruff check httpx/_content.py tests/test_content.py tests/models/test_requests.py
+warning: The top-level linter settings are deprecated in favour of their counterparts in the `lint` section. Please update the following options in `pyproject.toml`:
+  - 'ignore' -> 'lint.ignore'
+  - 'select' -> 'lint.select'
+  - 'isort' -> 'lint.isort'
+All checks passed!
+[0m
+Done. JSON request bodies now use compact separators (`json.dumps(..., separators=(",", ":"))`) in `httpx/_content.py:177`, and the affected content/length expectations in `tests/test_content.py` and `tests/models/test_requests.py` were updated.
+
+Targeted tests pass (63 passed); full-suite failures are pre-existing Windows environment issues (paths, sockets, TLS), unrelated to this change.

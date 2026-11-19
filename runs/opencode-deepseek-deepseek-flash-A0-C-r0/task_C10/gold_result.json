@@ -1,0 +1,16 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 87,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_regressions.py::test_primary_key_issue740 - AssertionError:...",
+    "FAILED tests/test_regressions.py::test_max_recursion - RecursionError: maximu..."
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "   ^^^^^^^^^^^^^^^^^^\nsqlparse\\sql.py:161: in __init__\n    super().__init__(None, str(self))\n                           ^^^^^^^^^\nsqlparse\\sql.py:165: in __str__\n    return ''.join(token.value for token in self.flatten())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsqlparse\\sql.py:165: in <genexpr>\n    return ''.join(token.value for token in self.flatten())\n                                            ^^^^^^^^^^^^^^\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\nsqlparse\\sql.py:214: in flatten\n    yield from token.flatten()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <SquareBrackets '[[]]' at 0x2ABD99D9B70>\n\n    def flatten(self):\n        \"\"\"Generator yielding ungrouped tokens.\n    \n        This method is recursively called for all child tokens.\n        \"\"\"\n        for token in self.tokens:\n            if token.is_group:\n>               yield from token.flatten()\n                           ^^^^^^^^^^^^^^^\nE               RecursionError: maximum recursion depth exceeded\n\nsqlparse\\sql.py:214: RecursionError\n!!! Recursion error detected, but the origin of the recursion could not be located.\n  Displaying first and last 10 stack frames out of 68.\n  Pass `--full-trace` to see all frames.\n=========================== short test summary info ===========================\nFAILED tests/test_regressions.py::test_primary_key_issue740 - AssertionError:...\nFAILED tests/test_regressions.py::test_max_recursion - RecursionError: maximu...\n2 failed, 87 passed, 1 xfailed in 0.26s\n\n"
+}

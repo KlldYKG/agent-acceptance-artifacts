@@ -1,0 +1,207 @@
+[
+  {
+    "id": "A1",
+    "repo": "httpx",
+    "fix": "99cba6a",
+    "issue": "digest-rfc2069",
+    "desc": "Fix RFC 2069 mode digest authentication",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_auth.py"
+    ],
+    "before": {
+      "passed": 7,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.3
+    },
+    "after": {
+      "passed": 8,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.4
+    }
+  },
+  {
+    "id": "A2",
+    "repo": "httpx",
+    "fix": "49d74a2",
+    "issue": "3313",
+    "desc": "Clarified error when header value is None",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/client/test_headers.py"
+    ],
+    "before": {
+      "passed": 11,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.4
+    },
+    "after": {
+      "passed": 12,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.3
+    }
+  },
+  {
+    "id": "A3",
+    "repo": "httpx",
+    "fix": "3f76571",
+    "issue": "PR3364",
+    "desc": "Concise URL instantiation",
+    "verdict": "NO_TESTS",
+    "gold_files": [],
+    "before": null,
+    "after": null
+  },
+  {
+    "id": "A4",
+    "repo": "httpx",
+    "fix": "d293374",
+    "issue": "PR3371",
+    "desc": "Review URL percent escaping sets (WHATWG)",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/models/test_url.py"
+    ],
+    "before": {
+      "passed": 89,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 3.1
+    },
+    "after": {
+      "passed": 90,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 3.0
+    }
+  },
+  {
+    "id": "A5",
+    "repo": "httpx",
+    "fix": "ba2e512",
+    "issue": "PR3373/3413",
+    "desc": "urlescape + behavior for form spaces",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/models/test_url.py"
+    ],
+    "before": {
+      "passed": 87,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 3.4
+    },
+    "after": {
+      "passed": 90,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 3.0
+    }
+  },
+  {
+    "id": "A6",
+    "repo": "httpx",
+    "fix": "5dda2aa",
+    "issue": "PR3376",
+    "desc": "default safe characters for urlescape",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/models/test_url.py"
+    ],
+    "before": {
+      "passed": 88,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 3.2
+    },
+    "after": {
+      "passed": 90,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 3.0
+    }
+  },
+  {
+    "id": "A7",
+    "repo": "httpx",
+    "fix": "9fd6f0c",
+    "issue": "3363",
+    "desc": "Ensure JSON representation is compact",
+    "verdict": "AFTER_FAIL",
+    "gold_files": [
+      "tests/client/test_auth.py",
+      "tests/models/test_requests.py",
+      "tests/models/test_responses.py",
+      "tests/models/test_whatwg.py",
+      "tests/test_content.py",
+      "tests/test_main.py"
+    ],
+    "before": {
+      "passed": 812,
+      "failed": 14,
+      "errors": 0,
+      "skipped": 1,
+      "fail_nodes": [],
+      "seconds": 10.6
+    },
+    "after": {
+      "passed": 825,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 1,
+      "fail_nodes": [],
+      "seconds": 11.2
+    }
+  },
+  {
+    "id": "A8",
+    "repo": "httpx",
+    "fix": "8ecb86f",
+    "issue": "PR3440",
+    "desc": "test for request params behavior changes",
+    "verdict": "PRE-PASS",
+    "gold_files": [
+      "tests/models/test_requests.py"
+    ],
+    "before": {
+      "passed": 24,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.0
+    },
+    "after": {
+      "passed": 24,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.0
+    }
+  }
+]

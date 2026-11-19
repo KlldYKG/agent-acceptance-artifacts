@@ -1,0 +1,21 @@
+{
+  "schema": "agent-acceptance/evidence@v0",
+  "base_sha": "da67ac1^",
+  "head_sha": "da67ac1",
+  "strength": "NONE",
+  "verdict": "ERROR",
+  "tests": [],
+  "counts": {
+    "VALID": 0,
+    "PRE-PASS": 0,
+    "BROKEN": 0,
+    "ERROR": 0
+  },
+  "mutation": {
+    "status": "SKIPPED",
+    "score": null,
+    "killed": 0,
+    "survived": 0,
+    "survivor_samples": []
+  }
+}

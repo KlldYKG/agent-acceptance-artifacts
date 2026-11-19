@@ -1,0 +1,37 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 753,
+    "failed": 23,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_basic.py::test_param_named_help[no-collision] - AssertionEr...",
+    "FAILED tests/test_basic.py::test_param_named_help[argument] - AssertionError:...",
+    "FAILED tests/test_basic.py::test_param_named_help[option] - AssertionError: a...",
+    "FAILED tests/test_basic.py::test_param_named_help[custom-flags] - AssertionEr...",
+    "FAILED tests/test_basic.py::test_param_squatting_help_option_name - Failed: D...",
+    "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...",
+    "FAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution",
+    "FAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors",
+    "FAILED tests/test_basic.py::test_custom_version_option[args0] - AttributeErro...",
+    "FAILED tests/test_basic.py::test_custom_version_option[args1] - AttributeErro...",
+    "FAILED tests/test_basic.py::test_custom_version_option_receives_context - Att...",
+    "FAILED tests/test_info_dict.py::test_parameter[Argument] - AssertionError: as...",
+    "FAILED tests/test_info_dict.py::test_command[Command] - AssertionError: asser...",
+    "FAILED tests/test_info_dict.py::test_command[Group] - AssertionError: assert ...",
+    "FAILED tests/test_info_dict.py::test_command[Nested Group] - AssertionError: ...",
+    "FAILED tests/test_info_dict.py::test_context - AssertionError: assert {'allow...",
+    "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[None] - TypeE...",
+    "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[empty] - Type...",
+    "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[single-line]",
+    "FAILED tests/test_info_dict.py::test_argument_to_info_dict_help[multi-line]",
+    "FAILED tests/test_info_dict.py::test_argument_to_info_dict_nargs - TypeError:...",
+    "FAILED tests/test_info_dict.py::test_command_to_info_dict_multiple_arguments",
+    "FAILED tests/test_options.py::test_argument_sharing_param_name_warning - User..."
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "sts\\test_options.py:3338: UserWarning\n=========================== short test summary info ===========================\nFAILED tests/test_basic.py::test_param_named_help[no-collision] - AssertionEr...\nFAILED tests/test_basic.py::test_param_named_help[argument] - AssertionError:...\nFAILED tests/test_basic.py::test_param_named_help[option] - AssertionError: a...\nFAILED tests/test_basic.py::test_param_named_help[custom-flags] - AssertionEr...\nFAILED tests/test_basic.py::test_param_squatting_help_option_name - Failed: D...\nFAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...\nFAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution\nFAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors\nFAILED tests/test_basic.py::test_custom_version_option[args0] - AttributeErro...\nFAILED tests/test_basic.py::test_custom_version_option[args1] - AttributeErro...\nFAILED tests/test_basic.py::test_custom_version_option_receives_context - Att...\nFAILED tests/test_info_dict.py::test_parameter[Argument] - AssertionError: as...\nFAILED tests/test_info_dict.py::test_command[Command] - AssertionError: asser...\nFAILED tests/test_info_dict.py::test_command[Group] - AssertionError: assert ...\nFAILED tests/test_info_dict.py::test_command[Nested Group] - AssertionError: ...\nFAILED tests/test_info_dict.py::test_context - AssertionError: assert {'allow...\nFAILED tests/test_info_dict.py::test_argument_to_info_dict_help[None] - TypeE...\nFAILED tests/test_info_dict.py::test_argument_to_info_dict_help[empty] - Type...\nFAILED tests/test_info_dict.py::test_argument_to_info_dict_help[single-line]\nFAILED tests/test_info_dict.py::test_argument_to_info_dict_help[multi-line]\nFAILED tests/test_info_dict.py::test_argument_to_info_dict_nargs - TypeError:...\nFAILED tests/test_info_dict.py::test_command_to_info_dict_multiple_arguments\nFAILED tests/test_options.py::test_argument_sharing_param_name_warning - User...\n23 failed, 753 passed in 1.46s\n\n"
+}

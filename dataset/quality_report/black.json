@@ -1,0 +1,18 @@
+{
+  "repo": "psf/black",
+  "name": "black",
+  "head": "8f4a058eeb2c664ef1cc2847d3882fc4a82fe3fa",
+  "ok_clone": true,
+  "ok_install": true,
+  "ok_pytest": true,
+  "pytest_seconds": 56.3,
+  "passed": 671,
+  "failed": null,
+  "errors": null,
+  "skipped": 14,
+  "notes": [],
+  "clone_seconds": 6.7,
+  "install_seconds": 72.6,
+  "installed_packages": 22,
+  "pytest_summary": "671 passed, 14 skipped, 62 subtests passed in 55.50s"
+}

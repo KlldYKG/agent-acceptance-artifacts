@@ -1,0 +1,429 @@
+{
+  "run_id": "opencode-deepseek-deepseek-flash-A0-A-r0",
+  "tasks": [
+    {
+      "task": "A1",
+      "desc": "Fix RFC 2069 mode digest authentication",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 75.7,
+            "tokens_in": 20782,
+            "tokens_out": 3645,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.008395211999999999,
+                "tokens_input": 20782,
+                "tokens_output": 3645,
+                "tokens_reasoning": 3060,
+                "tokens_cache_read": 418304,
+                "tokens_cache_write": 0,
+                "time_created": 1794889515062
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "1a82a45c28074d515dd9bb07c118f29c1e3a88a8",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A2",
+      "desc": "Fix client.send() timeout new Request instance",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 175.9,
+            "tokens_in": 51906,
+            "tokens_out": 5268,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.016933644000000005,
+                "tokens_input": 51906,
+                "tokens_output": 5268,
+                "tokens_reasoning": 3600,
+                "tokens_cache_read": 1275648,
+                "tokens_cache_write": 0,
+                "time_created": 1794889593284
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "34fd8e3efa858ff06cc4ec35fab58d46d920b2b7",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 9,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A3",
+      "desc": "Improve InvalidURL error message",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 56.1,
+            "tokens_in": 20417,
+            "tokens_out": 3314,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.006939773999999999,
+                "tokens_input": 20417,
+                "tokens_output": 3314,
+                "tokens_reasoning": 1397,
+                "tokens_cache_read": 350208,
+                "tokens_cache_write": 0,
+                "time_created": 1794889773403
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "8e7e0abf5fef0df25b4e563025adb7a1c1ceeab1",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 88,
+              "failed": 3,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A4",
+      "desc": "Clarified error when header value is None",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 56.8,
+            "tokens_in": 16262,
+            "tokens_out": 2126,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.005178564,
+                "tokens_input": 16262,
+                "tokens_output": 2126,
+                "tokens_reasoning": 1210,
+                "tokens_cache_read": 245888,
+                "tokens_cache_write": 0,
+                "time_created": 1794889833256
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "d41c6228dcdaba093bb1b58249b4c07879be39d8",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 5,
+              "failed": 7,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A5",
+      "desc": "Review URL percent escaping sets (WHATWG)",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 440.6,
+            "tokens_in": 109894,
+            "tokens_out": 12514,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.05588214,
+                "tokens_input": 109894,
+                "tokens_output": 12514,
+                "tokens_reasoning": 21655,
+                "tokens_cache_read": 6298880,
+                "tokens_cache_write": 0,
+                "time_created": 1794889892181
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "2375fa4c3e31de2928884f925215daef9d772de2",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 89,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A6",
+      "desc": "urlescape + behavior for form spaces",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 242.6,
+            "tokens_in": 89089,
+            "tokens_out": 7982,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.028889837999999987,
+                "tokens_input": 89089,
+                "tokens_output": 7982,
+                "tokens_reasoning": 7939,
+                "tokens_cache_read": 1991296,
+                "tokens_cache_write": 0,
+                "time_created": 1794890335711
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "eb3ae0dc9cf8764043de98f721fc982eaa8bac02",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 89,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A7",
+      "desc": "default safe characters for urlescape",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 395.0,
+            "tokens_in": 72263,
+            "tokens_out": 9975,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.030324641999999995,
+                "tokens_input": 72263,
+                "tokens_output": 9975,
+                "tokens_reasoning": 10700,
+                "tokens_cache_read": 2360064,
+                "tokens_cache_write": 0,
+                "time_created": 1794890582470
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "2ef0e73c7bc7847981f3a952ae06c3b8c2b10981",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 89,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A8",
+      "desc": "Ensure JSON representation is compact",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 120.9,
+            "tokens_in": 9628,
+            "tokens_out": 3152,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.004524911999999999,
+                "tokens_input": 9628,
+                "tokens_output": 3152,
+                "tokens_reasoning": 707,
+                "tokens_cache_read": 255104,
+                "tokens_cache_write": 0,
+                "time_created": 1794890980582
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "51d3f56d804c4a1d93ce33ea81352c1d8e1a9704",
+          "gold": {
+            "ok": false,
+            "counts": {
+              "passed": 0,
+              "failed": 0,
+              "errors": 1,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": false
+    }
+  ]
+}

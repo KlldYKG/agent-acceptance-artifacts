@@ -1,0 +1,402 @@
+[
+  {
+    "id": "D1",
+    "repo": "click",
+    "fix": "051bb0f",
+    "issue": "gc-stdout",
+    "desc": "Do not let the GC close a borrowed stdout",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_termui.py"
+    ],
+    "before": {
+      "passed": 227,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 11,
+      "fail_nodes": [
+        "FAILED tests/test_termui.py::test_get_pager_file_missing_pager_keeps_borrowed_stream_open",
+        "FAILED tests/test_termui.py::test_echo_via_pager_tty_pager_missing - ValueErr..."
+      ],
+      "seconds": 1.6
+    },
+    "after": {
+      "passed": 229,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 11,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  },
+  {
+    "id": "D2",
+    "repo": "click",
+    "fix": "09195f6",
+    "issue": "3578",
+    "desc": "Fix double-bracketing of choices in synopsis",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_basic.py"
+    ],
+    "before": {
+      "passed": 88,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_basic.py::test_choice_argument_optional_metavar - Assertion...",
+        "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti..."
+      ],
+      "seconds": 1.1
+    },
+    "after": {
+      "passed": 90,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.1
+    }
+  },
+  {
+    "id": "D3",
+    "repo": "click",
+    "fix": "7a16b20",
+    "issue": "3582",
+    "desc": "Fix package_name resolution module vs distribution",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_basic.py"
+    ],
+    "before": {
+      "passed": 91,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution",
+        "FAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors"
+      ],
+      "seconds": 1.1
+    },
+    "after": {
+      "passed": 93,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.0
+    }
+  },
+  {
+    "id": "D4",
+    "repo": "click",
+    "fix": "3495fba",
+    "issue": "collide",
+    "desc": "Warn when an argument name collides with other parameters",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_basic.py",
+      "tests/test_info_dict.py",
+      "tests/test_options.py"
+    ],
+    "before": {
+      "passed": 766,
+      "failed": 10,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_basic.py::test_param_named_help[no-collision] - AssertionEr...",
+        "FAILED tests/test_basic.py::test_param_named_help[argument] - AssertionError:...",
+        "FAILED tests/test_basic.py::test_param_named_help[option] - AssertionError: a...",
+        "FAILED tests/test_basic.py::test_param_named_help[custom-flags] - AssertionEr...",
+        "FAILED tests/test_basic.py::test_param_squatting_help_option_name - Failed: D...",
+        "FAILED tests/test_info_dict.py::test_command[Command] - AssertionError: asser...",
+        "FAILED tests/test_info_dict.py::test_command[Group] - AssertionError: assert ...",
+        "FAILED tests/test_info_dict.py::test_command[Nested Group] - AssertionError: ...",
+        "FAILED tests/test_info_dict.py::test_context - AssertionError: assert {'allow...",
+        "FAILED tests/test_options.py::test_argument_sharing_param_name_warning - Fail..."
+      ],
+      "seconds": 2.1
+    },
+    "after": {
+      "passed": 776,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.0
+    }
+  },
+  {
+    "id": "D5",
+    "repo": "click",
+    "fix": "07c909f",
+    "issue": "style-color",
+    "desc": "Validate style() color arguments",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_utils/test_style.py"
+    ],
+    "before": {
+      "passed": 62,
+      "failed": 38,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_utils/test_style.py::test_styling[styles44-\\x1b[38;5;0mx y\\x1b[0m]",
+        "FAILED tests/test_utils/test_style.py::test_styling[styles45-\\x1b[48;5;0mx y\\x1b[0m]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-fg] - Fail...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-bg] - Fail...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[banana-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[banana-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[BLACK-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[BLACK-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[red-fg] - T...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[red-bg] - T...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[True-fg] - ...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[True-bg] - ...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[False-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[False-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-1-fg] - Fa...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[-1-bg] - Fa...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[256-fg] - F...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[256-bg] - F...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[0.0-fg] - F...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[0.0-bg] - F...",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value9-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value9-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value10-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value10-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value11-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value11-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value12-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value12-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value13-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value13-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value14-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value14-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value15-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value15-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value16-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value16-bg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value17-fg]",
+        "FAILED tests/test_utils/test_style.py::test_styling_invalid_color[value17-bg]"
+      ],
+      "seconds": 1.1
+    },
+    "after": {
+      "passed": 100,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "D6",
+    "repo": "click",
+    "fix": "b67832c",
+    "issue": "3678",
+    "desc": "Fix parsing when a parameter is named help",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_basic.py",
+      "tests/test_info_dict.py",
+      "tests/test_options.py"
+    ],
+    "before": {
+      "passed": 766,
+      "failed": 10,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_basic.py::test_param_named_help[no-collision] - AssertionEr...",
+        "FAILED tests/test_basic.py::test_param_named_help[argument] - AssertionError:...",
+        "FAILED tests/test_basic.py::test_param_named_help[option] - AssertionError: a...",
+        "FAILED tests/test_basic.py::test_param_named_help[custom-flags] - AssertionEr...",
+        "FAILED tests/test_basic.py::test_param_squatting_help_option_name - Failed: D...",
+        "FAILED tests/test_info_dict.py::test_command[Command] - AssertionError: asser...",
+        "FAILED tests/test_info_dict.py::test_command[Group] - AssertionError: assert ...",
+        "FAILED tests/test_info_dict.py::test_command[Nested Group] - AssertionError: ...",
+        "FAILED tests/test_info_dict.py::test_context - AssertionError: assert {'allow...",
+        "FAILED tests/test_options.py::test_argument_sharing_param_name_warning - Fail..."
+      ],
+      "seconds": 2.1
+    },
+    "after": {
+      "passed": 776,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 2.0
+    }
+  },
+  {
+    "id": "D7",
+    "repo": "click",
+    "fix": "fc5c7f4",
+    "issue": "3764",
+    "desc": "Fix error reporting on Windows when error raised in pager",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_termui.py"
+    ],
+    "before": {
+      "passed": 249,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 11,
+      "fail_nodes": [
+        "FAILED tests/test_termui.py::test_tempfile_pager_closes_file_before_unlink - ..."
+      ],
+      "seconds": 1.9
+    },
+    "after": {
+      "passed": 250,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 11,
+      "fail_nodes": [],
+      "seconds": 1.8
+    }
+  },
+  {
+    "id": "D8",
+    "repo": "click",
+    "fix": "4295457",
+    "issue": "3805",
+    "desc": "Fix copy/deepcopy/pickle of Sentinel members",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_utils/test_sentinel.py"
+    ],
+    "before": {
+      "passed": 7,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_utils/test_sentinel.py::test_sentinel_duplication_preserves_identity[pickle-Sentinel.UNSET]",
+        "FAILED tests/test_utils/test_sentinel.py::test_sentinel_duplication_preserves_identity[pickle-Sentinel.FLAG_NEEDS_VALUE]",
+        "FAILED tests/test_utils/test_sentinel.py::test_parameter_duplication[pickle]"
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 10,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "D9",
+    "repo": "click",
+    "fix": "00f257b",
+    "issue": "3818",
+    "desc": "Fix race condition on KeyboardInterrupt in main()",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_abort_interrupt.py"
+    ],
+    "before": {
+      "passed": 3,
+      "failed": 5,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_abort_interrupt.py::test_interrupt_while_reporting_abort[prompt-1]",
+        "FAILED tests/test_abort_interrupt.py::test_interrupt_while_reporting_abort[body-1]",
+        "FAILED tests/test_abort_interrupt.py::test_interrupt_while_reporting_abort[body-2]",
+        "FAILED tests/test_abort_interrupt.py::test_interrupt_while_reporting_error - ...",
+        "FAILED tests/test_abort_interrupt.py::test_interrupt_while_exiting_after_success"
+      ],
+      "seconds": 1.2
+    },
+    "after": {
+      "passed": 8,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "D10",
+    "repo": "click",
+    "fix": "7068985",
+    "issue": "3865",
+    "desc": "Fix short help abbreviation",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_utils/test_make_default_short_help.py"
+    ],
+    "before": {
+      "passed": 30,
+      "failed": 6,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[-abbreviation inside sentence]",
+        "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[-abbreviation inside truncated sentence]",
+        "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[-lowercase after dot]",
+        "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[no-wrap mark-abbreviation inside sentence]",
+        "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[no-wrap mark-abbreviation inside truncated sentence]",
+        "FAILED tests/test_utils/test_make_default_short_help.py::test_make_default_short_help[no-wrap mark-lowercase after dot]"
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 36,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "D11",
+    "repo": "click",
+    "fix": "8c73ff1",
+    "issue": "3884",
+    "desc": "Fix show_envvar output for sequence/empty envvar",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_options.py"
+    ],
+    "before": {
+      "passed": 667,
+      "failed": 9,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_options.py::test_show_envvar_empty[None-  --units TEXT\\n-envvar1]",
+        "FAILED tests/test_options.py::test_show_envvar_empty[None-  --units TEXT\\n-]",
+        "FAILED tests/test_options.py::test_show_envvar_empty[WEATHER-  --units TEXT  [env var: WEATHER_UNITS]\\n-envvar1]",
+        "FAILED tests/test_options.py::test_show_envvar_empty[WEATHER-  --units TEXT  [env var: WEATHER_UNITS]\\n-]",
+        "FAILED tests/test_options.py::test_missing_envvar_sequence[envvar1-'--units' (env var: 'UNITS')]",
+        "FAILED tests/test_options.py::test_missing_envvar_sequence[envvar2-'--units' (env var: 'WEATHER_UNITS', 'UNITS')]",
+        "FAILED tests/test_options.py::test_missing_envvar_sequence[envvar3-'--units' (env var: 'WEATHER_UNITS', 'UNITS')]",
+        "FAILED tests/test_options.py::test_missing_envvar_sequence[envvar4-'--units']",
+        "FAILED tests/test_options.py::test_missing_envvar_sequence[-'--units'] - asse..."
+      ],
+      "seconds": 2.1
+    },
+    "after": {
+      "passed": 676,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.8
+    }
+  }
+]

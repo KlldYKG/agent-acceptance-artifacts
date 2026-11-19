@@ -1,0 +1,13 @@
+{
+  "run_id": "opencode-deepseek-deepseek-flash-A0-C-r0",
+  "agent": "opencode",
+  "model": "deepseek/deepseek-flash",
+  "arm": "A0",
+  "chain": "C",
+  "rep": 0,
+  "base_ref": "6b05583^",
+  "gate_pkg": "agent-acceptance==1.0.0",
+  "python": "3.13.14",
+  "started": "2026-11-17T11:46:41",
+  "ended": "2026-11-17T12:21:03"
+}

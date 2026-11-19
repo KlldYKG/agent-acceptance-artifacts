@@ -1,0 +1,257 @@
+{
+  "run_id": "aider-deepseek-deepseek-flash-A0-A-r0",
+  "tasks": [
+    {
+      "task": "A1",
+      "desc": "Fix RFC 2069 mode digest authentication",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 290.0,
+            "tokens_in": 50300,
+            "tokens_out": 35600,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "c356e040100de0732051f7b6b187813295104f9e",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 7,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A2",
+      "desc": "Fix client.send() timeout new Request instance",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 306.0,
+            "tokens_in": 31900,
+            "tokens_out": 40000,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "d481e74ec2f6fe6518b5c730edfa4c1746847ddc",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 9,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A3",
+      "desc": "Improve InvalidURL error message",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 287.5,
+            "tokens_in": 32000,
+            "tokens_out": 32100,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "b39abc3474c55b746d74aa34adc251171d0ef629",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 85,
+              "failed": 6,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A4",
+      "desc": "Clarified error when header value is None",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 189.2,
+            "tokens_in": 28600,
+            "tokens_out": 13800,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "8689054da398c1ee17ace272a987b3c13d48ea67",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 4,
+              "failed": 8,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A5",
+      "desc": "Review URL percent escaping sets (WHATWG)",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 215.2,
+            "tokens_in": 24200,
+            "tokens_out": 17400,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "44095975519027bb62d066f9d57a5064108bfc74",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 85,
+              "failed": 5,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "task": "A6",
+      "desc": "urlescape + behavior for form spaces",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 295.8,
+            "tokens_in": 30100,
+            "tokens_out": 34400,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": true,
+              "tokens_exact": false,
+              "cmd": [
+                "C:\\Users\\xzcac\\WorkBuddy\\spaces\\2026_11_16_09-23-11\\experiments\\venvs\\aider\\Scripts\\aider.exe",
+                "--model",
+                "<model>",
+                "<prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "594859952200b0d4e6256283fd83b749e8e5ba2f",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 82,
+              "failed": 8,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    }
+  ]
+}

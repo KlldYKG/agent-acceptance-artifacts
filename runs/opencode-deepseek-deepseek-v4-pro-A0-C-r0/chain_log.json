@@ -1,0 +1,58 @@
+{
+  "run_id": "opencode-deepseek-deepseek-v4-pro-A0-C-r0",
+  "tasks": [
+    {
+      "task": "C4",
+      "desc": "Add EXTENSION keyword",
+      "rounds": [
+        {
+          "round": 1,
+          "adapter": {
+            "exit_code": 0,
+            "seconds": 52.5,
+            "tokens_in": 29928,
+            "tokens_out": 1836,
+            "token_source": "adapter",
+            "extra": {
+              "early_reaped": false,
+              "usage_detail": {
+                "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+                "model": "{\"id\":\"deepseek-v4-pro\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+                "cost": 0.034201155999999996,
+                "tokens_input": 29928,
+                "tokens_output": 1836,
+                "tokens_reasoning": 1627,
+                "tokens_cache_read": 345088,
+                "tokens_cache_write": 0,
+                "time_created": 1794889390046
+              },
+              "cmd": [
+                "<opencode>",
+                "run",
+                "--model",
+                "<model>",
+                "<stdin:prompt>"
+              ]
+            }
+          },
+          "committed": true,
+          "candidate": "6d5f96c8276320476378f5243090d3ff607fb051",
+          "gold": {
+            "ok": true,
+            "counts": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0
+            },
+            "fail_nodes": [],
+            "noise_nodes": [],
+            "seconds": null
+          },
+          "gate_verdict": null
+        }
+      ],
+      "accepted": true
+    }
+  ]
+}

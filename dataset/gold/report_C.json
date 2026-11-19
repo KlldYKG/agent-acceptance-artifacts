@@ -1,0 +1,302 @@
+[
+  {
+    "id": "C1",
+    "repo": "sqlparse",
+    "fix": "6b05583",
+    "issue": "682",
+    "desc": "Recognize -> as single operator",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_parse.py"
+    ],
+    "before": {
+      "passed": 79,
+      "failed": 6,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_parse.py::test_json_operators[->] - AssertionError: assert ...",
+        "FAILED tests/test_parse.py::test_json_operators[->>] - AssertionError: assert...",
+        "FAILED tests/test_parse.py::test_json_operators[#>] - AssertionError: assert ...",
+        "FAILED tests/test_parse.py::test_json_operators[#>>] - AssertionError: assert...",
+        "FAILED tests/test_parse.py::test_json_operators[@>] - AssertionError: assert ...",
+        "FAILED tests/test_parse.py::test_json_operators[<@] - AssertionError: assert ..."
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 85,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.1
+    }
+  },
+  {
+    "id": "C2",
+    "repo": "sqlparse",
+    "fix": "791e25d",
+    "issue": "784",
+    "desc": "Split CASE clauses within BEGIN block",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_split.py"
+    ],
+    "before": {
+      "passed": 37,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_split.py::test_split_multiple_case_in_begin - FileNotFoundE..."
+      ],
+      "seconds": 0.9
+    },
+    "after": {
+      "passed": 38,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.0
+    }
+  },
+  {
+    "id": "C3",
+    "repo": "sqlparse",
+    "fix": "0c4902f",
+    "issue": "782",
+    "desc": "CTE formatting idempotency (whitespace)",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_format.py"
+    ],
+    "before": {
+      "passed": 61,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_strip_ws_removes_trailing_ws_in_groups - As..."
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 62,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.0
+    }
+  },
+  {
+    "id": "C4",
+    "repo": "sqlparse",
+    "fix": "e48000a",
+    "issue": "785",
+    "desc": "Add EXTENSION keyword",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_extension_keyword.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_extension_keyword.py::test_extension_is_keyword - Assertion..."
+      ],
+      "seconds": 0.9
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.8
+    }
+  },
+  {
+    "id": "C5",
+    "repo": "sqlparse",
+    "fix": "73c8ba3",
+    "issue": "801",
+    "desc": "strip_comments removes comment-only statements",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_format.py"
+    ],
+    "before": {
+      "passed": 62,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::TestFormat::test_strip_comments_single - Asserti..."
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 63,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.0
+    }
+  },
+  {
+    "id": "C6",
+    "repo": "sqlparse",
+    "fix": "1a3bfbd",
+    "issue": "809",
+    "desc": "Semicolons inside BEGIN...END not split",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_split.py"
+    ],
+    "before": {
+      "passed": 40,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_split.py::test_split_begin_end_semicolons - AssertionError:..."
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 41,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "C7",
+    "repo": "sqlparse",
+    "fix": "5ca50a2",
+    "issue": "826",
+    "desc": "BEGIN TRANSACTION split regression",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_split.py"
+    ],
+    "before": {
+      "passed": 41,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_split.py::test_split_begin_transaction - assert 1 == 4",
+        "FAILED tests/test_split.py::test_split_begin_transaction_formatted - assert 1..."
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 43,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "C8",
+    "repo": "sqlparse",
+    "fix": "da67ac1",
+    "issue": "827",
+    "desc": "DoS protection raises SQLParseError",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_dos_prevention.py"
+    ],
+    "before": {
+      "passed": 2,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_dos_prevention.py::TestDoSPrevention::test_large_tuple_list_performance",
+        "FAILED tests/test_dos_prevention.py::TestDoSPrevention::test_deeply_nested_groups_limited",
+        "FAILED tests/test_dos_prevention.py::TestDoSPrevention::test_very_large_token_list_limited"
+      ],
+      "seconds": 1.8
+    },
+    "after": {
+      "passed": 5,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "C9",
+    "repo": "sqlparse",
+    "fix": "8f978ca",
+    "issue": "845",
+    "desc": "Stack-based splitter for FOR/IF/WHILE blocks",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_split.py"
+    ],
+    "before": {
+      "passed": 46,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_split.py::test_split_anonymous_begin_end_for - AssertionErr...",
+        "FAILED tests/test_split.py::test_split_anonymous_begin_end_case_inline - Asse...",
+        "FAILED tests/test_split.py::test_split_procedural_case_end_case - assert 3 == 2"
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 49,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 0.9
+    }
+  },
+  {
+    "id": "C10",
+    "repo": "sqlparse",
+    "fix": "ac3b9e0",
+    "issue": "752",
+    "desc": "Recognize MATERIALIZED as keyword [金测试自写：authored]",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_regressions.py"
+    ],
+    "before": {
+      "passed": 88,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_regressions.py::test_materialized_view_issue752 - Assertion..."
+      ],
+      "seconds": 1.0
+    },
+    "after": {
+      "passed": 89,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.1
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 42,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_split.py::test_split_if_exists_in_begin_end - AssertionErro..."
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "......................................F....                              [100%]\n================================== FAILURES ===================================\n______________________ test_split_if_exists_in_begin_end ______________________\n\n    def test_split_if_exists_in_begin_end():  # issue812\n        # IF EXISTS should not be confused with control flow IF\n        sql = \"\"\"CREATE TASK t1 AS\n    BEGIN\n        CREATE OR REPLACE TABLE temp1;\n        DROP TABLE IF EXISTS temp1;\n    END;\n    EXECUTE TASK t1;\"\"\"\n        stmts = sqlparse.split(sql)\n>       assert len(stmts) == 2\nE       AssertionError: assert 1 == 2\nE        +  where 1 = len(['CREATE TASK t1 AS\\nBEGIN\\n    CREATE OR REPLACE TABLE temp1;\\n    DROP TABLE IF EXISTS temp1;\\nEND;\\nEXECUTE TASK t1;'])\n\ntests\\test_split.py:222: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_split.py::test_split_if_exists_in_begin_end - AssertionErro...\n1 failed, 42 passed in 0.18s\n\n"
+}

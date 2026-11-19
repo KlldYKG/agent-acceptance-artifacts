@@ -1,0 +1,18 @@
+{
+  "repo": "pallets/click",
+  "name": "click",
+  "head": "e38188e9e205005d5af5f9e59df51904c984586a",
+  "ok_clone": true,
+  "ok_install": true,
+  "ok_pytest": true,
+  "pytest_seconds": 13.2,
+  "passed": 2548,
+  "failed": null,
+  "errors": null,
+  "skipped": 102,
+  "notes": [],
+  "clone_seconds": 8.6,
+  "install_seconds": 82.1,
+  "installed_packages": 8,
+  "pytest_summary": "2548 passed, 102 skipped, 31000 deselected, 1 xfailed in 10.62s"
+}

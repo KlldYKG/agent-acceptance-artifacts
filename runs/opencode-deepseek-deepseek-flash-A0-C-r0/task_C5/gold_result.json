@@ -1,0 +1,18 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 59,
+    "failed": 4,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_format.py::TestFormat::test_strip_comments_multi - Assertio...",
+    "FAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_whitespace",
+    "FAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_hint",
+    "FAILED tests/test_format.py::test_compact[case when foo then 1 else bar end-case\\n    when foo then 1\\n    else bar\\nend-case when foo then 1 else bar end]"
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "bject at 0x000001E1BBEFD220>\n\n    def test_strip_comments_preserves_hint(self):\n        sql = 'select --+full(u)'\n        res = sqlparse.format(sql, strip_comments=True)\n>       assert res == sql\nE       AssertionError: assert 'select' == 'select --+full(u)'\nE         \nE         - select --+full(u)\nE         + select\n\ntests\\test_format.py:124: AssertionError\n_ test_compact[case when foo then 1 else bar end-case\\n    when foo then 1\\n    else bar\\nend-case when foo then 1 else bar end] _\n\nsql = 'case when foo then 1 else bar end'\nexpected_normal = 'case\\n    when foo then 1\\n    else bar\\nend'\nexpected_compact = 'case when foo then 1 else bar end'\n\n    @pytest.mark.parametrize('sql, expected_normal, expected_compact', [\n        ('case when foo then 1 else bar end',\n         'case\\n    when foo then 1\\n    else bar\\nend',\n         'case when foo then 1 else bar end')])\n    def test_compact(sql, expected_normal, expected_compact):  # issue783\n        formatted_normal = sqlparse.format(sql, reindent=True)\n        formatted_compact = sqlparse.format(sql, reindent=True, compact=True)\n        assert formatted_normal == expected_normal\n>       assert formatted_compact == expected_compact\nE       AssertionError: assert 'case\\n    wh...else bar\\nend' == 'case when fo... else bar end'\nE         \nE         - case when foo then 1 else bar end\nE         + case\nE         +     when foo then 1\nE         +     else bar\nE         + end\n\ntests\\test_format.py:779: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_format.py::TestFormat::test_strip_comments_multi - Assertio...\nFAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_whitespace\nFAILED tests/test_format.py::TestFormat::test_strip_comments_preserves_hint\nFAILED tests/test_format.py::test_compact[case when foo then 1 else bar end-case\\n    when foo then 1\\n    else bar\\nend-case when foo then 1 else bar end]\n4 failed, 59 passed, 2 xfailed in 0.25s\n\n"
+}

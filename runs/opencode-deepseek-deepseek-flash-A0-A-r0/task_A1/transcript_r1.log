@@ -1,0 +1,468 @@
+[0m
+> build · deepseek-flash
+[0m
+[0m✱ [0mGrep "RFC 2069|RFC2069|2069"[90m in . · 0 matches[0m
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; Get-ChildItem
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     12:25                .github                                                              
+d-----        2026/11/17     12:25                docs                                                                 
+d-----        2026/11/17     12:25                httpx                                                                
+d-----        2026/11/17     12:25                scripts                                                              
+d-----        2026/11/17     12:25                tests                                                                
+-a----        2026/11/17     12:25            132 .gitignore                                                           
+-a----        2026/11/17     12:25          52000 CHANGELOG.md                                                         
+-a----        2026/11/17     12:25           1520 LICENSE.md                                                           
+-a----        2026/11/17     12:25           1494 mkdocs.yml                                                           
+-a----        2026/11/17     12:25            203 opencode.json                                                        
+-a----        2026/11/17     12:25           3748 pyproject.toml                                                       
+-a----        2026/11/17     12:25           5004 README.md                                                            
+-a----        2026/11/17     12:25           4728 README_chinese.md                                                    
+-a----        2026/11/17     12:25            708 requirements.txt
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; Get-ChildItem httpx; Get-ChildItem tests | Select-Object Name
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     12:25                _transports                                                          
+-a----        2026/11/17     12:25              0 py.typed                                                             
+-a----        2026/11/17     12:25          14187 _api.py                                                              
+-a----        2026/11/17     12:25          12381 _auth.py                                                             
+-a----        2026/11/17     12:25          71858 _client.py                                                           
+-a----        2026/11/17     12:25           1604 _compat.py                                                           
+-a----        2026/11/17     12:25          12718 _config.py                                                           
+-a----        2026/11/17     12:25           8347 _content.py                                                          
+-a----        2026/11/17     12:25          10264 _decoders.py                                                         
+-a----        2026/11/17     12:25           8307 _exceptions.py                                                       
+-a----        2026/11/17     12:25          16290 _main.py                                                             
+-a----        2026/11/17     12:25          44189 _models.py                                                           
+-a----        2026/11/17     12:25           9242 _multipart.py                                                        
+-a----        2026/11/17     12:25           5742 _status_codes.py                                                     
+-a----        2026/11/17     12:25           3525 _types.py                                                            
+-a----        2026/11/17     12:25          18328 _urlparse.py                                                         
+-a----        2026/11/17     12:25          22549 _urls.py                                                             
+-a----        2026/11/17     12:25          14509 _utils.py                                                            
+-a----        2026/11/17     12:25           3348 __init__.py                                                          
+-a----        2026/11/17     12:25            111 __version__.py                                                       
+
+Name : client
+
+
+Name : fixtures
+
+
+Name : models
+
+
+Name : common.py
+
+
+Name : concurrency.py
+
+
+Name : conftest.py
+
+
+Name : test_api.py
+
+
+Name : test_asgi.py
+
+
+Name : test_auth.py
+
+
+Name : test_config.py
+
+
+Name : test_content.py
+
+
+Name : test_decoders.py
+
+
+Name : test_exceptions.py
+
+
+Name : test_exported_members.py
+
+
+Name : test_main.py
+
+
+Name : test_multipart.py
+
+
+Name : test_status_codes.py
+
+
+Name : test_timeouts.py
+
+
+Name : test_utils.py
+
+
+Name : test_wsgi.py
+
+
+Name : __init__.py
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; Get-ChildItem httpx -Filter "*auth*" -Recurse; Get-ChildItem tests -Filter "*auth*" -Recurse
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        2026/11/17     12:25          12381 _auth.py                                                             
+
+
+    Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        2026/11/17     12:25           5142 test_auth.py                                                         
+
+
+    Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\client
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        2026/11/17     12:25          26877 test_auth.py
+[0m
+[0m→ [0mRead httpx/_auth.py
+[0m→ [0mRead tests/client/test_auth.py
+[0m→ [0mRead tests/test_auth.py
+[0m
+[0m← [0mEdit httpx/_auth.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_auth.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_auth.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_auth.py
+@@ -281,17 +281,17 @@
+ qop = self._resolve_qop(challenge.qop, request=request)
+ if qop is None:
+     digest_data = [HA1, challenge.nonce, HA2]
+ else:
+-    digest_data = [challenge.nonce, nc_value, cnonce, qop, HA2]
++    digest_data = [HA1, challenge.nonce, nc_value, cnonce, qop, HA2]
+ key_digest = b":".join(digest_data)
+ 
+ format_args = {
+     "username": self._username,
+     "realm": challenge.realm,
+     "nonce": challenge.nonce,
+     "uri": path,
+-    "response": digest(b":".join((HA1, key_digest))),
++    "response": digest(key_digest),
+     "algorithm": challenge.algorithm.encode(),
+ }
+ if challenge.opaque:
+     format_args["opaque"] = challenge.opaque
+
+[0m
+Now I understand the bug. In RFC 2069 mode (no `qop`), the digest data incorrectly includes `HA1` and then prepends `HA1` again, producing `H(HA1:HA1:nonce:HA2)` instead of `H(HA1:nonce:HA2)`.
+[0m← [0mEdit tests/client/test_auth.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\client\test_auth.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\client\test_auth.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\tests\client\test_auth.py
+@@ -508,8 +508,37 @@
+     assert len(digest_data["opaque"]) == 64 + 2
+     assert digest_data["algorithm"] == "SHA-256"
+ 
+ 
++@pytest.mark.anyio
++async def test_digest_auth_no_specified_qop_uses_rfc2069_digest() -> None:
++    """
++    In RFC 2069 mode (i.e. no qop) the response digest is computed as
++    H(HA1:nonce:HA2), where HA1 is H(username:realm:password).
++    """
++    url = "https://example.org/"
++    auth = httpx.DigestAuth(username="user", password="password123")
++    app = DigestApp(qop="", regenerate_nonce=False)
++
++    async with httpx.AsyncClient(transport=httpx.MockTransport(app)) as client:
++        response = await client.get(url, auth=auth)
++
++    assert response.status_code == 200
++
++    authorization = typing.cast(typing.Dict[str, typing.Any], response.json())["auth"]
++    _, _, fields = authorization.partition(" ")
++    digest_data = dict(field.strip().split("=", 1) for field in fields.split(","))
++
++    nonce = digest_data["nonce"].strip('"')
++    expected_ha1 = hashlib.sha256(b"user:httpx@example.org:password123").hexdigest()
++    expected_ha2 = hashlib.sha256(b"GET:/").hexdigest()
++    expected_response = hashlib.sha256(
++        f"{expected_ha1}:{nonce}:{expected_ha2}".encode()
++    ).hexdigest()
++
++    assert digest_data["response"] == f'"{expected_response}"'
++
++
+ @pytest.mark.parametrize("qop", ("auth, auth-int", "auth,auth-int", "unknown,auth"))
+ @pytest.mark.anyio
+ async def test_digest_auth_qop_including_spaces_and_auth_returns_auth(qop: str) -> None:
+     url = "https://example.org/"
+
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pytest tests/client/test_auth.py tests/test_auth.py -q 2>&1 | Select-Object -Last 40
+)
+    ^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\pluggy\_manager.py", line 183, in 
+_hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\pluggy\_execution.py", line 195, i
+n _multicall
+    raise exception
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\pluggy\_execution.py", line 167, i
+n _multicall
+    teardown.throw(exception)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\_pytest\helpconfig.py", line 126, 
+in pytest_cmdline_parse
+    config = yield
+             ^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\pluggy\_execution.py", line 147, i
+n _multicall
+    res = hook_impl.function(*args)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\_pytest\config\__init__.py", line 
+1397, in pytest_cmdline_parse
+    self.parse(args)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\_pytest\config\__init__.py", line 
+1758, in parse
+    self._capture_plugin_import_warnings()
+    if warnings_plugin_enabled
+    else contextlib.nullcontext()
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\_pytest\config\__init__.py", line 
+1342, in _capture_plugin_import_warnings
+    with self._catch_configured_warnings(record=True) as records:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\_pytest\config\__init__.py", line 
+1337, in _catch_configured_warnings
+    apply_warning_filters(config_filters, cmdline_filters)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\_pytest\config\__init__.py", line 
+2489, in apply_warning_filters
+    warnings.warn(
+    ~~~~~~~~~~~~~^
+        f"Failed to import filter module '{e.name}': {arg}", PytestConfigWarning
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+pytest.PytestConfigWarning: Failed to import filter module 'trio': ignore: trio.MultiError is deprecated since Trio 0.2
+2.0:trio.TrioDeprecationWarning
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pytest tests/client/test_auth.py tests/test_auth.py -q -o filterwarnings= 2>&1 | Select-Object -Last 40
+python : ImportError while loading conftest 'C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-
+A-r0_nmlpexco\tree\tests\conftest.py'.
+����λ�� ��:1 �ַ�: 100
++ ... exco\tree"; python -m pytest tests/client/test_auth.py tests/test_aut ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ImportError whi...s\conftest.py'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+tests\conftest.py:9: in <module>
+    import trustme
+E   ModuleNotFoundError: No module named 'trustme'
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -c @'
+import hashlib, httpx
+from tests.client.test_auth import DigestApp
+import asyncio
+
+async def main():
+    url = "https://example.org/"
+    auth = httpx.DigestAuth(username="user", password="password123")
+    app = DigestApp(qop="", regenerate_nonce=False)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(app)) as client:
+        response = await client.get(url, auth=auth)
+    print(response.status_code, response.json())
+    authorization = response.json()["auth"]
+    _, _, fields = authorization.partition(" ")
+    digest_data = dict(field.strip().split("=", 1) for field in fields.split(","))
+    nonce = digest_data["nonce"].strip(chr(34))
+    ha1 = hashlib.sha256(b"user:httpx@example.org:password123").hexdigest()
+    ha2 = hashlib.sha256(b"GET:/").hexdigest()
+    expected = hashlib.sha256(f"{ha1}:{nonce}:{ha2}".encode()).hexdigest()
+    print("expected", expected)
+    print("actual  ", digest_data["response"].strip(chr(34)))
+    assert digest_data["response"] == f"{chr(34)}{expected}{chr(34)}"
+
+asyncio.run(main())
+'@
+File "<string>", line 8
+    app = DigestApp(qop=", regenerate_nonce=False)
+                        ^
+SyntaxError: unterminated string literal (detected at line 8)
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; Set-Content -Path "$env:TEMP\check_digest.py" -Value @'
+import hashlib, httpx
+from tests.client.test_auth import DigestApp
+import asyncio
+
+async def main():
+    url = "https://example.org/"
+    auth = httpx.DigestAuth(username="user", password="password123")
+    app = DigestApp(qop="", regenerate_nonce=False)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(app)) as client:
+        response = await client.get(url, auth=auth)
+    authorization = response.json()["auth"]
+    _, _, fields = authorization.partition(" ")
+    data = dict(field.strip().split("=", 1) for field in fields.split(","))
+    nonce = data["nonce"].strip('"')
+    ha1 = hashlib.sha256(b"user:httpx@example.org:password123").hexdigest()
+    ha2 = hashlib.sha256(b"GET:/").hexdigest()
+    expected = hashlib.sha256(f"{ha1}:{nonce}:{ha2}".encode()).hexdigest()
+    actual = data["response"].strip('"')
+    print("expected", expected)
+    print("actual  ", actual)
+    assert expected == actual
+    print("PASS")
+
+asyncio.run(main())
+'@; python "$env:TEMP\check_digest.py"
+Traceback (most recent call last):
+  File "C:\Users\xzcac\AppData\Local\Temp\check_digest.py", line 1, in <module>
+    import hashlib, httpx
+ModuleNotFoundError: No module named 'httpx'
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; $env:PYTHONPATH = (Get-Location).Path; python "$env:TEMP\check_digest.py"; Remove-Item "$env:TEMP\check_digest.py"
+Traceback (most recent call last):
+  File "C:\Users\xzcac\AppData\Local\Temp\check_digest.py", line 1, in <module>
+    import hashlib, httpx
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\__init__.py", line 2, in <module>
+    from ._api import delete, get, head, options, patch, post, put, request, stream
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_api.py", line 4, in <module>
+    from ._client import Client
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_client.py", line 10, in <module>
+    from ._auth import Auth, BasicAuth, FunctionAuth
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_auth.py", line 10, in <module>
+    from ._models import Cookies, Request, Response
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_models.py", line 9, in <module>
+    from ._content import ByteStream, UnattachedStream, encode_request, encode_response
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_content.py", line 19, in <module>
+    from ._multipart import MultipartStream
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_multipart.py", line 14, in <module>
+    from ._utils import (
+    ...<5 lines>...
+    )
+  File "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree\httpx\_utils.py", line 12, in <module>
+    import sniffio
+ModuleNotFoundError: No module named 'sniffio'
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; Get-Content requirements.txt
+# We're pinning our tooling, because it's an environment we can strictly control.
+# On the other hand, we're not pinning package dependencies, because our tests
+# needs to pass with the latest version of the packages.
+# Reference: https://github.com/encode/httpx/pull/1721#discussion_r661241588
+-e .[brotli,cli,http2,socks]
+
+# Optional charset auto-detection
+# Used in our test cases
+chardet==5.2.0
+
+# Documentation
+mkdocs==1.5.3
+mkautodoc==0.2.0
+mkdocs-material==9.5.3
+
+# Packaging
+build==1.0.3
+twine==4.0.2
+
+# Tests & Linting
+coverage[toml]==7.4.0
+cryptography==41.0.7
+mypy==1.8.0
+pytest==7.4.4
+ruff==0.1.9
+trio==0.22.2
+trio-typing==0.10.0
+trustme==1.1.0
+uvicorn==0.24.0.post1
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pip list 2>&1 | Select-String -Pattern "sniffio|trustme|trio|anyio|httpcore|pytest|httpx"
+pytest             9.2.0
+pytest-cov         7.1.0
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pip install -q sniffio httpcore anyio certifi idna trustme trio 2>&1 | Select-Object -Last 20
+python :   WARNING: The script cffi-gen-src.exe is installed in 'C:\Users\xzcac\.workbuddy\binaries\python\versions\3.1
+3.12\Scripts' which is not on PATH.
+����λ�� ��:1 �ַ�: 100
++ ... exco\tree"; python -m pip install -q sniffio httpcore anyio certifi i ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (  WARNING: The ...is not on PATH.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pytest tests/client/test_auth.py tests/test_auth.py -q 2>&1 | Select-Object -Last 30
+python : ImportError while loading conftest 'C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-
+A-r0_nmlpexco\tree\tests\conftest.py'.
+����λ�� ��:1 �ַ�: 100
++ ... exco\tree"; python -m pytest tests/client/test_auth.py tests/test_aut ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ImportError whi...s\conftest.py'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+tests\conftest.py:17: in <module>
+    from uvicorn.config import Config
+E   ModuleNotFoundError: No module named 'uvicorn'
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pip install -q uvicorn 2>&1 | Select-Object -Last 5; python -m pytest tests/client/test_auth.py tests/test_auth.py -q 2>&1 | Select-Object -Last 30
+python :   WARNING: The script uvicorn.exe is installed in 'C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\
+Scripts' which is not on PATH.
+����λ�� ��:1 �ַ�: 100
++ ... A0-A-r0_nmlpexco\tree"; python -m pip install -q uvicorn 2>&1 | Selec ...
++                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (  WARNING: The ...is not on PATH.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+........................................................................ [ 81%]
+...s............                                                         [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\client\test_auth.py:295: netrc files without a password are valid from Python >= 3.11
+87 passed, 1 skipped in 1.11s
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-A-r0_nmlpexco\tree"; python -m pip install -q ruff 2>&1 | Select-Object -Last 2; python -m ruff check httpx/_auth.py tests/client/test_auth.py 2>&1
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+All checks passed!
+python : warning: The top-level linter settings are deprecated in favour of their counterparts in the `lint` section. P
+lease update the following options in `pyproject.toml`:
+����λ�� ��:1 �ַ�: 160
++ ... ct -Last 2; python -m ruff check httpx/_auth.py tests/client/test_aut ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: The to...yproject.toml`::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  - 'ignore' -> 'lint.ignore'
+  - 'select' -> 'lint.select'
+  - 'isort' -> 'lint.isort'
+[0m
+Done. Fixed RFC 2069 digest authentication and added a covering test.
+
+- `httpx/_auth.py:281` — The no-`qop` (RFC 2069) path now computes `H(HA1:nonce:HA2)` instead of incorrectly duplicating `HA1` (`H(HA1:HA1:nonce:HA2)`). Both branches now build the full digest input and hash it directly.
+- `tests/client/test_auth.py` — Added `test_digest_auth_no_specified_qop_uses_rfc2069_digest`, which independently computes the expected SHA-256 response digest and compares it to the emitted `Authorization` header.
+
+Verification: `87 passed, 1 skipped` for the auth test suites; ruff passes on both changed files.

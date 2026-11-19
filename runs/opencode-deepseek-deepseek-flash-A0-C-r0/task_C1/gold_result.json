@@ -1,0 +1,19 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 80,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_parse.py::test_json_operators[->>] - AssertionError: assert...",
+    "FAILED tests/test_parse.py::test_json_operators[#>] - AssertionError: assert ...",
+    "FAILED tests/test_parse.py::test_json_operators[#>>] - AssertionError: assert...",
+    "FAILED tests/test_parse.py::test_json_operators[@>] - AssertionError: assert ...",
+    "FAILED tests/test_parse.py::test_json_operators[<@] - AssertionError: assert ..."
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "__ test_json_operators[@>] ___________________________\n\nsql = '@>'\n\n    @pytest.mark.parametrize('sql', [\n        '->', '->>', '#>', '#>>',\n        '@>', '<@',\n        # leaving ? out for now, they're somehow ambiguous as placeholders\n        # '?', '?|', '?&',\n        '||', '-', '#-'\n    ])\n    def test_json_operators(sql):\n        p = sqlparse.parse(sql)\n        assert len(p) == 1\n>       assert len(p[0].tokens) == 1\nE       AssertionError: assert 2 == 1\nE        +  where 2 = len([<Operator '@' at 0x27301617F40>, <Comparison '>' at 0x27301617700>])\nE        +    where [<Operator '@' at 0x27301617F40>, <Comparison '>' at 0x27301617700>] = <Statement '@>' at 0x273016DDEF0>.tokens\n\ntests\\test_parse.py:594: AssertionError\n___________________________ test_json_operators[<@] ___________________________\n\nsql = '<@'\n\n    @pytest.mark.parametrize('sql', [\n        '->', '->>', '#>', '#>>',\n        '@>', '<@',\n        # leaving ? out for now, they're somehow ambiguous as placeholders\n        # '?', '?|', '?&',\n        '||', '-', '#-'\n    ])\n    def test_json_operators(sql):\n        p = sqlparse.parse(sql)\n        assert len(p) == 1\n>       assert len(p[0].tokens) == 1\nE       AssertionError: assert 2 == 1\nE        +  where 2 = len([<Comparison '<' at 0x273016176A0>, <Operator '@' at 0x27301617AC0>])\nE        +    where [<Comparison '<' at 0x273016176A0>, <Operator '@' at 0x27301617AC0>] = <Statement '<@' at 0x273016DF4D0>.tokens\n\ntests\\test_parse.py:594: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_parse.py::test_json_operators[->>] - AssertionError: assert...\nFAILED tests/test_parse.py::test_json_operators[#>] - AssertionError: assert ...\nFAILED tests/test_parse.py::test_json_operators[#>>] - AssertionError: assert...\nFAILED tests/test_parse.py::test_json_operators[@>] - AssertionError: assert ...\nFAILED tests/test_parse.py::test_json_operators[<@] - AssertionError: assert ...\n5 failed, 80 passed in 0.22s\n\n"
+}

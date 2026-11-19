@@ -1,0 +1,16 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 227,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 11
+  },
+  "fail_nodes": [
+    "FAILED tests/test_termui.py::test_get_pager_file_missing_pager_keeps_borrowed_stream_open",
+    "FAILED tests/test_termui.py::test_echo_via_pager_tty_pager_missing - ValueErr..."
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "l)\n            # fd so that C-level consumers like faulthandler keep working\n            # while fd 1/2 are redirected to the capture tmpfile.\n            if cap_out is not None and cap_err is not None:\n                sys.stdout._original_fd = cap_out.saved_fd  # type: ignore[union-attr]\n                sys.stderr._original_fd = cap_err.saved_fd  # type: ignore[union-attr]\n    \n            return_value = None\n            exception: BaseException | None = None\n            exit_code = 0\n    \n            if isinstance(args, str):\n                args = shlex.split(args)\n    \n            try:\n                prog_name = extra.pop(\"prog_name\")\n            except KeyError:\n                prog_name = self.get_default_prog_name(cli)\n    \n            try:\n                return_value = cli.main(args=args or (), prog_name=prog_name, **extra)\n            except SystemExit as e:\n                exc_info = sys.exc_info()\n                e_code = t.cast(\"int | t.Any | None\", e.code)\n    \n                if e_code is None:\n                    e_code = 0\n    \n                if e_code != 0:\n                    exception = e\n    \n                if not isinstance(e_code, int):\n                    sys.stdout.write(str(e_code))\n                    sys.stdout.write(\"\\n\")\n                    e_code = 1\n    \n                exit_code = e_code\n    \n            except Exception as e:\n                if not catch_exceptions:\n                    raise\n                exception = e\n                exit_code = 1\n                exc_info = sys.exc_info()\n            finally:\n>               sys.stdout.flush()\nE               ValueError: I/O operation on closed file.\n\nsrc\\click\\testing.py:735: ValueError\n=========================== short test summary info ===========================\nFAILED tests/test_termui.py::test_get_pager_file_missing_pager_keeps_borrowed_stream_open\nFAILED tests/test_termui.py::test_echo_via_pager_tty_pager_missing - ValueErr...\n2 failed, 227 passed, 11 skipped in 0.67s\n\n"
+}

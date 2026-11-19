@@ -1,0 +1,30 @@
+diff --git a/sqlparse/keywords.py b/sqlparse/keywords.py
+index 8911c7a..da16879 100644
+--- a/sqlparse/keywords.py
++++ b/sqlparse/keywords.py
+@@ -89,6 +89,7 @@ SQL_REGEX = [
+     # but the match isn't a keyword.
+     (r'\w[$#\w]*', PROCESS_AS_KEYWORD),
+     (r'[;:()\[\],\.]', tokens.Punctuation),
++    (r'->', tokens.Operator),
+     (r'[<>=~!]+', tokens.Operator.Comparison),
+     (r'[+/@#%^&|^-]+', tokens.Operator),
+ ]
+diff --git a/tests/test_tokenize.py b/tests/test_tokenize.py
+index af0ba16..b73aaa7 100644
+--- a/tests/test_tokenize.py
++++ b/tests/test_tokenize.py
+@@ -57,6 +57,12 @@ def test_tokenize_inline_keywords():
+     assert tokens[2][1] == 'join_col'
+ 
+ 
++def test_tokenize_arrow_operator():
++    tokens = list(lexer.tokenize('foo->bar'))
++    assert len(tokens) == 3
++    assert tokens[1] == (T.Operator, '->')
++
++
+ def test_tokenize_negative_numbers():
+     s = "values(-1)"
+     tokens = list(lexer.tokenize(s))
+

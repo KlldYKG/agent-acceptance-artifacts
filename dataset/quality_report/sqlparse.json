@@ -1,0 +1,18 @@
+{
+  "repo": "andialbrecht/sqlparse",
+  "name": "sqlparse",
+  "head": "09dbe1eec31ed1b3cd05366748865f11ba427d32",
+  "ok_clone": true,
+  "ok_install": true,
+  "ok_pytest": true,
+  "pytest_seconds": 3.9,
+  "passed": 537,
+  "failed": null,
+  "errors": null,
+  "skipped": null,
+  "notes": [],
+  "clone_seconds": 6.6,
+  "install_seconds": 32.6,
+  "installed_packages": 10,
+  "pytest_summary": "537 passed, 2 xfailed, 1 xpassed in 3.28s"
+}

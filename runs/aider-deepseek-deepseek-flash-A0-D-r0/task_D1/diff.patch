@@ -1,0 +1,138 @@
+diff --git a/src/click/testing.py b/src/click/testing.py
+index 19fae4a..f4bf45b 100644
+--- a/src/click/testing.py
++++ b/src/click/testing.py
+@@ -182,12 +182,35 @@ class _NamedTextIOWrapper(io.TextIOWrapper):
+         self._original_fd = -1
+ 
+     def close(self) -> None:
+-        """The buffer this object contains belongs to some other object,
+-        so prevent the default ``__del__`` implementation from closing
+-        that buffer.
++        """Flush pending text but do not close the underlying buffer.
++
++        The buffer belongs to some other object; it may even be the real
++        ``sys.stdout`` buffer. Closing it from here, or letting the garbage
++        collector do it through :meth:`~io.IOBase.__del__` (which calls this
++        method), would close a stream that is still in use elsewhere.
++
++        Flushing first ensures no buffered text is lost, then the buffer is
++        detached so the wrapper no longer references it. Detaching also means
++        :meth:`~io.IOBase.__del__` cannot close it when the wrapper is
++        collected.
++
++        .. versionchanged:: 8.4.0
++            Flush and detach the buffer instead of only suppressing the close,
++            so the garbage collector cannot close a borrowed stream.
+ 
+         .. versionadded:: 8.3.2
+         """
++        try:
++            super().flush()
++        except ValueError:
++            # The buffer was already detached or closed.
++            pass
++
++        try:
++            self.detach()
++        except ValueError:
++            # The buffer was already detached.
++            pass
+ 
+     def fileno(self) -> int:
+         """Return the file descriptor of the saved original stream when
+diff --git a/tests/test_testing.py b/tests/test_testing.py
+index a7508b9..b7fefa8 100644
+--- a/tests/test_testing.py
++++ b/tests/test_testing.py
+@@ -1,4 +1,5 @@
+ import faulthandler
++import gc
+ import io
+ import os
+ import pdb
+@@ -10,6 +11,7 @@ import pytest
+ import click
+ from click.exceptions import ClickException
+ from click.testing import CliRunner
++from click.testing import _NamedTextIOWrapper
+ 
+ 
+ def test_runner():
+@@ -534,6 +536,75 @@ def test_pdb_init_restored_after_invoke():
+     assert pdb.Pdb.__init__ is original
+ 
+ 
++def test_named_wrapper_close_does_not_close_borrowed_buffer():
++    """Closing the wrapper flushes and detaches, it must not close the
++    borrowed buffer.
++    """
++    buffer = io.BytesIO()
++    wrapper = _NamedTextIOWrapper(buffer, name="<stdout>", mode="w")
++
++    wrapper.write("hello")
++    wrapper.close()
++
++    assert not buffer.closed
++    assert buffer.getvalue() == b"hello"
++
++
++def test_named_wrapper_close_is_idempotent():
++    """Closing the wrapper more than once does not raise."""
++    buffer = io.BytesIO()
++    wrapper = _NamedTextIOWrapper(buffer, name="<stdout>", mode="w")
++
++    wrapper.write("hello")
++    wrapper.close()
++    wrapper.close()
++
++    assert not buffer.closed
++    assert buffer.getvalue() == b"hello"
++
++
++def test_named_wrapper_gc_does_not_close_borrowed_buffer():
++    """The garbage collector must not close the borrowed buffer, even if the
++    wrapper was never explicitly closed. Pending text is flushed first, so no
++    output is lost.
++    """
++    buffer = io.BytesIO()
++    wrapper = _NamedTextIOWrapper(buffer, name="<stdout>", mode="w")
++
++    wrapper.write("hello")
++    del wrapper
++    gc.collect()
++
++    assert not buffer.closed
++    assert buffer.getvalue() == b"hello"
++
++
++def test_runner_does_not_close_real_stdout():
++    """Running a command then collecting garbage leaves the real stdout
++    usable.
++    """
++    real_stdout = sys.stdout
++    runner = CliRunner()
++
++    @click.command()
++    def cli():
++        # Grab a reference to the runner's stdout wrapper so it outlives
++        # the invocation and gets collected afterwards.
++        cli.leaked_stdout = sys.stdout
++        click.echo("captured")
++
++    result = runner.invoke(cli)
++    assert result.exit_code == 0
++    assert result.stdout == "captured\n"
++
++    del cli.leaked_stdout
++    gc.collect()
++
++    # The real stream is untouched and still writable.
++    assert sys.stdout is real_stdout
++    assert not real_stdout.closed
++
++
+ needs_fd_capture = pytest.mark.skipif(
+     sys.platform == "win32",
+     reason="fd capture not supported on Windows",
+

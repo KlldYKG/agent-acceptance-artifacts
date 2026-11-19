@@ -1,0 +1,17 @@
+{
+  "ok": false,
+  "counts": {
+    "passed": 90,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fail_nodes": [
+    "FAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...",
+    "FAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution",
+    "FAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors"
+  ],
+  "noise_nodes": [],
+  "seconds": null,
+  "raw_tail": "on(package_name=\"PIL\")\n        def cli():\n            pass\n    \n        result = runner.invoke(cli, [\"--version\"], prog_name=\"imageapp\")\n>       assert result.exit_code == 0\nE       assert 1 == 0\nE        +  where 1 = <Result RuntimeError(\"'PIL' is not installed. Try passing 'package_name' instead.\")>.exit_code\n\ntests\\test_basic.py:810: AssertionError\n______________ test_version_option_ambiguous_import_name_errors _______________\n\nrunner = <click.testing.CliRunner object at 0x0000023AB1AD52B0>\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023AB1A61480>\n\n    def test_version_option_ambiguous_import_name_errors(runner, monkeypatch):\n        \"\"\"When an import name maps to multiple installed distributions, the\n        user must disambiguate. The error names the candidates.\n        \"\"\"\n        import importlib.metadata\n    \n        def fake_version(name):\n            raise importlib.metadata.PackageNotFoundError(name)\n    \n        monkeypatch.setattr(importlib.metadata, \"version\", fake_version)\n        monkeypatch.setattr(\n            importlib.metadata,\n            \"packages_distributions\",\n            lambda: {\"plug\": [\"foo-plug\", \"bar-plug\"]},\n        )\n    \n        @click.command()\n        @click.version_option(package_name=\"plug\")\n        def cli():\n            pass\n    \n        result = runner.invoke(cli, [\"--version\"])\n        assert result.exit_code != 0\n        msg = str(result.exception)\n>       assert \"multiple installed distributions\" in msg\nE       assert 'multiple installed distributions' in \"'plug' is not installed. Try passing 'package_name' instead.\"\n\ntests\\test_basic.py:838: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_basic.py::test_datetime_argument_optional_metavar - Asserti...\nFAILED tests/test_basic.py::test_version_option_resolves_import_name_to_distribution\nFAILED tests/test_basic.py::test_version_option_ambiguous_import_name_errors\n3 failed, 90 passed in 0.28s\n\n"
+}

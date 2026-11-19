@@ -1,0 +1,309 @@
+[
+  {
+    "id": "E1",
+    "repo": "black",
+    "fix": "2f0b4078",
+    "issue": "5643",
+    "desc": "fmt:off region ends at a closing bracket",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/fmtskip_after_fmtoff_in_brackets.py",
+      "tests/data/cases/preview_fmtonoff_without_fmt_on_in_brackets.py",
+      "tests/data/cases/preview_fmtonoff_without_fmt_on_in_type_params.py",
+      "tests/data/miscellaneous/fmtonoff_without_fmt_on_before_single_item.py",
+      "tests/test_format.py"
+    ],
+    "before": {
+      "passed": 307,
+      "failed": 4,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[fmtskip_after_fmtoff_in_brackets]",
+        "FAILED tests/test_format.py::test_simple_format[preview_fmtonoff_without_fmt_on_in_brackets]",
+        "FAILED tests/test_format.py::test_simple_format[preview_fmtonoff_without_fmt_on_in_type_params]",
+        "FAILED tests/test_format.py::test_fmt_off_without_fmt_on_before_single_item"
+      ],
+      "seconds": 33.2
+    },
+    "after": {
+      "passed": 311,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 32.4
+    }
+  },
+  {
+    "id": "E2",
+    "repo": "black",
+    "fix": "19b0ad66",
+    "issue": "5651",
+    "desc": "fmt:off before the trailing comma in brackets",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/fmtonoff_before_trailing_comma.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[fmtonoff_before_trailing_comma]"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "E3",
+    "repo": "black",
+    "fix": "a755b562",
+    "issue": "5647",
+    "desc": "fmt:skip on last line of multiline conditional",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/fmtskip_conditional_in_brackets.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[fmtskip_conditional_in_brackets]"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  },
+  {
+    "id": "E4",
+    "repo": "black",
+    "fix": "b1c244db",
+    "issue": "5650",
+    "desc": "Line numbers in parse errors with leading blank lines",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_black.py"
+    ],
+    "before": {
+      "passed": 212,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 11,
+      "fail_nodes": [
+        "FAILED tests/test_black.py::test_invalid_input_error_line_number_with_leading_blank_lines",
+        "FAILED tests/test_black.py::test_form_feed_on_first_line_is_retained - Assert...",
+        "FAILED tests/test_black.py::BlackTestCase::test_line_ranges_after_leading_blank_lines_target_the_right_lines"
+      ],
+      "seconds": 20.8
+    },
+    "after": {
+      "passed": 215,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 11,
+      "fail_nodes": [],
+      "seconds": 20.3
+    }
+  },
+  {
+    "id": "E5",
+    "repo": "black",
+    "fix": "58fc8385",
+    "issue": "5671",
+    "desc": "Skipped async def header with ... body",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/fmtskip_header_stub_body.py",
+      "tests/data/cases/line_ranges_async_stub_body.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[fmtskip_header_stub_body] - b...",
+        "FAILED tests/test_format.py::test_simple_format[line_ranges_async_stub_body]"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 2,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "E6",
+    "repo": "black",
+    "fix": "86b8a3b3",
+    "issue": "5678",
+    "desc": "Async statements dropped after comment-only fmt block",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/fmtonoff_comment_only_async.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[fmtonoff_comment_only_async]"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "E7",
+    "repo": "black",
+    "fix": "36fdb516",
+    "issue": "5674",
+    "desc": "fmt:skip on semicolon-separated body on own line",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/fmtskip_compound_body_own_line.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[fmtskip_compound_body_own_line]"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "E8",
+    "repo": "black",
+    "fix": "741cab16",
+    "issue": "5681",
+    "desc": "Crash on backslash-only lines in untouched code",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/backslash_only_lines.py",
+      "tests/data/cases/backslash_only_lines_fstring.py",
+      "tests/data/cases/backslash_only_lines_tstring.py",
+      "tests/data/cases/line_ranges_backslash_only_line.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 4,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[backslash_only_lines] - black...",
+        "FAILED tests/test_format.py::test_simple_format[backslash_only_lines_fstring]",
+        "FAILED tests/test_format.py::test_simple_format[backslash_only_lines_tstring]",
+        "FAILED tests/test_format.py::test_simple_format[line_ranges_backslash_only_line]"
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 4,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.4
+    }
+  },
+  {
+    "id": "E9",
+    "repo": "black",
+    "fix": "0b2b5e59",
+    "issue": "5664",
+    "desc": "Reject non-positive --line-length values",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/test_line_length_validation.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_line_length_validation.py::test_non_positive_line_length_rejected"
+      ],
+      "seconds": 1.4
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.2
+    }
+  },
+  {
+    "id": "E10",
+    "repo": "black",
+    "fix": "4724f13b",
+    "issue": "5662",
+    "desc": "Crash on commented parenthesized assignment target",
+    "verdict": "VALID",
+    "gold_files": [
+      "tests/data/cases/remove_parens_from_lhs.py"
+    ],
+    "before": {
+      "passed": 0,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [
+        "FAILED tests/test_format.py::test_simple_format[remove_parens_from_lhs] - Ass..."
+      ],
+      "seconds": 1.5
+    },
+    "after": {
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "fail_nodes": [],
+      "seconds": 1.5
+    }
+  }
+]

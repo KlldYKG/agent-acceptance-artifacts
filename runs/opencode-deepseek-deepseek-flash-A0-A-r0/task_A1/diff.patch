@@ -1,0 +1,63 @@
+diff --git a/httpx/_auth.py b/httpx/_auth.py
+index 6613250..096b7a1 100644
+--- a/httpx/_auth.py
++++ b/httpx/_auth.py
+@@ -282,7 +282,7 @@ class DigestAuth(Auth):
+         if qop is None:
+             digest_data = [HA1, challenge.nonce, HA2]
+         else:
+-            digest_data = [challenge.nonce, nc_value, cnonce, qop, HA2]
++            digest_data = [HA1, challenge.nonce, nc_value, cnonce, qop, HA2]
+         key_digest = b":".join(digest_data)
+ 
+         format_args = {
+@@ -290,7 +290,7 @@ class DigestAuth(Auth):
+             "realm": challenge.realm,
+             "nonce": challenge.nonce,
+             "uri": path,
+-            "response": digest(b":".join((HA1, key_digest))),
++            "response": digest(key_digest),
+             "algorithm": challenge.algorithm.encode(),
+         }
+         if challenge.opaque:
+diff --git a/tests/client/test_auth.py b/tests/client/test_auth.py
+index e6bac23..d24dcf2 100644
+--- a/tests/client/test_auth.py
++++ b/tests/client/test_auth.py
+@@ -509,6 +509,35 @@ async def test_digest_auth_no_specified_qop() -> None:
+     assert digest_data["algorithm"] == "SHA-256"
+ 
+ 
++@pytest.mark.anyio
++async def test_digest_auth_no_specified_qop_uses_rfc2069_digest() -> None:
++    """
++    In RFC 2069 mode (i.e. no qop) the response digest is computed as
++    H(HA1:nonce:HA2), where HA1 is H(username:realm:password).
++    """
++    url = "https://example.org/"
++    auth = httpx.DigestAuth(username="user", password="password123")
++    app = DigestApp(qop="", regenerate_nonce=False)
++
++    async with httpx.AsyncClient(transport=httpx.MockTransport(app)) as client:
++        response = await client.get(url, auth=auth)
++
++    assert response.status_code == 200
++
++    authorization = typing.cast(typing.Dict[str, typing.Any], response.json())["auth"]
++    _, _, fields = authorization.partition(" ")
++    digest_data = dict(field.strip().split("=", 1) for field in fields.split(","))
++
++    nonce = digest_data["nonce"].strip('"')
++    expected_ha1 = hashlib.sha256(b"user:httpx@example.org:password123").hexdigest()
++    expected_ha2 = hashlib.sha256(b"GET:/").hexdigest()
++    expected_response = hashlib.sha256(
++        f"{expected_ha1}:{nonce}:{expected_ha2}".encode()
++    ).hexdigest()
++
++    assert digest_data["response"] == f'"{expected_response}"'
++
++
+ @pytest.mark.parametrize("qop", ("auth, auth-int", "auth,auth-int", "unknown,auth"))
+ @pytest.mark.anyio
+ async def test_digest_auth_qop_including_spaces_and_auth_returns_auth(qop: str) -> None:
+

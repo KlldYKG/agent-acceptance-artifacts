@@ -1,0 +1,1187 @@
+[0m
+> build · deepseek-flash
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; Get-ChildItem -Recurse | Select-Object FullName | Format-Table -AutoSize
+FullName                                                                                                               
+--------                                                                                                               
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github                   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache             
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs                      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\examples                  
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse                  
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests                     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.gitignore                
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.readthedocs.yaml         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\AUTHORS                   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\CHANGELOG                 
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\CONTRIBUTING.md           
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\LICENSE                   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\Makefile                  
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\opencode.json             
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\pyproject.toml            
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\README.rst                
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\SECURITY.md               
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\TODO                      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tox.ini                   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\ISSUE_TEMPLATE    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\workflows         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\CODE_OF_CONDUCT.md
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\PULL_REQUEST_TE...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\ISSUE_TEMPLATE\...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\ISSUE_TEMPLATE\...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\ISSUE_TEMPLATE\...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\workflows\codeq...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.github\workflows\pytho...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache\v           
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache\.gitignore  
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache\CACHEDIR.TAG
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache\README.md   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache\v\cache     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\.pytest_cache\v\cache\n...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source               
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\Makefile             
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\sqlformat.1          
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\analyzing.rst 
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\api.rst       
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\changes.rst   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\conf.py       
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\extending.rst 
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\index.rst     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\indices.rst   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\intro.rst     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\license.rst   
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\docs\source\ui.rst        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\examples\column_defs_lo...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\examples\extract_table_...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine           
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters          
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\cli.py           
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\exceptions.py    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\formatter.py     
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\lexer.py         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\sql.py           
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\tokens.py        
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\utils.py         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\__init__.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\__main__.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\filter_...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\groupin...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\stateme...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\__init_...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\aligne...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\others.py
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\output.py
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\reinde...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\right_...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\tokens.py
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\filters\__init...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files               
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\conftest.py         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_cli.py         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_format.py      
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_grouping.py    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_keywords.py    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_regressions.py 
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_split.py       
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_utils.py       
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\__init__.py         
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\begintag.sql  
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\begintag_2.sql
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\casewhen_pr...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\dashcomment...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\encoding_gb...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\encoding_ut...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\function.sql  
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\function_ps...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\function_ps...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\function_ps...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\function_ps...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\huge_select...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\mysql_handl...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\stream.sql    
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\test_cp1251...
+C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\files\_Make_DirEn...
+[0m
+[0m→ [0mRead sqlparse/engine/statement_splitter.py
+[0m→ [0mRead tests/test_split.py
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; Get-Content tests\files\casewhen_procedure.sql; Write-Output '---'; Get-Content CHANGELOG -TotalCount 40; Write-Output '---git---'; git log --oneline -15 2>$null
+create procedure procName()
+begin
+  select case when column = 'value' then column else 0 end;
+end;
+create procedure procName()
+begin
+  select 1;
+end;
+---
+Development Version
+-------------------
+
+Notable Changes
+
+* Drop support for Python 3.5, 3.6, and 3.7.
+* Python 3.12 is now supported (pr725, by hugovk).
+
+Enhancements:
+
+* Splitting statements now allows to remove the semicolon at the end.
+  Some database backends love statements without semicolon (issue742).
+* Support TypedLiterals in get_parameters (pr649, by Khrol).
+* Improve splitting of Transact SQL when using GO keyword (issue762).
+
+Bug Fixes
+
+* Ignore dunder attributes when creating Tokens (issue672).
+* Allow operators to precede dollar-quoted strings (issue763).
+* Fix parsing of nested order clauses (issue745, pr746 by john-bodley).
+* Thread-safe initialization of Lexer class (issue730).
+
+
+Release 0.4.4 (Apr 18, 2023)
+----------------------------
+
+Notable Changes
+
+* IMPORTANT: This release fixes a security vulnerability in the
+  parser where a regular expression vulnerable to ReDOS (Regular
+  Expression Denial of Service) was used. See the security advisory
+  for details: https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2
+  The vulnerability was discovered by @erik-krogh from GitHub
+  Security Lab (GHSL). Thanks for reporting!
+
+Bug Fixes
+
+* Revert a change from 0.4.0 that changed IN to be a comparison (issue694).
+  The primary expectation is that IN is treated as a keyword and not as a
+  comparison operator. That also follows the definition of reserved keywords
+---git---
+e72485f exp C1 round 1
+7082484 baseline 6b05583^
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; Get-Content tests\files\mysql_handler.sql; Write-Output '---function---'; Get-Content tests\files\function.sql
+create procedure proc1()
+begin
+  declare handler for foo begin end;
+  select 1;
+end;
+
+create procedure proc2()
+begin
+  select 1;
+end;
+---function---
+CREATE OR REPLACE FUNCTION foo(
+	p_in1 VARCHAR
+	, p_in2 INTEGER
+) RETURNS INTEGER AS
+
+  DECLARE
+	v_foo INTEGER;  
+  BEGIN
+  	SELECT *
+  	FROM foo
+  	INTO v_foo;
+  	RETURN v_foo.id;
+  END;
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; python -c "import sqlparse; s='''CREATE PROCEDURE foo()\nBEGIN\n  CASE WHEN x = 1 THEN\n    SELECT 1;\n  ELSE\n    SELECT 2;\n  END CASE;\n  SELECT 3;\nEND;\nSELECT 4;'''; [print(repr(str(x))) for x in sqlparse.parse(s)]"
+'CREATE PROCEDURE foo()\nBEGIN\n  CASE WHEN x = 1 THEN\n    SELECT 1;\n  ELSE\n    SELECT 2;\n  END CASE;\n  SELECT 3;\nEND;'
+'\nSELECT 4;'
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; python -c "import sqlparse; s='''CREATE PROCEDURE foo()\nBEGIN\n  SELECT CASE WHEN x = 1 THEN 1 ELSE 2 END;\n  SELECT 3;\nEND;\nSELECT 4;'''; print(len(sqlparse.parse(s))); [print(repr(str(x))) for x in sqlparse.parse(s)]"
+2
+'CREATE PROCEDURE foo()\nBEGIN\n  SELECT CASE WHEN x = 1 THEN 1 ELSE 2 END;\n  SELECT 3;\nEND;'
+'\nSELECT 4;'
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; git remote -v; git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    tests/test_parse.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; python -c "import sqlparse,inspect; print(sqlparse.__version__, sqlparse.__file__)"; pip show sqlparse 2>$null | Select-String Version
+0.5.0.dev0 C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\__init__.py
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; git diff --stat HEAD; git show --stat HEAD; git show HEAD -- tests/test_parse.py | Select-Object -First 80
+tests/test_parse.py | 581 ----------------------------------------------------
+ 1 file changed, 581 deletions(-)
+commit e72485f8ee31db67681b61b6c3619d58c2a11f55
+Author: exp <exp@example.com>
+Date:   Tue Nov 17 11:47:06 2026 +0800
+
+    exp C1 round 1
+
+ sqlparse/keywords.py   | 1 +
+ tests/test_tokenize.py | 6 ++++++
+ 2 files changed, 7 insertions(+)
+commit e72485f8ee31db67681b61b6c3619d58c2a11f55
+Author: exp <exp@example.com>
+Date:   Tue Nov 17 11:47:06 2026 +0800
+
+    exp C1 round 1
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; git show 7082484:tests/test_parse.py | Select-String -Pattern 'case|CASE|begin|BEGIN' -Context 2,8
+(no output)
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; git show 7082484:tests/test_parse.py > "$env:TEMP\test_parse_base.py"; Get-Content "$env:TEMP\test_parse_base.py" | Select-String -Pattern 'case|begin|split' -CaseSensitive:$false -Context 1,6
+# regression: make sure plain $$ work
+>     t = sqlparse.split("""
+      CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $$
+            ....
+      $$ LANGUAGE plpgsql;
+      CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $$
+            ....
+      $$ LANGUAGE plpgsql;""")
+      # make sure $SOMETHING$ works too
+>     t = sqlparse.split("""
+      CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $PROC_1$
+            ....
+      $PROC_1$ LANGUAGE plpgsql;
+      CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $PROC_2$
+            ....
+      $PROC_2$ LANGUAGE plpgsql;""")
+      # operators are valid infront of dollar quoted strings
+>     t = sqlparse.split("""UPDATE SET foo =$$bar;SELECT bar$$""")
+      assert len(t) == 1
+      
+      # identifiers must be separated by whitespace
+>     t = sqlparse.split("""UPDATE SET foo TO$$bar;SELECT bar$$""")
+      assert len(t) == 2
+  
+  
+  def test_double_precision_is_builtin():
+      s = 'DOUBLE PRECISION'
+      t = sqlparse.parse(s)[0].tokens
+[0m
+[0m✗ [0mWebFetch https://api.github.com/search/commits?q=repo:andialbrecht/sqlparse+CASE+BEGIN+split failed
+[91m[1mError: [0mTransport error (GET https://api.github.com/search/commits?q=repo:andialbrecht/sqlparse+CASE+BEGIN+split)
+[0m✗ [0mWebFetch https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/engine/statement_splitter.py failed
+[91m[1mError: [0mTransport error (GET https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/engine/statement_splitter.py)
+[0m
+[0m$ [0mpip cache list 2>$null | Select-String sqlparse; Get-ChildItem "$env:LOCALAPPDATA\pip\Cache" -Recurse -Filter '*sqlparse*' -ErrorAction SilentlyContinue | Select-Object FullName -First 20
+(no output)
+[0m
+[0m$ [0mGet-ChildItem -Path "C:\Users\xzcac\AppData\Local\Programs\Python","C:\Users\xzcac\AppData\Roaming\Python","C:\Python*" -Recurse -Filter statement_splitter.py -ErrorAction SilentlyContinue | Select-Object FullName
+(no output)
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 120000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m$ [0mpython -c "import site,sys; print(sys.executable); print(site.getsitepackages())"
+C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\python.exe
+['C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12', 'C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\site-packages']
+[0m
+[0m$ [0mGet-ChildItem "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages" -Directory -Filter 'sqlparse*' | Select-Object FullName; Get-ChildItem "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages" -Recurse -Filter statement_splitter.py -ErrorAction SilentlyContinue | Select-Object FullName
+(no output)
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; git show 7082484 --stat; git log --format=fuller -2
+commit 708248481c1ae5f73d2f0df1428b3635f7dd5a1a
+Author: exp <exp@example.com>
+Date:   Tue Nov 17 11:46:44 2026 +0800
+
+    baseline 6b05583^
+
+ .github/CODE_OF_CONDUCT.md                |   7 +
+ .github/ISSUE_TEMPLATE/bug_report.md      |  26 +
+ .github/ISSUE_TEMPLATE/config.yml         |   5 +
+ .github/ISSUE_TEMPLATE/feature_request.md |  20 +
+ .github/PULL_REQUEST_TEMPLATE.md          |  13 +
+ .github/workflows/codeql-analysis.yml     |  71 +++
+ .github/workflows/python-app.yml          |  49 ++
+ .gitignore                                |  12 +
+ .readthedocs.yaml                         |  35 ++
+ AUTHORS                                   |  82 +++
+ CHANGELOG                                 | 655 ++++++++++++++++++++
+ CONTRIBUTING.md                           |  11 +
+ LICENSE                                   |  25 +
+ Makefile                                  |  27 +
+ README.rst                                |  78 +++
+ SECURITY.md                               |  14 +
+ TODO                                      |   5 +
+ docs/Makefile                             |  88 +++
+ docs/source/analyzing.rst                 |  64 ++
+ docs/source/api.rst                       |  72 +++
+ docs/source/changes.rst                   |  17 +
+ docs/source/conf.py                       | 198 ++++++
+ docs/source/extending.rst                 |  76 +++
+ docs/source/index.rst                     |  43 ++
+ docs/source/indices.rst                   |   7 +
+ docs/source/intro.rst                     | 138 +++++
+ docs/source/license.rst                   |   4 +
+ docs/source/ui.rst                        |  15 +
+ docs/sqlformat.1                          |  69 +++
+ examples/column_defs_lowlevel.py          |  56 ++
+ examples/extract_table_names.py           |  68 +++
+ pyproject.toml                            |  73 +++
+ sqlparse/__init__.py                      |  72 +++
+ sqlparse/__main__.py                      |  22 +
+ sqlparse/cli.py                           | 196 ++++++
+ sqlparse/engine/__init__.py               |  16 +
+ sqlparse/engine/filter_stack.py           |  47 ++
+ sqlparse/engine/grouping.py               | 465 +++++++++++++++
+ sqlparse/engine/statement_splitter.py     | 112 ++++
+ sqlparse/exceptions.py                    |  12 +
+ sqlparse/filters/__init__.py              |  42 ++
+ sqlparse/filters/aligned_indent.py        | 135 +++++
+ sqlparse/filters/others.py                | 145 +++++
+ sqlparse/filters/output.py                | 122 ++++
+ sqlparse/filters/reindent.py              | 242 ++++++++
+ sqlparse/filters/right_margin.py          |  48 ++
+ sqlparse/filters/tokens.py                |  59 ++
+ sqlparse/formatter.py                     | 198 ++++++
+ sqlparse/keywords.py                      | 962 ++++++++++++++++++++++++++++++
+ sqlparse/lexer.py                         | 158 +++++
+ sqlparse/sql.py                           | 647 ++++++++++++++++++++
+ sqlparse/tokens.py                        |  71 +++
+ sqlparse/utils.py                         | 121 ++++
+ tests/__init__.py                         |   0
+ tests/conftest.py                         |  47 ++
+ tests/files/_Make_DirEntry.sql            |   6 +
+ tests/files/begintag.sql                  |   4 +
+ tests/files/begintag_2.sql                |  13 +
+ tests/files/casewhen_procedure.sql        |   8 +
+ tests/files/dashcomment.sql               |   5 +
+ tests/files/encoding_gbk.sql              |   3 +
+ tests/files/encoding_utf8.sql             |   3 +
+ tests/files/function.sql                  |  13 +
+ tests/files/function_psql.sql             |  72 +++
+ tests/files/function_psql2.sql            |   7 +
+ tests/files/function_psql3.sql            |   8 +
+ tests/files/function_psql4.sql            |  12 +
+ tests/files/huge_select.sql               |   1 +
+ tests/files/mysql_handler.sql             |  10 +
+ tests/files/stream.sql                    |   2 +
+ tests/files/test_cp1251.sql               |   1 +
+ tests/test_cli.py                         | 122 ++++
+ tests/test_format.py                      | 724 ++++++++++++++++++++++
+ tests/test_grouping.py                    | 664 +++++++++++++++++++++
+ tests/test_keywords.py                    |  13 +
+ tests/test_parse.py                       | 581 ++++++++++++++++++
+ tests/test_regressions.py                 | 446 ++++++++++++++
+ tests/test_split.py                       | 205 +++++++
+ tests/test_tokenize.py                    | 242 ++++++++
+ tests/test_utils.py                       |  12 +
+ tox.ini                                   |  23 +
+ 81 files changed, 9262 insertions(+)
+commit e72485f8ee31db67681b61b6c3619d58c2a11f55
+Author:     exp <exp@example.com>
+AuthorDate: Tue Nov 17 11:47:06 2026 +0800
+Commit:     exp <exp@example.com>
+CommitDate: Tue Nov 17 11:47:06 2026 +0800
+
+    exp C1 round 1
+
+commit 708248481c1ae5f73d2f0df1428b3635f7dd5a1a
+Author:     exp <exp@example.com>
+AuthorDate: Tue Nov 17 11:46:44 2026 +0800
+Commit:     exp <exp@example.com>
+CommitDate: Tue Nov 17 11:46:44 2026 +0800
+
+    baseline 6b05583^
+[0m
+[0m$ [0mtry { (Invoke-WebRequest -UseBasicParsing -Uri 'https://pypi.org/pypi/sqlparse/json' -TimeoutSec 15).StatusCode } catch { $_.Exception.Message }
+200
+[0m
+[0m$ [0mtry { (Invoke-WebRequest -UseBasicParsing -Uri 'https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/engine/statement_splitter.py' -TimeoutSec 15).Content } catch { $_.Exception.Message }
+������ʱ��
+[0m
+[0m$ [0m$j = Invoke-RestMethod -Uri 'https://pypi.org/pypi/sqlparse/json' -TimeoutSec 20; $j.info.version; $j.urls | ForEach-Object { $_.filename + ' ' + $_.url }
+0.6.1
+sqlparse-0.6.1-py3-none-any.whl https://files.pythonhosted.org/packages/df/ff/2fee788e82e75be8f210c65c5d103bf44c880e3769c884652a4cd911b8ba/sqlparse-0.6.1-py3-none-any.whl
+sqlparse-0.6.1.tar.gz https://files.pythonhosted.org/packages/7e/e0/361c764ea58cc1a75f7b4b424a74b08449db8bfa5e9199c7275999fdd1b9/sqlparse-0.6.1.tar.gz
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_latest"; New-Item -ItemType Directory -Force -Path $tmp | Out-Null; Invoke-WebRequest -Uri 'https://files.pythonhosted.org/packages/df/ff/2fee788e82e75be8f210c65c5d103bf44c880e3769c884652a4cd911b8ba/sqlparse-0.6.1-py3-none-any.whl' -OutFile "$tmp\sqlparse.whl" -TimeoutSec 60; Expand-Archive -Path "$tmp\sqlparse.whl" -DestinationPath "$tmp\extracted" -Force; Get-Content "$tmp\extracted\sqlparse\engine\statement_splitter.py"
+Expand-Archive : .whl ����֧�ֵĴ浵�ļ���ʽ��ֻ�� .zip ����֧�ֵĴ浵�ļ���ʽ��
+����λ�� ��:1 �ַ�: 303
++ ... eoutSec 60; Expand-Archive -Path "$tmp\sqlparse.whl" -DestinationPath ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (.whl:String) [Expand-Archive]��IOException
+    + FullyQualifiedErrorId : NotSupportedArchiveFileExtension,Expand-Archive
+ 
+Get-Content : �Ҳ���·����C:\Users\xzcac\AppData\Local\Temp\sqlparse_latest\extracted\sqlparse\engine\statement_splitter
+.py������Ϊ��·�������ڡ�
+����λ�� ��:1 �ַ�: 386
++ ... ed" -Force; Get-Content "$tmp\extracted\sqlparse\engine\statement_spl ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\xzcac\...ent_splitter.py:String) [Get-Content], ItemNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_latest"; Copy-Item "$tmp\sqlparse.whl" "$tmp\sqlparse.zip" -Force; Expand-Archive -Path "$tmp\sqlparse.zip" -DestinationPath "$tmp\extracted" -Force; Get-Content "$tmp\extracted\sqlparse\engine\statement_splitter.py"
+#
+# Copyright (C) 2009-2020 the sqlparse authors and contributors
+# <see AUTHORS file>
+#
+# This module is part of python-sqlparse and is released under
+# the BSD License: https://opensource.org/licenses/BSD-3-Clause
+
+from sqlparse import sql
+from sqlparse import tokens as T
+
+
+class StatementSplitter:
+    """Filter that split stream at individual statements"""
+
+    def __init__(self):
+        self._reset()
+
+    def _reset(self):
+        """Set the filter attributes to its default values"""
+        self._block_stack = []
+        self._parenthesis_level = 0
+        self._unconfirmed_start = None
+        self._is_create = False
+        self._seen_begin = False
+
+        self.consume_ws = False
+        self.tokens = []
+        self.level = 0
+
+    def _handle_nested_block(self, unified):
+        """Check for nested loop or control structures inside a block"""
+        if unified == 'FOR':
+            self._unconfirmed_start = 'FOR'
+            return 0
+        if unified == 'WHILE':
+            self._unconfirmed_start = 'WHILE'
+            return 0
+        if unified in ('LOOP', 'DO'):
+            if self._unconfirmed_start in ('FOR', 'WHILE'):
+                self._block_stack.append(self._unconfirmed_start)
+                self._unconfirmed_start = None
+                return 1
+            if unified == 'LOOP':
+                self._block_stack.append('LOOP')
+                return 1
+        if unified in ('IF', 'CASE'):
+            self._block_stack.append(unified)
+            return 1
+        return None
+
+    def _handle_closing_keyword(self, unified):
+        """Handle closing keywords for blocks"""
+        if unified == 'END IF':
+            if self._block_stack and self._block_stack[-1] == 'IF':
+                self._block_stack.pop()
+                return -1
+        elif unified == 'END FOR':
+            if self._block_stack and self._block_stack[-1] == 'FOR':
+                self._block_stack.pop()
+                return -1
+        elif unified == 'END WHILE':
+            if self._block_stack and self._block_stack[-1] == 'WHILE':
+                self._block_stack.pop()
+                return -1
+        elif unified == 'END LOOP':
+            if (self._block_stack and
+                    self._block_stack[-1] in ('LOOP', 'FOR', 'WHILE')):
+                self._block_stack.pop()
+                return -1
+        elif unified == 'END CASE':
+            if self._block_stack and self._block_stack[-1] == 'CASE':
+                self._block_stack.pop()
+                return -1
+        elif unified == 'END':
+            if self._block_stack:
+                self._block_stack.pop()
+            return -1
+        return 0
+
+    def _change_splitlevel(self, ttype, value):
+        """Get the new split level (increase, decrease or remain equal)"""
+
+        # Semicolon resets unconfirmed loop starters
+        # and handles standalone BEGIN;
+        if ttype is T.Punctuation and value == ';':
+            self._unconfirmed_start = None
+            if self._seen_begin:
+                self._seen_begin = False
+                if self._block_stack and self._block_stack[-1] == 'BEGIN':
+                    self._block_stack.pop()
+                    return -1
+            return 0
+
+        # parenthesis increase/decrease a level
+        if ttype is T.Punctuation and value == '(':
+            self._parenthesis_level += 1
+            return 1
+        elif ttype is T.Punctuation and value == ')':
+            self._parenthesis_level = max(0, self._parenthesis_level - 1)
+            return -1
+        elif ttype not in T.Keyword:  # if normal token return
+            return 0
+
+        # Everything after here is ttype = T.Keyword
+        unified = value.upper()
+
+        # DDL Create though can contain more words such as "or replace"
+        if ttype is T.Keyword.DDL and unified.startswith('CREATE'):
+            self._is_create = True
+            return 0
+
+        # Handle DECLARE block start (only for CREATE statements)
+        if unified == 'DECLARE' and self._is_create and not self._block_stack:
+            self._block_stack.append('DECLARE')
+            return 1
+
+        # Handle BEGIN block start
+        if unified == 'BEGIN':
+            self._seen_begin = True
+            # Transition DECLARE to BEGIN if present
+            if self._block_stack and self._block_stack[-1] == 'DECLARE':
+                self._block_stack.pop()
+                self._block_stack.append('BEGIN')
+                return 0
+            else:
+                self._block_stack.append('BEGIN')
+                return 1
+
+        # Issue826: If we see a transaction keyword after BEGIN,
+        # it's a transaction statement, not a block.
+        if self._seen_begin and \
+                (ttype is T.Keyword or ttype is T.Name) and \
+                unified in ('TRANSACTION', 'WORK', 'TRAN',
+                            'DISTRIBUTED', 'DEFERRED',
+                            'IMMEDIATE', 'EXCLUSIVE'):
+            self._seen_begin = False
+            if self._block_stack and self._block_stack[-1] == 'BEGIN':
+                self._block_stack.pop()
+                return -1
+            return 0
+
+        # Inside a block, check for nested loop or control structures
+        if 'BEGIN' in self._block_stack:
+            res = self._handle_nested_block(unified)
+            if res is not None:
+                return res
+
+        # Handle closing keywords
+        return self._handle_closing_keyword(unified)
+
+    def process(self, stream):
+        """Process the stream"""
+        EOS_TTYPE = T.Whitespace, T.Comment.Single
+
+        # Run over all stream tokens
+        for ttype, value in stream:
+            # Yield token if we finished a statement and there's no whitespaces
+            # It will count newline token as a non whitespace. In this context
+            # whitespace ignores newlines.
+            # why don't multi line comments also count?
+            if self.consume_ws and ttype not in EOS_TTYPE:
+                yield sql.Statement(self.tokens)
+
+                # Reset filter and prepare to process next statement
+                self._reset()
+
+            # Change current split level (increase, decrease or remain equal)
+            self.level += self._change_splitlevel(ttype, value)
+
+            # Append the token to the current statement
+            self.tokens.append(sql.Token(ttype, value))
+
+            # Check if we get the end of a statement
+            # Issue762: Allow GO (or "GO 2") as statement splitter.
+            # When implementing a language toggle, it's not only to add
+            # keywords it's also to change some rules, like this splitting
+            # rule.
+            # Issue809: Ignore semicolons inside BEGIN...END blocks, but handle
+            # standalone BEGIN; as a transaction statement
+            if ttype is T.Punctuation and value == ';':
+                self._seen_begin = False
+                # Split on semicolon if not inside a BEGIN...END block
+                if self.level <= 0 and 'BEGIN' not in self._block_stack:
+                    self.consume_ws = True
+            elif ttype is T.Keyword and value.split()[0] == 'GO':
+                self.consume_ws = True
+            elif (ttype not in (T.Whitespace, T.Newline, T.Comment.Single,
+                                T.Comment.Multiline)
+                  and not (ttype is T.Keyword and value.upper() == 'BEGIN')):
+                # Reset _seen_begin if we see a non-whitespace, non-comment
+                # token but not for BEGIN itself (which just set the flag)
+                self._seen_begin = False
+
+        # Yield pending statement (if any)
+        if self.tokens and not all(t.is_whitespace for t in self.tokens):
+            yield sql.Statement(self.tokens)
+[0m
+[0m$ [0m$j = Invoke-RestMethod -Uri 'https://pypi.org/pypi/sqlparse/json' -TimeoutSec 20; $vers = $j.releases.PSObject.Properties.Name | Where-Object { $_ -match '^0\.5|^0\.6' }; $vers; $j.info.version
+0.5.0
+0.5.1
+0.5.2
+0.5.3
+0.5.4
+0.5.5
+0.6.0
+0.6.1
+0.6.1
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_vers"; New-Item -ItemType Directory -Force -Path $tmp | Out-Null; foreach ($v in @('0.5.0','0.5.1','0.5.2','0.5.3','0.5.4','0.5.5','0.6.0')) { $j = Invoke-RestMethod -Uri "https://pypi.org/pypi/sqlparse/$v/json" -TimeoutSec 20; $u = ($j.urls | Where-Object { $_.filename -like '*.whl' } | Select-Object -First 1).url; if (-not $u) { $u = ($j.urls | Where-Object { $_.filename -like '*.tar.gz' } | Select-Object -First 1).url }; Invoke-WebRequest -Uri $u -OutFile "$tmp\$v.download" -TimeoutSec 60; $zip="$tmp\$v.zip"; Copy-Item "$tmp\$v.download" $zip -Force; Expand-Archive -Path $zip -DestinationPath "$tmp\$v" -Force; Copy-Item "$tmp\$v\sqlparse\engine\statement_splitter.py" "$tmp\splitter-$v.py" -Force }; Get-ChildItem "$tmp\splitter-*.py" | Select-Object Name,Length
+Name              Length
+----              ------
+splitter-0.5.0.py   4095
+splitter-0.5.1.py   4094
+splitter-0.5.2.py   4094
+splitter-0.5.3.py   4094
+splitter-0.5.4.py   5119
+splitter-0.5.5.py   5634
+splitter-0.6.0.py   7732
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_vers"; $base="C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py"; foreach ($v in @('0.5.0','0.5.1','0.5.2','0.5.3','0.5.4','0.5.5')) { Write-Output "=== $v ==="; Compare-Object (Get-Content $base) (Get-Content "$tmp\splitter-$v.py") | Format-Table -AutoSize }
+=== 0.5.0 ===
+=== 0.5.1 ===
+
+InputObject                                                             SideIndicator
+-----------                                                             -------------
+        self._in_case = False                                           =>           
+        # BEGIN and CASE/WHEN both end with END                         =>           
+            if not self._in_case:                                       =>           
+                self._begin_depth = max(0, self._begin_depth - 1)       =>           
+            else:                                                       =>           
+                self._in_case = False                                   =>           
+            if unified == 'CASE':                                       =>           
+                self._in_case = True                                    =>           
+        # Should this respect a preceding BEGIN?                        <=           
+        # In CASE ... WHEN ... END this results in a split level -1.    <=           
+        # Would having multiple CASE WHEN END and a Assignment Operator <=           
+        # cause the statement to cut off prematurely?                   <=           
+            self._begin_depth = max(0, self._begin_depth - 1)           <=           
+
+
+=== 0.5.2 ===
+
+InputObject                                                             SideIndicator
+-----------                                                             -------------
+        self._in_case = False                                           =>           
+        # BEGIN and CASE/WHEN both end with END                         =>           
+            if not self._in_case:                                       =>           
+                self._begin_depth = max(0, self._begin_depth - 1)       =>           
+            else:                                                       =>           
+                self._in_case = False                                   =>           
+            if unified == 'CASE':                                       =>           
+                self._in_case = True                                    =>           
+        # Should this respect a preceding BEGIN?                        <=           
+        # In CASE ... WHEN ... END this results in a split level -1.    <=           
+        # Would having multiple CASE WHEN END and a Assignment Operator <=           
+        # cause the statement to cut off prematurely?                   <=           
+            self._begin_depth = max(0, self._begin_depth - 1)           <=           
+
+
+=== 0.5.3 ===
+
+InputObject                                                             SideIndicator
+-----------                                                             -------------
+        self._in_case = False                                           =>           
+        # BEGIN and CASE/WHEN both end with END                         =>           
+            if not self._in_case:                                       =>           
+                self._begin_depth = max(0, self._begin_depth - 1)       =>           
+            else:                                                       =>           
+                self._in_case = False                                   =>           
+            if unified == 'CASE':                                       =>           
+                self._in_case = True                                    =>           
+        # Should this respect a preceding BEGIN?                        <=           
+        # In CASE ... WHEN ... END this results in a split level -1.    <=           
+        # Would having multiple CASE WHEN END and a Assignment Operator <=           
+        # cause the statement to cut off prematurely?                   <=           
+            self._begin_depth = max(0, self._begin_depth - 1)           <=           
+
+
+=== 0.5.4 ===
+
+InputObject                                                                     SideIndicator
+-----------                                                                     -------------
+        self._in_case = False                                                   =>           
+        self._seen_begin = False                                                =>           
+            self._seen_begin = True                                             =>           
+        # BEGIN and CASE/WHEN both end with END                                 =>           
+            if not self._in_case:                                               =>           
+                self._begin_depth = max(0, self._begin_depth - 1)               =>           
+            else:                                                               =>           
+                self._in_case = False                                           =>           
+            if unified == 'CASE':                                               =>           
+                self._in_case = True                                            =>           
+            # Issue809: Ignore semicolons inside BEGIN...END blocks, but handle =>           
+            # standalone BEGIN; as a transaction statement                      =>           
+            if ttype is T.Punctuation and value == ';':                         =>           
+                # If we just saw BEGIN; then this is a transaction BEGIN,       =>           
+                # not a BEGIN...END block, so decrement depth                   =>           
+                if self._seen_begin:                                            =>           
+                    self._begin_depth = max(0, self._begin_depth - 1)           =>           
+                self._seen_begin = False                                        =>           
+                # Split on semicolon if not inside a BEGIN...END block          =>           
+                if self.level <= 0 and self._begin_depth == 0:                  =>           
+                    self.consume_ws = True                                      =>           
+            elif ttype is T.Keyword and value.split()[0] == 'GO':               =>           
+            elif (ttype not in (T.Whitespace, T.Comment.Single,                 =>           
+                                T.Comment.Multiline)                            =>           
+                  and not (ttype is T.Keyword and value.upper() == 'BEGIN')):   =>           
+                # Reset _seen_begin if we see a non-whitespace, non-comment     =>           
+                # token but not for BEGIN itself (which just set the flag)      =>           
+                self._seen_begin = False                                        =>           
+        # Should this respect a preceding BEGIN?                                <=           
+        # In CASE ... WHEN ... END this results in a split level -1.            <=           
+        # Would having multiple CASE WHEN END and a Assignment Operator         <=           
+        # cause the statement to cut off prematurely?                           <=           
+            self._begin_depth = max(0, self._begin_depth - 1)                   <=           
+            if (self.level <= 0 and ttype is T.Punctuation and value == ';') \  <=           
+                    or (ttype is T.Keyword and value.split()[0] == 'GO'):       <=           
+
+
+=== 0.5.5 ===
+
+InputObject                                                                     SideIndicator
+-----------                                                                     -------------
+        self._in_case = False                                                   =>           
+        self._seen_begin = False                                                =>           
+            self._seen_begin = True                                             =>           
+        # Issue826: If we see a transaction keyword after BEGIN,                =>           
+        # it's a transaction statement, not a block.                            =>           
+        if self._seen_begin and \                                               =>           
+                (ttype is T.Keyword or ttype is T.Name) and \                   =>           
+                unified in ('TRANSACTION', 'WORK', 'TRAN',                      =>           
+                            'DISTRIBUTED', 'DEFERRED',                          =>           
+                            'IMMEDIATE', 'EXCLUSIVE'):                          =>           
+            self._seen_begin = False                                            =>           
+            return 0                                                            =>           
+        # BEGIN and CASE/WHEN both end with END                                 =>           
+            if not self._in_case:                                               =>           
+                self._begin_depth = max(0, self._begin_depth - 1)               =>           
+            else:                                                               =>           
+                self._in_case = False                                           =>           
+            if unified == 'CASE':                                               =>           
+                self._in_case = True                                            =>           
+            # Issue809: Ignore semicolons inside BEGIN...END blocks, but handle =>           
+            # standalone BEGIN; as a transaction statement                      =>           
+            if ttype is T.Punctuation and value == ';':                         =>           
+                # If we just saw BEGIN; then this is a transaction BEGIN,       =>           
+                # not a BEGIN...END block, so decrement depth                   =>           
+                if self._seen_begin:                                            =>           
+                    self._begin_depth = max(0, self._begin_depth - 1)           =>           
+                self._seen_begin = False                                        =>           
+                # Split on semicolon if not inside a BEGIN...END block          =>           
+                if self.level <= 0 and self._begin_depth == 0:                  =>           
+                    self.consume_ws = True                                      =>           
+            elif ttype is T.Keyword and value.split()[0] == 'GO':               =>           
+            elif (ttype not in (T.Whitespace, T.Newline, T.Comment.Single,      =>           
+                                T.Comment.Multiline)                            =>           
+                  and not (ttype is T.Keyword and value.upper() == 'BEGIN')):   =>           
+                # Reset _seen_begin if we see a non-whitespace, non-comment     =>           
+                # token but not for BEGIN itself (which just set the flag)      =>           
+                self._seen_begin = False                                        =>           
+                                                                                =>           
+        # Should this respect a preceding BEGIN?                                <=           
+        # In CASE ... WHEN ... END this results in a split level -1.            <=           
+        # Would having multiple CASE WHEN END and a Assignment Operator         <=           
+        # cause the statement to cut off prematurely?                           <=           
+            if (self.level <= 0 and ttype is T.Punctuation and value == ';') \  <=           
+                    or (ttype is T.Keyword and value.split()[0] == 'GO'):       <=
+[0m
+[0m$ [0mGet-Content "$env:TEMP\sqlparse_vers\splitter-0.5.1.py"
+#
+# Copyright (C) 2009-2020 the sqlparse authors and contributors
+# <see AUTHORS file>
+#
+# This module is part of python-sqlparse and is released under
+# the BSD License: https://opensource.org/licenses/BSD-3-Clause
+
+from sqlparse import sql, tokens as T
+
+
+class StatementSplitter:
+    """Filter that split stream at individual statements"""
+
+    def __init__(self):
+        self._reset()
+
+    def _reset(self):
+        """Set the filter attributes to its default values"""
+        self._in_declare = False
+        self._in_case = False
+        self._is_create = False
+        self._begin_depth = 0
+
+        self.consume_ws = False
+        self.tokens = []
+        self.level = 0
+
+    def _change_splitlevel(self, ttype, value):
+        """Get the new split level (increase, decrease or remain equal)"""
+
+        # parenthesis increase/decrease a level
+        if ttype is T.Punctuation and value == '(':
+            return 1
+        elif ttype is T.Punctuation and value == ')':
+            return -1
+        elif ttype not in T.Keyword:  # if normal token return
+            return 0
+
+        # Everything after here is ttype = T.Keyword
+        # Also to note, once entered an If statement you are done and basically
+        # returning
+        unified = value.upper()
+
+        # three keywords begin with CREATE, but only one of them is DDL
+        # DDL Create though can contain more words such as "or replace"
+        if ttype is T.Keyword.DDL and unified.startswith('CREATE'):
+            self._is_create = True
+            return 0
+
+        # can have nested declare inside of being...
+        if unified == 'DECLARE' and self._is_create and self._begin_depth == 0:
+            self._in_declare = True
+            return 1
+
+        if unified == 'BEGIN':
+            self._begin_depth += 1
+            if self._is_create:
+                # FIXME(andi): This makes no sense.  ## this comment neither
+                return 1
+            return 0
+
+        # BEGIN and CASE/WHEN both end with END
+        if unified == 'END':
+            if not self._in_case:
+                self._begin_depth = max(0, self._begin_depth - 1)
+            else:
+                self._in_case = False
+            return -1
+
+        if (unified in ('IF', 'FOR', 'WHILE', 'CASE')
+                and self._is_create and self._begin_depth > 0):
+            if unified == 'CASE':
+                self._in_case = True
+            return 1
+
+        if unified in ('END IF', 'END FOR', 'END WHILE'):
+            return -1
+
+        # Default
+        return 0
+
+    def process(self, stream):
+        """Process the stream"""
+        EOS_TTYPE = T.Whitespace, T.Comment.Single
+
+        # Run over all stream tokens
+        for ttype, value in stream:
+            # Yield token if we finished a statement and there's no whitespaces
+            # It will count newline token as a non whitespace. In this context
+            # whitespace ignores newlines.
+            # why don't multi line comments also count?
+            if self.consume_ws and ttype not in EOS_TTYPE:
+                yield sql.Statement(self.tokens)
+
+                # Reset filter and prepare to process next statement
+                self._reset()
+
+            # Change current split level (increase, decrease or remain equal)
+            self.level += self._change_splitlevel(ttype, value)
+
+            # Append the token to the current statement
+            self.tokens.append(sql.Token(ttype, value))
+
+            # Check if we get the end of a statement
+            # Issue762: Allow GO (or "GO 2") as statement splitter.
+            # When implementing a language toggle, it's not only to add
+            # keywords it's also to change some rules, like this splitting
+            # rule.
+            if (self.level <= 0 and ttype is T.Punctuation and value == ';') \
+                    or (ttype is T.Keyword and value.split()[0] == 'GO'):
+                self.consume_ws = True
+
+        # Yield pending statement (if any)
+        if self.tokens and not all(t.is_whitespace for t in self.tokens):
+            yield sql.Statement(self.tokens)
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_vers"; $j = Invoke-RestMethod -Uri "https://pypi.org/pypi/sqlparse/0.5.1/json" -TimeoutSec 20; $u = ($j.urls | Where-Object { $_.filename -like '*.tar.gz' } | Select-Object -First 1).url; $u; $tar="$tmp\sqlparse-0.5.1.tar.gz"; Invoke-WebRequest -Uri $u -OutFile $tar -TimeoutSec 60; New-Item -ItemType Directory -Force -Path "$tmp\src051" | Out-Null; tar -xzf $tar -C "$tmp\src051"; Get-ChildItem "$tmp\src051"
+https://files.pythonhosted.org/packages/73/82/dfa23ec2cbed08a801deab02fe7c904bfb00765256b155941d789a338c68/sqlparse-0.5.1.tar.gz
+tar (child): Cannot connect to C: resolve failed
+
+gzip: stdin: unexpected end of file
+/usr/bin/tar: Child returned status 128
+/usr/bin/tar: Error is not recoverable: exiting now
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_vers"; python -c "import tarfile; tarfile.open(r'$tmp\sqlparse-0.5.1.tar.gz').extractall(r'$tmp\src051')"; Get-ChildItem "$tmp\src051\sqlparse-0.5.1\tests" -Filter 'test_split.py'; Get-Content "$tmp\src051\sqlparse-0.5.1\tests\test_split.py" | Select-String -Pattern 'case|begin' -CaseSensitive:$false -Context 3,10
+<string>:1: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+
+
+    Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\sqlparse_vers\src051\sqlparse-0.5.1\tests
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----          2020/2/2      8:00           6147 test_split.py                                                        
+
+IgnoreCase : True
+LineNumber : 53
+Line       : def test_split_begintag(load_file):
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 54
+Line       :     sql = load_file('begintag.sql')
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 60
+Line       : def test_split_begintag_2(load_file):
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 61
+Line       :     sql = load_file('begintag_2.sql')
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 93
+Line       : def test_split_casewhen():
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 94
+Line       :     sql = ("SELECT case when val = 1 then 2 else null end as foo;\n"
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 100
+Line       : def test_split_casewhen_procedure(load_file):
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 102
+Line       :     stmts = sqlparse.split(load_file('casewhen_procedure.sql'))
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 208
+Line       : def test_split_multiple_case_in_begin(load_file):  # issue784
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+
+
+IgnoreCase : True
+LineNumber : 209
+Line       :     stmts = sqlparse.split(load_file('multiple_case_in_begin.sql'))
+Filename   : InputStream
+Path       : InputStream
+Pattern    : case|begin
+Context    : Microsoft.PowerShell.Commands.MatchInfoContext
+Matches    : {0}
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_vers\src051\sqlparse-0.5.1"; Get-Content "$tmp\tests\test_split.py" | Select-Object -Skip 195; Write-Output '---file---'; Get-Content "$tmp\tests\files\multiple_case_in_begin.sql"
+assert stmts[1].endswith('end')
+
+@pytest.mark.parametrize('sql, num', [
+    ('USE foo;\nGO\nSELECT 1;\nGO', 4),
+    ('SELECT * FROM foo;\nGO', 2),
+    ('USE foo;\nGO 2\nSELECT 1;', 3)
+])
+def test_split_go(sql, num):  # issue762
+    stmts = sqlparse.split(sql)
+    assert len(stmts) == num
+
+
+def test_split_multiple_case_in_begin(load_file):  # issue784
+    stmts = sqlparse.split(load_file('multiple_case_in_begin.sql'))
+    assert len(stmts) == 1
+---file---
+CREATE TRIGGER mytrig
+AFTER UPDATE OF vvv ON mytable
+BEGIN
+    UPDATE aa
+        SET mycola = (CASE WHEN (A=1) THEN 2 END);
+    UPDATE bb
+        SET mycolb = (CASE WHEN (B=1) THEN 5 END);
+END;
+[0m
+[0m← [0mEdit sqlparse/engine/statement_splitter.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py
+@@ -16,8 +16,9 @@
+ 
+ def _reset(self):
+     """Set the filter attributes to its default values"""
+     self._in_declare = False
++    self._in_case = False
+     self._is_create = False
+     self._begin_depth = 0
+ 
+     self.consume_ws = False
+
+[0m
+[0m← [0mEdit sqlparse/engine/statement_splitter.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\engine\statement_splitter.py
+@@ -58,18 +58,20 @@
+         # FIXME(andi): This makes no sense.  ## this comment neither
+         return 1
+     return 0
+ 
+-# Should this respect a preceding BEGIN?
+-# In CASE ... WHEN ... END this results in a split level -1.
+-# Would having multiple CASE WHEN END and a Assignment Operator
+-# cause the statement to cut off prematurely?
++# BEGIN and CASE/WHEN both end with END
+ if unified == 'END':
+-    self._begin_depth = max(0, self._begin_depth - 1)
++    if not self._in_case:
++        self._begin_depth = max(0, self._begin_depth - 1)
++    else:
++        self._in_case = False
+     return -1
+ 
+ if (unified in ('IF', 'FOR', 'WHILE', 'CASE')
+         and self._is_create and self._begin_depth > 0):
++    if unified == 'CASE':
++        self._in_case = True
+     return 1
+ 
+ if unified in ('END IF', 'END FOR', 'END WHILE'):
+     return -1
+
+[0m
+[0m← [0mWrite tests/files/multiple_case_in_begin.sql
+Wrote file successfully.
+[0m
+[0m← [0mEdit tests/test_split.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_split.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_split.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_split.py
+@@ -202,4 +202,9 @@
+ ])
+ def test_split_go(sql, num):  # issue762
+     stmts = sqlparse.split(sql)
+     assert len(stmts) == num
++
++
++def test_split_multiple_case_in_begin(load_file):  # issue784
++    stmts = sqlparse.split(load_file('multiple_case_in_begin.sql'))
++    assert len(stmts) == 1
+
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; git restore tests/test_parse.py; git status --short
+M sqlparse/engine/statement_splitter.py
+ M tests/test_split.py
+?? tests/files/multiple_case_in_begin.sql
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; python -m pytest tests/test_split.py -q
+......................................                                   [100%]
+38 passed in 0.10s
+[0m
+[0m$ [0mcd "C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree"; python -m pytest tests -q
+..............................................................x......... [ 16%]
+....x................................................................... [ 32%]
+........................................................................ [ 48%]
+........................................................................ [ 64%]
+.................................................x...................... [ 81%]
+........................................................................ [ 97%]
+............                                                             [100%]
+441 passed, 3 xfailed in 2.46s
+[0m
+[0m$ [0m$tmp="$env:TEMP\sqlparse_vers\src051\sqlparse-0.5.1"; Get-Content "$tmp\CHANGELOG" -TotalCount 45
+Release 0.5.1 (Jul 15, 2024)
+----------------------------
+
+Enhancements
+
+* New "compact" option for formatter. If set, the formatter tries to produce
+  a more compact output by avoiding some line breaks (issue783).
+
+Bug Fixes
+
+* The strip comments filter was a bit greedy and removed too much
+  whitespace (issue772).
+  Note: In some cases you might want to add `strip_whitespace=True` where you
+  previously used just `strip_comments=True`. `strip_comments` did some of the
+  work that `strip_whitespace` should do.
+* Fix error when splitting statements that contain multiple CASE clauses
+  within a BEGIN block (issue784).
+* Fix whitespace removal with nested expressions (issue782).
+* Fix parsing and formatting of ORDER clauses containing NULLS FIRST or
+  NULLS LAST (issue532).
+
+
+Release 0.5.0 (Apr 13, 2024)
+----------------------------
+
+Notable Changes
+
+* Drop support for Python 3.5, 3.6, and 3.7.
+* Python 3.12 is now supported (pr725, by hugovk).
+* IMPORTANT: Fixes a potential denial of service attack (DOS) due to recursion
+  error for deeply nested statements. Instead of recursion error a generic
+  SQLParseError is raised. See the security advisory for details:
+  https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-2m57-hf25-phgg
+  The vulnerability was discovered by @uriyay-jfrog. Thanks for reporting!
+
+Enhancements
+
+* Splitting statements now allows to remove the semicolon at the end.
+  Some database backends love statements without semicolon (issue742).
+* Support TypedLiterals in get_parameters (pr749, by Khrol).
+* Improve splitting of Transact SQL when using GO keyword (issue762).
+* Support for some JSON operators (issue682).
+* Improve formatting of statements containing JSON operators (issue542).
+* Support for BigQuery and Snowflake keywords (pr699, by griffatrasgo).
+* Support parsing of OVER clause (issue701, pr768 by r33s3n6).
+[0m
+Implemented CASE handling in BEGIN blocks and added regression coverage.
+
+- `sqlparse/engine/statement_splitter.py`: track `_in_case` so `END` of a CASE no longer decrements the enclosing BEGIN depth.
+- `tests/test_split.py` + `tests/files/multiple_case_in_begin.sql`: regression test for issue 784.
+- Full test suite: `441 passed, 3 xfailed`.

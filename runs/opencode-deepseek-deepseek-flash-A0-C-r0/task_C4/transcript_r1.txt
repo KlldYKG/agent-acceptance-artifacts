@@ -1,0 +1,1040 @@
+{
+  "exit_code": 0,
+  "seconds": 82.7,
+  "transcript": "\u001b[0m\n> build · deepseek-flash\n\u001b[0m\n\u001b[0m$ \u001b[0mls; echo \"---\"; cat sqlparse/keywords.py | head -80\nĿ¼: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\n\n\nMode                 LastWriteTime         Length Name                                                                 \n----                 -------------         ------ ----                                                                 \nd-----        2026/11/17     11:46                .github                                                              \nd-----        2026/11/17     11:47                .pytest_cache                                                        \nd-----        2026/11/17     11:46                docs                                                                 \nd-----        2026/11/17     11:46                examples                                                             \nd-----        2026/11/17     11:46                sqlparse                                                             \nd-----        2026/11/17     11:59                tests                                                                \n-a----        2026/11/17     11:46            124 .gitignore                                                           \n-a----        2026/11/17     11:46           1074 .readthedocs.yaml                                                    \n-a----        2026/11/17     11:46           3313 AUTHORS                                                              \n-a----        2026/11/17     11:59          20958 CHANGELOG                                                            \n-a----        2026/11/17     11:46            409 CONTRIBUTING.md                                                      \n-a----        2026/11/17     11:46           1562 LICENSE                                                              \n-a----        2026/11/17     11:46            606 Makefile                                                             \n-a----        2026/11/17     11:59            203 opencode.json                                                        \n-a----        2026/11/17     11:46           1936 pyproject.toml                                                       \n-a----        2026/11/17     11:46           2395 README.rst                                                           \n-a----        2026/11/17     11:46            534 SECURITY.md                                                          \n-a----        2026/11/17     11:46            295 TODO                                                                 \n-a----        2026/11/17     11:46            319 tox.ini                                                              \n---\n#\n# Copyright (C) 2009-2020 the sqlparse authors and contributors\n# <see AUTHORS file>\n#\n# This module is part of python-sqlparse and is released under\n# the BSD License: https://opensource.org/licenses/BSD-3-Clause\n\nfrom sqlparse import tokens\n\n# object() only supports \"is\" and is useful as a marker\n# use this marker to specify that the given regex in SQL_REGEX\n# shall be processed further through a lookup in the KEYWORDS dictionaries\nPROCESS_AS_KEYWORD = object()\n\n\nSQL_REGEX = [\n    (r'(--|# )\\+.*?(\\r\\n|\\r|\\n|$)', tokens.Comment.Single.Hint),\n    (r'/\\*\\+[\\s\\S]*?\\*/', tokens.Comment.Multiline.Hint),\n\n    (r'(--|# ).*?(\\r\\n|\\r|\\n|$)', tokens.Comment.Single),\n    (r'/\\*[\\s\\S]*?\\*/', tokens.Comment.Multiline),\n\n    (r'(\\r\\n|\\r|\\n)', tokens.Newline),\n    (r'\\s+?', tokens.Whitespace),\n\n    (r':=', tokens.Assignment),\n    (r'::', tokens.Punctuation),\n\n    (r'\\*', tokens.Wildcard),\n\n    (r\"`(``|[^`])*`\", tokens.Name),\n    (r\"?(??|[^?])*?\", tokens.Name),\n    (r'((?<![\\w\\\"\\$])\\$(?:[_A-Z?-?]\\w*)?\\$)[\\s\\S]*?\\1', tokens.Literal),\n\n    (r'\\?', tokens.Name.Placeholder),\n    (r'%(\\(\\w+\\))?s', tokens.Name.Placeholder),\n    (r'(?<!\\w)[$:?]\\w+', tokens.Name.Placeholder),\n\n    (r'\\\\\\w+', tokens.Command),\n\n    # FIXME(andi): VALUES shouldn't be listed here\n    # see https://github.com/andialbrecht/sqlparse/pull/64\n    # AS and IN are special, it may be followed by a parenthesis, but\n    # are never functions, see issue183 and issue507\n    (r'(CASE|IN|VALUES|USING|FROM|AS)\\b', tokens.Keyword),\n\n    (r'(@|##|#)[A-Z?-?]\\w+', tokens.Name),\n\n    # see issue #39\n    # Spaces around period `schema . name` are valid identifier\n    # TODO: Spaces before period not implemented\n    (r'[A-Z?-?]\\w*(?=\\s*\\.)', tokens.Name),  # 'Name'.\n    # FIXME(atronah): never match,\n    # because `re.match` doesn't work with look-behind regexp feature\n    (r'(?<=\\.)[A-Z?-?]\\w*', tokens.Name),  # .'Name'\n    (r'[A-Z?-?]\\w*(?=\\()', tokens.Name),  # side effect: change kw to func\n    (r'-?0x[\\dA-F]+', tokens.Number.Hexadecimal),\n    (r'-?\\d+(\\.\\d+)?E-?\\d+', tokens.Number.Float),\n    (r'(?![_A-Z?-?])-?(\\d+(\\.\\d*)|\\.\\d+)(?![_A-Z?-?])',\n     tokens.Number.Float),\n    (r'(?![_A-Z?-?])-?\\d+(?![_A-Z?-?])', tokens.Number.Integer),\n    (r\"'(''|\\\\'|[^'])*'\", tokens.String.Single),\n    # not a real string literal in ANSI SQL:\n    (r'\"(\"\"|\\\\\"|[^\"])*\"', tokens.String.Symbol),\n    (r'(\"\"|\".*?[^\\\\]\")', tokens.String.Symbol),\n    # sqlite names can be escaped with [square brackets]. left bracket\n    # cannot be preceded by word character or a right bracket --\n    # otherwise it's probably an array index\n    (r'(?<![\\w\\])])(\\[[^\\]\\[]+\\])', tokens.Name),\n    (r'((LEFT\\s+|RIGHT\\s+|FULL\\s+)?(INNER\\s+|OUTER\\s+|STRAIGHT\\s+)?'\n     r'|(CROSS\\s+|NATURAL\\s+)?)?JOIN\\b', tokens.Keyword),\n    (r'END(\\s+IF|\\s+LOOP|\\s+WHILE)?\\b', tokens.Keyword),\n    (r'NOT\\s+NULL\\b', tokens.Keyword),\n    (r'NULLS\\s+(FIRST|LAST)\\b', tokens.Keyword),\n    (r'UNION\\s+ALL\\b', tokens.Keyword),\n    (r'CREATE(\\s+OR\\s+REPLACE)?\\b', tokens.Keyword.DDL),\n    (r'DOUBLE\\s+PRECISION\\b', tokens.Name.Builtin),\n    (r'GROUP\\s+BY\\b', tokens.Keyword),\n    (r'ORDER\\s+BY\\b', tokens.Keyword),\n    (r'HANDLER\\s+FOR\\b', tokens.Keyword),\n\u001b[0m\n\u001b[0m$ \u001b[0mls tests; echo \"---\"; grep -rn \"CREATE\\|CREATE DATABASE\\|CREATE TABLE\" sqlparse/keywords.py | head -30\nĿ¼: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\n\n\nMode                 LastWriteTime         Length Name                                                                 \n----                 -------------         ------ ----                                                                 \nd-----        2026/11/17     11:51                files                                                                \n-a----        2026/11/17     11:46           1618 conftest.py                                                          \n-a----        2026/11/17     11:46           3655 test_cli.py                                                          \n-a----        2026/11/17     11:46          23568 test_grouping.py                                                     \n-a----        2026/11/17     11:46            460 test_keywords.py                                                     \n-a----        2026/11/17     11:51          18543 test_parse.py                                                        \n-a----        2026/11/17     11:46          14846 test_regressions.py                                                  \n-a----        2026/11/17     11:59           6357 test_split.py                                                        \n-a----        2026/11/17     11:46           6651 test_tokenize.py                                                     \n-a----        2026/11/17     11:46            280 test_utils.py                                                        \n-a----        2026/11/17     11:46              0 __init__.py                                                          \n---\n76:    (r'CREATE(\\s+OR\\s+REPLACE)?\\b', tokens.Keyword.DDL),\n197:    'CREATEDB': tokens.Keyword,\n198:    'CREATEUSER': tokens.Keyword,\n388:    'NOCREATEDB': tokens.Keyword,\n389:    'NOCREATEUSER': tokens.Keyword,\n685:    'CREATE': tokens.Keyword.DDL,\n\u001b[0m\n\u001b[0m$ \u001b[0mgrep -rn \"EXTENSION\\|DATABASE\\|SCHEMA\\|TRIGGER\\|FUNCTION\" sqlparse/keywords.py tests/test_grouping.py tests/test_parse.py | head -60\nsqlparse/keywords.py:151:    'CHARACTER_SET_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:168:    'COLLATION_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:173:    'COMMAND_FUNCTION': tokens.Keyword,\nsqlparse/keywords.py:174:    'COMMAND_FUNCTION_CODE': tokens.Keyword,\nsqlparse/keywords.py:188:    'CONSTRAINT_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:213:    'DATABASE': tokens.Keyword,\nsqlparse/keywords.py:243:    'DYNAMIC_FUNCTION': tokens.Keyword,\nsqlparse/keywords.py:244:    'DYNAMIC_FUNCTION_CODE': tokens.Keyword,\nsqlparse/keywords.py:281:    'FUNCTION': tokens.Keyword,\nsqlparse/keywords.py:434:    'PARAMETER_SPECIFIC_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:487:    'ROUTINE_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:495:    'SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:496:    'SCHEMA_NAME': tokens.Keyword,\nsqlparse/keywords.py:574:    'TRIGGER': tokens.Keyword,\nsqlparse/keywords.py:575:    'TRIGGER_CATALOG': tokens.Keyword,\nsqlparse/keywords.py:576:    'TRIGGER_NAME': tokens.Keyword,\nsqlparse/keywords.py:577:    'TRIGGER_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:601:    'USER_DEFINED_TYPE_SCHEMA': tokens.Keyword,\nsqlparse/keywords.py:825:    'TRIGGERS': tokens.Keyword,\ntests/test_parse.py:170:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $$\ntests/test_parse.py:173:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $$\ntests/test_parse.py:180:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $PROC_1$\ntests/test_parse.py:183:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $PROC_2$\n\u001b[0m\n\u001b[0m$ \u001b[0msed -n '180,230p' sqlparse/keywords.py; echo \"===670-710===\"; sed -n '670,710p' sqlparse/keywords.py\n'CONDITION_NUMBER': tokens.Keyword,\n    'CONNECT': tokens.Keyword,\n    'CONNECTION': tokens.Keyword,\n    'CONNECTION_NAME': tokens.Keyword,\n    'CONSTRAINT': tokens.Keyword,\n    'CONSTRAINTS': tokens.Keyword,\n    'CONSTRAINT_CATALOG': tokens.Keyword,\n    'CONSTRAINT_NAME': tokens.Keyword,\n    'CONSTRAINT_SCHEMA': tokens.Keyword,\n    'CONSTRUCTOR': tokens.Keyword,\n    'CONTAINS': tokens.Keyword,\n    'CONTINUE': tokens.Keyword,\n    'CONVERSION': tokens.Keyword,\n    'CONVERT': tokens.Keyword,\n    'COPY': tokens.Keyword,\n    'CORRESPONDING': tokens.Keyword,\n    'COUNT': tokens.Keyword,\n    'CREATEDB': tokens.Keyword,\n    'CREATEUSER': tokens.Keyword,\n    'CROSS': tokens.Keyword,\n    'CUBE': tokens.Keyword,\n    'CURRENT': tokens.Keyword,\n    'CURRENT_DATE': tokens.Keyword,\n    'CURRENT_PATH': tokens.Keyword,\n    'CURRENT_ROLE': tokens.Keyword,\n    'CURRENT_TIME': tokens.Keyword,\n    'CURRENT_TIMESTAMP': tokens.Keyword,\n    'CURRENT_USER': tokens.Keyword,\n    'CURSOR': tokens.Keyword,\n    'CURSOR_NAME': tokens.Keyword,\n    'CYCLE': tokens.Keyword,\n\n    'DATA': tokens.Keyword,\n    'DATABASE': tokens.Keyword,\n    'DATETIME_INTERVAL_CODE': tokens.Keyword,\n    'DATETIME_INTERVAL_PRECISION': tokens.Keyword,\n    'DAY': tokens.Keyword,\n    'DEALLOCATE': tokens.Keyword,\n    'DECLARE': tokens.Keyword,\n    'DEFAULT': tokens.Keyword,\n    'DEFAULTS': tokens.Keyword,\n    'DEFERRABLE': tokens.Keyword,\n    'DEFERRED': tokens.Keyword,\n    'DEFINED': tokens.Keyword,\n    'DEFINER': tokens.Keyword,\n    'DELIMITER': tokens.Keyword,\n    'DELIMITERS': tokens.Keyword,\n    'DEREF': tokens.Keyword,\n    'DESC': tokens.Keyword.Order,\n    'DESCRIBE': tokens.Keyword,\n    'DESCRIPTOR': tokens.Keyword,\n===670-710===\n    'UTL_FILE': tokens.Name.Builtin,\n    'VARCHAR': tokens.Name.Builtin,\n    'VARCHAR2': tokens.Name.Builtin,\n    'VARYING': tokens.Name.Builtin,\n}\n\nKEYWORDS_COMMON = {\n    'SELECT': tokens.Keyword.DML,\n    'INSERT': tokens.Keyword.DML,\n    'DELETE': tokens.Keyword.DML,\n    'UPDATE': tokens.Keyword.DML,\n    'UPSERT': tokens.Keyword.DML,\n    'REPLACE': tokens.Keyword.DML,\n    'MERGE': tokens.Keyword.DML,\n    'DROP': tokens.Keyword.DDL,\n    'CREATE': tokens.Keyword.DDL,\n    'ALTER': tokens.Keyword.DDL,\n\n    'WHERE': tokens.Keyword,\n    'FROM': tokens.Keyword,\n    'INNER': tokens.Keyword,\n    'JOIN': tokens.Keyword,\n    'STRAIGHT_JOIN': tokens.Keyword,\n    'AND': tokens.Keyword,\n    'OR': tokens.Keyword,\n    'LIKE': tokens.Keyword,\n    'ON': tokens.Keyword,\n    'IN': tokens.Keyword,\n    'SET': tokens.Keyword,\n\n    'BY': tokens.Keyword,\n    'GROUP': tokens.Keyword,\n    'ORDER': tokens.Keyword,\n    'LEFT': tokens.Keyword,\n    'OUTER': tokens.Keyword,\n    'FULL': tokens.Keyword,\n\n    'IF': tokens.Keyword,\n    'END': tokens.Keyword,\n    'THEN': tokens.Keyword,\n    'LOOP': tokens.Keyword,\n\u001b[0m\n\u001b[0m$ \u001b[0mgrep -n \"CREATE\\|DATABASE\\|SCHEMA\\|Keyword.DDL\\|DDL\" sqlparse/grouping.py | head -40; echo \"===\"; git log --oneline -5 2>$null; echo \"===\"; cat CHANGELOG | head -40\n/usr/bin/grep: sqlparse/grouping.py: No such file or directory\n===\nb80e968 exp C3 round 1\n22ca250 exp C2 round 1\ne72485f exp C1 round 1\n7082484 baseline 6b05583^\n===\nDevelopment Version\n-------------------\n\nNotable Changes\n\n* Drop support for Python 3.5, 3.6, and 3.7.\n* Python 3.12 is now supported (pr725, by hugovk).\n\nEnhancements:\n\n* Splitting statements now allows to remove the semicolon at the end.\n  Some database backends love statements without semicolon (issue742).\n* Support TypedLiterals in get_parameters (pr649, by Khrol).\n* Improve splitting of Transact SQL when using GO keyword (issue762).\n\nBug Fixes\n\n* Ignore dunder attributes when creating Tokens (issue672).\n* Allow operators to precede dollar-quoted strings (issue763).\n* Fix parsing of nested order clauses (issue745, pr746 by john-bodley).\n* Thread-safe initialization of Lexer class (issue730).\n* Fix whitespace removal with nested expressions (issue782).\n\n\nRelease 0.4.4 (Apr 18, 2023)\n----------------------------\n\nNotable Changes\n\n* IMPORTANT: This release fixes a security vulnerability in the\n  parser where a regular expression vulnerable to ReDOS (Regular\n  Expression Denial of Service) was used. See the security advisory\n  for details: https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2\n  The vulnerability was discovered by @erik-krogh from GitHub\n  Security Lab (GHSL). Thanks for reporting!\n\nBug Fixes\n\n* Revert a change from 0.4.0 that changed IN to be a comparison (issue694).\n  The primary expectation is that IN is treated as a keyword and not as a\n\u001b[0m\n\u001b[0m$ \u001b[0mcat tests/test_keywords.py; echo \"===tokenize test tail===\"; tail -60 tests/test_tokenize.py\nimport pytest\n\nfrom sqlparse import tokens\nfrom sqlparse.lexer import Lexer\n\n\nclass TestSQLREGEX:\n    @pytest.mark.parametrize('number', ['1.0', '-1.0',\n                                        '1.', '-1.',\n                                        '.1', '-.1'])\n    def test_float_numbers(self, number):\n        ttype = next(tt for action, tt in Lexer.get_default_instance()._SQL_REGEX if action(number))\n        assert tokens.Number.Float == ttype\n===tokenize test tail===\n    'v$name',  # issue291\n])\ndef test_parse_identifiers(s):\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    token = p.tokens[0]\n    assert str(token) == s\n    assert isinstance(token, sql.Identifier)\n\n\ndef test_parse_group_by():\n    p = sqlparse.parse('GROUP BY')[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\ndef test_parse_order_by():\n    p = sqlparse.parse('ORDER BY')[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\ndef test_parse_window_as():\n    p = sqlparse.parse('WINDOW w AS')[0]\n    assert len(p.tokens) == 5\n    assert p.tokens[0].ttype is T.Keyword\n\n\n@pytest.mark.parametrize('s', (\n    \"LIKE\", \"ILIKE\", \"NOT LIKE\", \"NOT ILIKE\",\n    \"NOT   LIKE\", \"NOT    ILIKE\",\n))\ndef test_like_and_ilike_parsed_as_comparisons(s):\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype == T.Operator.Comparison\n\n\n@pytest.mark.parametrize('s', (\n    \"LIKEaaa\", \"bILIKE\", \"aaILIKEbb\", \"NOTLIKE\", \"NOTILIKE\",\n))\ndef test_near_like_and_ilike_parsed_appropriately(s):\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    assert isinstance(p.tokens[0], sql.Identifier)\n\n\n@pytest.mark.parametrize('s', (\n    'AT TIME ZONE \\'UTC\\'',\n))\ndef test_parse_tzcast(s):\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype == T.Keyword.TZCast\n\n\ndef test_cli_commands():\n    p = sqlparse.parse('\\\\copy')[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype == T.Command\n\u001b[0m\n\u001b[0m$ \u001b[0mls sqlparse; echo \"===\"; grep -rn \"EXTENSION\" . --include=*.py --include=*.sql 2>$null | head\nĿ¼: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\n\n\nMode                 LastWriteTime         Length Name                                                                 \n----                 -------------         ------ ----                                                                 \nd-----        2026/11/17     11:46                engine                                                               \nd-----        2026/11/17     11:46                filters                                                              \n-a----        2026/11/17     11:46           5908 cli.py                                                               \n-a----        2026/11/17     11:46            354 exceptions.py                                                        \n-a----        2026/11/17     11:46           7764 formatter.py                                                         \n-a----        2026/11/17     11:46          30482 keywords.py                                                          \n-a----        2026/11/17     11:46           5989 lexer.py                                                             \n-a----        2026/11/17     11:46          21111 sql.py                                                               \n-a----        2026/11/17     11:46           1850 tokens.py                                                            \n-a----        2026/11/17     11:46           3567 utils.py                                                             \n-a----        2026/11/17     11:46           2402 __init__.py                                                          \n-a----        2026/11/17     11:46            632 __main__.py                                                          \n===\n\u001b[0m\n\u001b[0m$ \u001b[0mgit show 7082484:sqlparse/keywords.py 2>$null | grep -n \"EXTENSION\"; echo \"exit $?\"; grep -n \"EXTENSION\" CHANGELOG\nexit False\n\u001b[0m\n\u001b[0m$ \u001b[0mgrep -n \"CREATE\\|DATABASE\\|SCHEMA\\|DDL\\|EXTENSION\" sqlparse/engine/grouping.py | head -50\n173:        ttypes = T.DML, T.DDL, T.CTE\n346:        if tmp_token.value.upper() == 'CREATE':\n\u001b[0m\n\u001b[0m$ \u001b[0mgrep -rn \"CREATE EXTENSION\\|EXTENSION\" docs tests examples 2>$null | head; echo \"=== keywords area around E ===\"; grep -n \"'EX\\|'EV\\|'EW\\|'E\" sqlparse/keywords.py | head -50\n=== keywords area around E ===\n11:# use this marker to specify that the given regex in SQL_REGEX\n12:# shall be processed further through a lookup in the KEYWORDS dictionaries\n13:PROCESS_AS_KEYWORD = object()\n16:SQL_REGEX = [\n41:    # FIXME(andi): VALUES shouldn't be listed here\n45:    (r'(CASE|IN|VALUES|USING|FROM|AS)\\b', tokens.Keyword),\n53:    # FIXME(atronah): never match,\n58:    (r'-?\\d+(\\.\\d+)?E-?\\d+', tokens.Number.Float),\n70:    (r'((LEFT\\s+|RIGHT\\s+|FULL\\s+)?(INNER\\s+|OUTER\\s+|STRAIGHT\\s+)?'\n72:    (r'END(\\s+IF|\\s+LOOP|\\s+WHILE)?\\b', tokens.Keyword),\n76:    (r'CREATE(\\s+OR\\s+REPLACE)?\\b', tokens.Keyword.DDL),\n77:    (r'DOUBLE\\s+PRECISION\\b', tokens.Name.Builtin),\n79:    (r'ORDER\\s+BY\\b', tokens.Keyword),\n80:    (r'HANDLER\\s+FOR\\b', tokens.Keyword),\n82:    (r'(LATERAL\\s+VIEW\\s+)'\n83:     r'(EXPLODE|INLINE|PARSE_URL_TUPLE|POSEXPLODE|STACK)\\b',\n85:    (r\"(AT|WITH')\\s+TIME\\s+ZONE\\s+'[^']+'\", tokens.Keyword.TZCast),\n86:    (r'(NOT\\s+)?(LIKE|ILIKE|RLIKE)\\b', tokens.Operator.Comparison),\n87:    (r'(NOT\\s+)?(REGEXP)\\b', tokens.Operator.Comparison),\n90:    (r'\\w[$#\\w]*', PROCESS_AS_KEYWORD),\n97:KEYWORDS = {\n100:    'ABSOLUTE': tokens.Keyword,\n101:    'ACCESS': tokens.Keyword,\n105:    'AFTER': tokens.Keyword,\n106:    'AGGREGATE': tokens.Keyword,\n109:    'ALLOCATE': tokens.Keyword,\n110:    'ANALYSE': tokens.Keyword,\n111:    'ANALYZE': tokens.Keyword,\n113:    'ARRAYLEN': tokens.Keyword,\n114:    'ARE': tokens.Keyword,\n116:    'ASENSITIVE': tokens.Keyword,\n117:    'ASSERTION': tokens.Keyword,\n118:    'ASSIGNMENT': tokens.Keyword,\n119:    'ASYMMETRIC': tokens.Keyword,\n124:    'AUTO_INCREMENT': tokens.Keyword,\n128:    'BEFORE': tokens.Keyword,\n129:    'BEGIN': tokens.Keyword,\n130:    'BETWEEN': tokens.Keyword,\n132:    'BIT_LENGTH': tokens.Keyword,\n134:    'BREADTH': tokens.Keyword,\n137:    'CACHE': tokens.Keyword,\n139:    'CALLED': tokens.Keyword,\n141:    'CASCADE': tokens.Keyword,\n142:    'CASCADED': tokens.Keyword,\n145:    'CATALOG_NAME': tokens.Keyword,\n147:    'CHARACTERISTICS': tokens.Keyword,\n148:    'CHARACTER_LENGTH': tokens.Keyword,\n149:    'CHARACTER_SET_CATALOG': tokens.Keyword,\n150:    'CHARACTER_SET_NAME': tokens.Keyword,\n151:    'CHARACTER_SET_SCHEMA': tokens.Keyword,\n\u001b[0m\n\u001b[0m$ \u001b[0mpython -c \"import urllib.request; u='https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/keywords.py'; d=urllib.request.urlopen(u,timeout=20).read().decode(); import re; [print(l) for l in d.splitlines() if 'EXTENSION' in l]\"\n'EXTENSION': tokens.Keyword,\n\u001b[0m\n\u001b[0m$ \u001b[0mpython -c \"import urllib.request,json; r=urllib.request.Request('https://api.github.com/search/commits?q=repo:andialbrecht/sqlparse+EXTENSION',headers={'Accept':'application/vnd.github.cloak-preview+json','User-Agent':'x'}); d=json.load(urllib.request.urlopen(r,timeout=20)); [print(i['sha'][:10], i['commit']['message'].splitlines()[0]) for i in d.get('items',[])[:10]]\"\nTraceback (most recent call last):\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 1319, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1367, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1413, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1362, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1122, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1066, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1501, in connect\n    super().connect()\n    ~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1042, in connect\n    self._tunnel()\n    ~~~~~~~~~~~~^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1010, in _tunnel\n    raise OSError(f\"Tunnel connection failed: {code} {message.strip()}\")\nOSError: Tunnel connection failed: 502 Bad Gateway\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import urllib.request,json; r=urllib.request.Request('https://api.github.com/search/commits?q=repo:andialbrecht/sqlparse+EXTENSION',headers={'Accept':'application/vnd.github.cloak-preview+json','User-Agent':'x'}); d=json.load(urllib.request.urlopen(r,timeout=20)); [print(i['sha'][:10], i['commit']['message'].splitlines()[0]) for i in d.get('items',[])[:10]]\n                                                                                                                                                                                                                                      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 189, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 489, in open\n    response = self._open(req, data)\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 506, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 466, in _call_chain\n    result = func(*args)\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 1367, in https_open\n    return self.do_open(http.client.HTTPSConnection, req,\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                        context=self._context)\n                        ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 1322, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error Tunnel connection failed: 502 Bad Gateway>\n\u001b[0m\n\u001b[0m$ \u001b[0msed -n '/^    .EX/,/^    .F/p' sqlparse/keywords.py | head -60; echo \"=== line numbers ===\"; grep -n \"EXTRACT\\|EXISTS\\|EXIT\\|EXPLAIN\\|EXCEPTION\\|EXP'\" sqlparse/keywords.py\n'EXCEPT': tokens.Keyword,\n    'EXCEPTION': tokens.Keyword,\n    'EXCLUDING': tokens.Keyword,\n    'EXCLUSIVE': tokens.Keyword,\n    'EXEC': tokens.Keyword,\n    'EXECUTE': tokens.Keyword,\n    'EXISTING': tokens.Keyword,\n    'EXISTS': tokens.Keyword,\n    'EXPLAIN': tokens.Keyword,\n    'EXTERNAL': tokens.Keyword,\n    'EXTRACT': tokens.Keyword,\n\n    'FALSE': tokens.Keyword,\n    'EXCEPTIONS': tokens.Keyword,\n    'EXPLAIN': tokens.Keyword,\n    'EXTENT': tokens.Keyword,\n    'EXTERNALLY': tokens.Keyword,\n\n    'FLUSH': tokens.Keyword,\n    'EXPLODE': tokens.Keyword,\n    'DIRECTORY': tokens.Keyword,\n    'DISTRIBUTE': tokens.Keyword,\n    'INCLUDE': tokens.Keyword,\n    'LOCATE': tokens.Keyword,\n    'OVERWRITE': tokens.Keyword,\n    'POSEXPLODE': tokens.Keyword,\n\n    'ARRAY_CONTAINS': tokens.Keyword,\n    'CMP': tokens.Keyword,\n    'COLLECT_LIST': tokens.Keyword,\n    'CONCAT': tokens.Keyword,\n    'CONDITION': tokens.Keyword,\n    'DATE_ADD': tokens.Keyword,\n    'DATE_SUB': tokens.Keyword,\n    'DECODE': tokens.Keyword,\n    'DBMS_OUTPUT': tokens.Keyword,\n    'ELEMENTS': tokens.Keyword,\n    'EXCHANGE': tokens.Keyword,\n    'EXTENDED': tokens.Keyword,\n    'FLOOR': tokens.Keyword,\n    'EXIT': tokens.Keyword,\n    'BREAK': tokens.Keyword,\n    'LEAVE': tokens.Keyword,\n}\n\n\nKEYWORDS_MSACCESS = {\n    'DISTINCTROW': tokens.Keyword,\n}\n=== line numbers ===\n\u001b[0m\n\u001b[0m$ \u001b[0mgrep -n \"^KEYWORDS\\|^}\" sqlparse/keywords.py; echo \"===\"; sed -n '240,300p' sqlparse/keywords.py\n===\n    'DO': tokens.Keyword,\n    'DOMAIN': tokens.Keyword,\n    'DYNAMIC': tokens.Keyword,\n    'DYNAMIC_FUNCTION': tokens.Keyword,\n    'DYNAMIC_FUNCTION_CODE': tokens.Keyword,\n\n    'EACH': tokens.Keyword,\n    'ENABLE': tokens.Keyword,\n    'ENCODING': tokens.Keyword,\n    'ENCRYPTED': tokens.Keyword,\n    'END-EXEC': tokens.Keyword,\n    'ENGINE': tokens.Keyword,\n    'EQUALS': tokens.Keyword,\n    'ESCAPE': tokens.Keyword,\n    'EVERY': tokens.Keyword,\n    'EXCEPT': tokens.Keyword,\n    'EXCEPTION': tokens.Keyword,\n    'EXCLUDING': tokens.Keyword,\n    'EXCLUSIVE': tokens.Keyword,\n    'EXEC': tokens.Keyword,\n    'EXECUTE': tokens.Keyword,\n    'EXISTING': tokens.Keyword,\n    'EXISTS': tokens.Keyword,\n    'EXPLAIN': tokens.Keyword,\n    'EXTERNAL': tokens.Keyword,\n    'EXTRACT': tokens.Keyword,\n\n    'FALSE': tokens.Keyword,\n    'FETCH': tokens.Keyword,\n    'FILE': tokens.Keyword,\n    'FINAL': tokens.Keyword,\n    'FIRST': tokens.Keyword,\n    'FORCE': tokens.Keyword,\n    'FOREACH': tokens.Keyword,\n    'FOREIGN': tokens.Keyword,\n    'FORTRAN': tokens.Keyword,\n    'FORWARD': tokens.Keyword,\n    'FOUND': tokens.Keyword,\n    'FREE': tokens.Keyword,\n    'FREEZE': tokens.Keyword,\n    'FULL': tokens.Keyword,\n    'FUNCTION': tokens.Keyword,\n\n    # 'G': tokens.Keyword,\n    'GENERAL': tokens.Keyword,\n    'GENERATED': tokens.Keyword,\n    'GET': tokens.Keyword,\n    'GLOBAL': tokens.Keyword,\n    'GO': tokens.Keyword,\n    'GOTO': tokens.Keyword,\n    'GRANT': tokens.Keyword,\n    'GRANTED': tokens.Keyword,\n    'GROUPING': tokens.Keyword,\n\n    'HAVING': tokens.Keyword,\n    'HIERARCHY': tokens.Keyword,\n    'HOLD': tokens.Keyword,\n    'HOUR': tokens.Keyword,\n    'HOST': tokens.Keyword,\n\n    'IDENTIFIED': tokens.Keyword,\n\u001b[0m\n\u001b[0m$ \u001b[0mpython -c \"import urllib.request; d=urllib.request.urlopen('https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/keywords.py',timeout=20).read().decode().splitlines(); [print(i+1,l) for i,l in enumerate(d) if any(k in l for k in ['EXPLAIN','EXTENSION','EXTERNAL','EXTRACT'])]\"\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import urllib.request; d=urllib.request.urlopen('https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/keywords.py',timeout=20).read().decode().splitlines(); [print(i+1,l) for i,l in enumerate(d) if any(k in l for k in ['EXPLAIN','EXTENSION','EXTERNAL','EXTRACT'])]\n                             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 189, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 489, in open\n    response = self._open(req, data)\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 506, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 466, in _call_chain\n    result = func(*args)\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 1367, in https_open\n    return self.do_open(http.client.HTTPSConnection, req,\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                        context=self._context)\n                        ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\urllib\\request.py\", line 1323, in do_open\n    r = h.getresponse()\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 1459, in getresponse\n    response.begin()\n    ~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 336, in begin\n    version, status, reason = self._read_status()\n                              ~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\http\\client.py\", line 297, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\socket.py\", line 723, in readinto\n    return self._sock.recv_into(b)\n           ~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\ssl.py\", line 1304, in recv_into\n    return self.read(nbytes, buffer)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\xzcac\\.workbuddy\\binaries\\python\\versions\\3.13.12\\Lib\\ssl.py\", line 1138, in read\n    return self._sslobj.read(len, buffer)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\nTimeoutError: The read operation timed out\n\u001b[0m\n\u001b[0m$ \u001b[0msed -n '150,200p' sqlparse/engine/grouping.py; echo \"===330-380===\"; sed -n '330,380p' sqlparse/engine/grouping.py; echo \"=== sql.py CREATE-ish ===\"; grep -n \"class Create\\|def get_type\\|CREATE\\|DDL\" sqlparse/sql.py | head -30\n# issue261, allow invalid next token\n        return True\n\n    def post(tlist, pidx, tidx, nidx):\n        # next_ validation is being performed here. issue261\n        sqlcls = sql.SquareBrackets, sql.Function\n        ttypes = T.Name, T.String.Symbol, T.Wildcard\n        next_ = tlist[nidx] if nidx is not None else None\n        valid_next = imt(next_, i=sqlcls, t=ttypes)\n\n        return (pidx, nidx) if valid_next else (pidx, tidx)\n\n    _group(tlist, sql.Identifier, match, valid_prev, valid_next, post)\n\n\ndef group_as(tlist):\n    def match(token):\n        return token.is_keyword and token.normalized == 'AS'\n\n    def valid_prev(token):\n        return token.normalized == 'NULL' or not token.is_keyword\n\n    def valid_next(token):\n        ttypes = T.DML, T.DDL, T.CTE\n        return not imt(token, t=ttypes) and token is not None\n\n    def post(tlist, pidx, tidx, nidx):\n        return pidx, nidx\n\n    _group(tlist, sql.Identifier, match, valid_prev, valid_next, post)\n\n\ndef group_assignment(tlist):\n    def match(token):\n        return token.match(T.Assignment, ':=')\n\n    def valid(token):\n        return token is not None and token.ttype not in (T.Keyword,)\n\n    def post(tlist, pidx, tidx, nidx):\n        m_semicolon = T.Punctuation, ';'\n        snidx, _ = tlist.token_next_by(m=m_semicolon, idx=nidx)\n        nidx = snidx or nidx\n        return pidx, nidx\n\n    valid_prev = valid_next = valid\n    _group(tlist, sql.Assignment, match, valid_prev, valid_next, post)\n\n\ndef group_comparison(tlist):\n    sqlcls = (sql.Parenthesis, sql.Function, sql.Identifier,\n===330-380===\n               sql.Operation, sql.Comparison)\n\n    tidx, token = tlist.token_next_by(i=I_ALIAS, t=T.Number)\n    while token:\n        nidx, next_ = tlist.token_next(tidx)\n        if isinstance(next_, sql.Identifier):\n            tlist.group_tokens(sql.Identifier, tidx, nidx, extend=True)\n        tidx, token = tlist.token_next_by(i=I_ALIAS, t=T.Number, idx=tidx)\n\n\n@recurse(sql.Function)\ndef group_functions(tlist):\n    has_create = False\n    has_table = False\n    has_as = False\n    for tmp_token in tlist.tokens:\n        if tmp_token.value.upper() == 'CREATE':\n            has_create = True\n        if tmp_token.value.upper() == 'TABLE':\n            has_table = True\n        if tmp_token.value == 'AS':\n            has_as = True\n    if has_create and has_table and not has_as:\n        return\n\n    tidx, token = tlist.token_next_by(t=T.Name)\n    while token:\n        nidx, next_ = tlist.token_next(tidx)\n        if isinstance(next_, sql.Parenthesis):\n            tlist.group_tokens(sql.Function, tidx, nidx)\n        tidx, token = tlist.token_next_by(t=T.Name, idx=tidx)\n\n\n@recurse(sql.Identifier)\ndef group_order(tlist):\n    \"\"\"Group together Identifier and Asc/Desc token\"\"\"\n    tidx, token = tlist.token_next_by(t=T.Keyword.Order)\n    while token:\n        pidx, prev_ = tlist.token_prev(tidx)\n        if imt(prev_, i=sql.Identifier, t=T.Number):\n            tlist.group_tokens(sql.Identifier, pidx, tidx)\n            tidx = pidx\n        tidx, token = tlist.token_next_by(t=T.Keyword.Order, idx=tidx)\n\n\n@recurse()\ndef align_comments(tlist):\n    tidx, token = tlist.token_next_by(i=sql.Comment)\n    while token:\n        pidx, prev_ = tlist.token_prev(tidx)\n        if isinstance(prev_, sql.TokenList):\n=== sql.py CREATE-ish ===\n406:    def get_type(self):\n410:        the first DML or DDL keyword. If the first token in this group\n411:        isn't a DML or DDL keyword \"UNKNOWN\" is returned.\n422:        elif token.ttype in (T.Keyword.DML, T.Keyword.DDL):\n454:    def get_typecast(self):\n\u001b[0m\n\u001b[0m$ \u001b[0mgrep -n \"get_type\\|CREATE\\|EXTENSION\\|Keyword\" tests/test_tokenize.py tests/test_parse.py tests/test_grouping.py | head -60\ntests/test_tokenize.py:18:    assert tokens[0] == (T.Keyword.DML, 'select')\ntests/test_tokenize.py:42:    assert tokens[0][0] == T.Keyword.DDL\ntests/test_tokenize.py:80:    token = sql.Token(T.Keyword, 'foo')\ntests/test_tokenize.py:81:    tst = \"<Keyword 'foo' at 0x\"\ntests/test_tokenize.py:83:    token = sql.Token(T.Keyword, '1234567890')\ntests/test_tokenize.py:84:    tst = \"<Keyword '123456...' at 0x\"\ntests/test_tokenize.py:89:    token = sql.Token(T.Keyword, 'foo')\ntests/test_tokenize.py:117:    t1 = sql.Token(T.Keyword, 'foo')\ntests/test_tokenize.py:120:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 0) == t1\ntests/test_tokenize.py:122:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 1) is None\ntests/test_tokenize.py:161:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:167:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:175:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:182:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:202:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:208:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:214:    assert p.tokens[0].ttype is T.Keyword\ntests/test_tokenize.py:242:    assert p.tokens[0].ttype == T.Keyword.TZCast\ntests/test_parse.py:170:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $$\ntests/test_parse.py:173:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $$\ntests/test_parse.py:180:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $PROC_1$\ntests/test_parse.py:183:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $PROC_2$\ntests/test_parse.py:368:        \"|- 4 Keyword 'from'\",\ntests/test_parse.py:377:        \"|  |  |- 5 Keyword 'from'\",\ntests/test_parse.py:387:        \"   |- 0 Keyword 'where'\",\ntests/test_parse.py:394:        \"   |- 4 Keyword 'and'\",\ntests/test_parse.py:417:    s = \"CREATE TABLE test();\"\ntests/test_parse.py:476:    assert stmts[0].tokens[0].ttype == T.Keyword\ntests/test_parse.py:483:    assert stmts[0].tokens[0].ttype == T.Keyword\ntests/test_parse.py:517:        (sqlparse.tokens.Keyword.DML, \"select\"),\ntests/test_parse.py:519:        (sqlparse.tokens.Keyword, \"from\"),\ntests/test_parse.py:528:            \"SPAM\": sqlparse.tokens.Keyword,\ntests/test_parse.py:529:            \"EGGS\": sqlparse.tokens.Keyword,\ntests/test_parse.py:543:        (sqlparse.tokens.Keyword.DML, \"select\"),\ntests/test_parse.py:545:        (sqlparse.tokens.Keyword, \"from\"),\ntests/test_parse.py:548:        (sqlparse.tokens.Keyword, \"SPAM\"),\ntests/test_parse.py:549:        (sqlparse.tokens.Keyword, \"EGGS\"),\ntests/test_parse.py:558:    my_regex = (r\"ZORDER\\s+BY\\b\", sqlparse.tokens.Keyword)\ntests/test_parse.py:581:    )[4] == (sqlparse.tokens.Keyword, \"zorder by\")\ntests/test_grouping.py:89:        assert types == [T.DML, T.Keyword, None, None, T.Punctuation]\ntests/test_grouping.py:168:    assert token.ttype == T.Keyword\ntests/test_grouping.py:177:    assert p.tokens[2].ttype == T.Keyword\ntests/test_grouping.py:283:    assert p.tokens[7].ttype == T.Keyword\ntests/test_grouping.py:291:    assert p.tokens[9].ttype == T.Keyword\ntests/test_grouping.py:303:    assert p.tokens[2].get_typecast() == expected\ntests/test_grouping.py:336:    p = sqlparse.parse('CREATE TABLE tbl1 AS SELECT coalesce(t1.col1, 0) AS col1 FROM t1')[0]\ntests/test_grouping.py:387:    assert p.tokens[0].ttype == T.Keyword\ntests/test_grouping.py:396:def test_statement_get_type():\ntests/test_grouping.py:400:    assert f('select * from foo').get_type() == 'SELECT'\ntests/test_grouping.py:401:    assert f('update foo').get_type() == 'UPDATE'\ntests/test_grouping.py:402:    assert f(' update foo').get_type() == 'UPDATE'\ntests/test_grouping.py:403:    assert f('\\nupdate foo').get_type() == 'UPDATE'\ntests/test_grouping.py:404:    assert f('foo').get_type() == 'UNKNOWN'\ntests/test_grouping.py:519:        (T.Keyword, \"where\"),\ntests/test_grouping.py:529:        (T.Keyword, \"where\"),\ntests/test_grouping.py:599:    assert p.tokens[0].ttype == T.Keyword\n\u001b[0m\n\u001b[0m$ \u001b[0msed -n '145,220p' tests/test_tokenize.py; echo \"=== grouping 580-610 ===\"; sed -n '580,610p' tests/test_grouping.py\nassert tokens[1][0] == T.Error\n\n\n@pytest.mark.parametrize('expr', [\n    'JOIN',\n    'LEFT JOIN',\n    'LEFT OUTER JOIN',\n    'FULL OUTER JOIN',\n    'NATURAL JOIN',\n    'CROSS JOIN',\n    'STRAIGHT JOIN',\n    'INNER JOIN',\n    'LEFT INNER JOIN'])\ndef test_parse_join(expr):\n    p = sqlparse.parse('{} foo'.format(expr))[0]\n    assert len(p.tokens) == 3\n    assert p.tokens[0].ttype is T.Keyword\n\n\ndef test_parse_union():  # issue294\n    p = sqlparse.parse('UNION ALL')[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\n@pytest.mark.parametrize('s', ['END IF', 'END   IF', 'END\\t\\nIF',\n                               'END LOOP', 'END   LOOP', 'END\\t\\nLOOP'])\ndef test_parse_endifloop(s):\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\n@pytest.mark.parametrize('s', ['NULLS FIRST', 'NULLS LAST'])\ndef test_parse_nulls(s):  # issue487\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\n@pytest.mark.parametrize('s', [\n    'foo',\n    'Foo',\n    'FOO',\n    'v$name',  # issue291\n])\ndef test_parse_identifiers(s):\n    p = sqlparse.parse(s)[0]\n    assert len(p.tokens) == 1\n    token = p.tokens[0]\n    assert str(token) == s\n    assert isinstance(token, sql.Identifier)\n\n\ndef test_parse_group_by():\n    p = sqlparse.parse('GROUP BY')[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\ndef test_parse_order_by():\n    p = sqlparse.parse('ORDER BY')[0]\n    assert len(p.tokens) == 1\n    assert p.tokens[0].ttype is T.Keyword\n\n\ndef test_parse_window_as():\n    p = sqlparse.parse('WINDOW w AS')[0]\n    assert len(p.tokens) == 5\n    assert p.tokens[0].ttype is T.Keyword\n\n\n@pytest.mark.parametrize('s', (\n    \"LIKE\", \"ILIKE\", \"NOT LIKE\", \"NOT ILIKE\",\n    \"NOT   LIKE\", \"NOT    ILIKE\",\n))\n=== grouping 580-610 ===\n    assert len(p.tokens) == 1\n    for1 = p.tokens[0]\n    assert for1.tokens[0].value == 'FOR'\n    assert for1.tokens[-1].value == 'END LOOP'\n    for2 = for1.tokens[6]\n    assert isinstance(for2, sql.For)\n    assert for2.tokens[0].value == 'FOR'\n    assert for2.tokens[-1].value == 'END LOOP'\n\n\ndef test_begin():\n    p = sqlparse.parse('BEGIN foo END')[0]\n    assert len(p.tokens) == 1\n    assert isinstance(p.tokens[0], sql.Begin)\n\n\ndef test_keyword_followed_by_parenthesis():\n    p = sqlparse.parse('USING(somecol')[0]\n    assert len(p.tokens) == 3\n    assert p.tokens[0].ttype == T.Keyword\n    assert p.tokens[1].ttype == T.Punctuation\n\n\ndef test_nested_begin():\n    p = sqlparse.parse('BEGIN foo BEGIN bar END END')[0]\n    assert len(p.tokens) == 1\n    outer = p.tokens[0]\n    assert outer.tokens[0].value == 'BEGIN'\n    assert outer.tokens[-1].value == 'END'\n    inner = outer.tokens[4]\n    assert inner.tokens[0].value == 'BEGIN'\n\u001b[0m\n\u001b[0m← \u001b[0mEdit sqlparse/keywords.py\nIndex: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\n===================================================================\n--- C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\n+++ C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\sqlparse\\keywords.py\n@@ -260,8 +260,9 @@\n 'EXECUTE': tokens.Keyword,\n 'EXISTING': tokens.Keyword,\n 'EXISTS': tokens.Keyword,\n 'EXPLAIN': tokens.Keyword,\n+'EXTENSION': tokens.Keyword,\n 'EXTERNAL': tokens.Keyword,\n 'EXTRACT': tokens.Keyword,\n \n 'FALSE': tokens.Keyword,\n\n\u001b[0m\n\u001b[0m← \u001b[0mEdit tests/test_tokenize.py\nIndex: C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\n===================================================================\n--- C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\n+++ C:\\Users\\xzcac\\AppData\\Local\\Temp\\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\\tree\\tests\\test_tokenize.py\n@@ -195,8 +195,14 @@\n     assert str(token) == s\n     assert isinstance(token, sql.Identifier)\n \n \n+def test_parse_extension():\n+    p = sqlparse.parse('EXTENSION')[0]\n+    assert len(p.tokens) == 1\n+    assert p.tokens[0].ttype is T.Keyword\n+\n+\n def test_parse_group_by():\n     p = sqlparse.parse('GROUP BY')[0]\n     assert len(p.tokens) == 1\n     assert p.tokens[0].ttype is T.Keyword\n\n\u001b[0m\n\u001b[0m$ \u001b[0mpython -m pytest tests/test_tokenize.py -q\n.........................................................                [100%]\n57 passed in 0.09s\n\u001b[0m\n\u001b[0m$ \u001b[0mpython -m pytest -q\n........................................................................ [ 18%]\n........................................................................ [ 37%]\n........................................................................ [ 56%]\n.............................................................x.......... [ 74%]\n........................................................................ [ 93%]\n.........................                                                [100%]\n384 passed, 1 xfailed in 1.39s\n\u001b[0m\nAdded `EXTENSION` to `KEYWORDS` as `tokens.Keyword` in sqlparse/keywords.py:266 and a regression test in tests/test_tokenize.py. Full suite: 384 passed, 1 xfailed.\n",
+  "tokens_in": 14605,
+  "tokens_out": 2970,
+  "token_source": "adapter",
+  "extra": {
+    "early_reaped": false,
+    "usage_detail": {
+      "directory": "C:/Users/xzcac/WorkBuddy/spaces/2026_11_16_09-23-11/experiments",
+      "model": "{\"id\":\"deepseek-flash\",\"providerID\":\"deepseek\",\"variant\":\"default\"}",
+      "cost": 0.005476758000000001,
+      "tokens_input": 14605,
+      "tokens_output": 2970,
+      "tokens_reasoning": 1059,
+      "tokens_cache_read": 289536,
+      "tokens_cache_write": 0,
+      "time_created": 1794887991413
+    },
+    "cmd": [
+      "<opencode>",
+      "run",
+      "--model",
+      "<model>",
+      "<stdin:prompt>"
+    ]
+  }
+}
+---- TRANSCRIPT ----
+[0m
+> build · deepseek-flash
+[0m
+[0m$ [0mls; echo "---"; cat sqlparse/keywords.py | head -80
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     11:46                .github                                                              
+d-----        2026/11/17     11:47                .pytest_cache                                                        
+d-----        2026/11/17     11:46                docs                                                                 
+d-----        2026/11/17     11:46                examples                                                             
+d-----        2026/11/17     11:46                sqlparse                                                             
+d-----        2026/11/17     11:59                tests                                                                
+-a----        2026/11/17     11:46            124 .gitignore                                                           
+-a----        2026/11/17     11:46           1074 .readthedocs.yaml                                                    
+-a----        2026/11/17     11:46           3313 AUTHORS                                                              
+-a----        2026/11/17     11:59          20958 CHANGELOG                                                            
+-a----        2026/11/17     11:46            409 CONTRIBUTING.md                                                      
+-a----        2026/11/17     11:46           1562 LICENSE                                                              
+-a----        2026/11/17     11:46            606 Makefile                                                             
+-a----        2026/11/17     11:59            203 opencode.json                                                        
+-a----        2026/11/17     11:46           1936 pyproject.toml                                                       
+-a----        2026/11/17     11:46           2395 README.rst                                                           
+-a----        2026/11/17     11:46            534 SECURITY.md                                                          
+-a----        2026/11/17     11:46            295 TODO                                                                 
+-a----        2026/11/17     11:46            319 tox.ini                                                              
+---
+#
+# Copyright (C) 2009-2020 the sqlparse authors and contributors
+# <see AUTHORS file>
+#
+# This module is part of python-sqlparse and is released under
+# the BSD License: https://opensource.org/licenses/BSD-3-Clause
+
+from sqlparse import tokens
+
+# object() only supports "is" and is useful as a marker
+# use this marker to specify that the given regex in SQL_REGEX
+# shall be processed further through a lookup in the KEYWORDS dictionaries
+PROCESS_AS_KEYWORD = object()
+
+
+SQL_REGEX = [
+    (r'(--|# )\+.*?(\r\n|\r|\n|$)', tokens.Comment.Single.Hint),
+    (r'/\*\+[\s\S]*?\*/', tokens.Comment.Multiline.Hint),
+
+    (r'(--|# ).*?(\r\n|\r|\n|$)', tokens.Comment.Single),
+    (r'/\*[\s\S]*?\*/', tokens.Comment.Multiline),
+
+    (r'(\r\n|\r|\n)', tokens.Newline),
+    (r'\s+?', tokens.Whitespace),
+
+    (r':=', tokens.Assignment),
+    (r'::', tokens.Punctuation),
+
+    (r'\*', tokens.Wildcard),
+
+    (r"`(``|[^`])*`", tokens.Name),
+    (r"?(??|[^?])*?", tokens.Name),
+    (r'((?<![\w\"\$])\$(?:[_A-Z?-?]\w*)?\$)[\s\S]*?\1', tokens.Literal),
+
+    (r'\?', tokens.Name.Placeholder),
+    (r'%(\(\w+\))?s', tokens.Name.Placeholder),
+    (r'(?<!\w)[$:?]\w+', tokens.Name.Placeholder),
+
+    (r'\\\w+', tokens.Command),
+
+    # FIXME(andi): VALUES shouldn't be listed here
+    # see https://github.com/andialbrecht/sqlparse/pull/64
+    # AS and IN are special, it may be followed by a parenthesis, but
+    # are never functions, see issue183 and issue507
+    (r'(CASE|IN|VALUES|USING|FROM|AS)\b', tokens.Keyword),
+
+    (r'(@|##|#)[A-Z?-?]\w+', tokens.Name),
+
+    # see issue #39
+    # Spaces around period `schema . name` are valid identifier
+    # TODO: Spaces before period not implemented
+    (r'[A-Z?-?]\w*(?=\s*\.)', tokens.Name),  # 'Name'.
+    # FIXME(atronah): never match,
+    # because `re.match` doesn't work with look-behind regexp feature
+    (r'(?<=\.)[A-Z?-?]\w*', tokens.Name),  # .'Name'
+    (r'[A-Z?-?]\w*(?=\()', tokens.Name),  # side effect: change kw to func
+    (r'-?0x[\dA-F]+', tokens.Number.Hexadecimal),
+    (r'-?\d+(\.\d+)?E-?\d+', tokens.Number.Float),
+    (r'(?![_A-Z?-?])-?(\d+(\.\d*)|\.\d+)(?![_A-Z?-?])',
+     tokens.Number.Float),
+    (r'(?![_A-Z?-?])-?\d+(?![_A-Z?-?])', tokens.Number.Integer),
+    (r"'(''|\\'|[^'])*'", tokens.String.Single),
+    # not a real string literal in ANSI SQL:
+    (r'"(""|\\"|[^"])*"', tokens.String.Symbol),
+    (r'(""|".*?[^\\]")', tokens.String.Symbol),
+    # sqlite names can be escaped with [square brackets]. left bracket
+    # cannot be preceded by word character or a right bracket --
+    # otherwise it's probably an array index
+    (r'(?<![\w\])])(\[[^\]\[]+\])', tokens.Name),
+    (r'((LEFT\s+|RIGHT\s+|FULL\s+)?(INNER\s+|OUTER\s+|STRAIGHT\s+)?'
+     r'|(CROSS\s+|NATURAL\s+)?)?JOIN\b', tokens.Keyword),
+    (r'END(\s+IF|\s+LOOP|\s+WHILE)?\b', tokens.Keyword),
+    (r'NOT\s+NULL\b', tokens.Keyword),
+    (r'NULLS\s+(FIRST|LAST)\b', tokens.Keyword),
+    (r'UNION\s+ALL\b', tokens.Keyword),
+    (r'CREATE(\s+OR\s+REPLACE)?\b', tokens.Keyword.DDL),
+    (r'DOUBLE\s+PRECISION\b', tokens.Name.Builtin),
+    (r'GROUP\s+BY\b', tokens.Keyword),
+    (r'ORDER\s+BY\b', tokens.Keyword),
+    (r'HANDLER\s+FOR\b', tokens.Keyword),
+[0m
+[0m$ [0mls tests; echo "---"; grep -rn "CREATE\|CREATE DATABASE\|CREATE TABLE" sqlparse/keywords.py | head -30
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     11:51                files                                                                
+-a----        2026/11/17     11:46           1618 conftest.py                                                          
+-a----        2026/11/17     11:46           3655 test_cli.py                                                          
+-a----        2026/11/17     11:46          23568 test_grouping.py                                                     
+-a----        2026/11/17     11:46            460 test_keywords.py                                                     
+-a----        2026/11/17     11:51          18543 test_parse.py                                                        
+-a----        2026/11/17     11:46          14846 test_regressions.py                                                  
+-a----        2026/11/17     11:59           6357 test_split.py                                                        
+-a----        2026/11/17     11:46           6651 test_tokenize.py                                                     
+-a----        2026/11/17     11:46            280 test_utils.py                                                        
+-a----        2026/11/17     11:46              0 __init__.py                                                          
+---
+76:    (r'CREATE(\s+OR\s+REPLACE)?\b', tokens.Keyword.DDL),
+197:    'CREATEDB': tokens.Keyword,
+198:    'CREATEUSER': tokens.Keyword,
+388:    'NOCREATEDB': tokens.Keyword,
+389:    'NOCREATEUSER': tokens.Keyword,
+685:    'CREATE': tokens.Keyword.DDL,
+[0m
+[0m$ [0mgrep -rn "EXTENSION\|DATABASE\|SCHEMA\|TRIGGER\|FUNCTION" sqlparse/keywords.py tests/test_grouping.py tests/test_parse.py | head -60
+sqlparse/keywords.py:151:    'CHARACTER_SET_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:168:    'COLLATION_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:173:    'COMMAND_FUNCTION': tokens.Keyword,
+sqlparse/keywords.py:174:    'COMMAND_FUNCTION_CODE': tokens.Keyword,
+sqlparse/keywords.py:188:    'CONSTRAINT_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:213:    'DATABASE': tokens.Keyword,
+sqlparse/keywords.py:243:    'DYNAMIC_FUNCTION': tokens.Keyword,
+sqlparse/keywords.py:244:    'DYNAMIC_FUNCTION_CODE': tokens.Keyword,
+sqlparse/keywords.py:281:    'FUNCTION': tokens.Keyword,
+sqlparse/keywords.py:434:    'PARAMETER_SPECIFIC_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:487:    'ROUTINE_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:495:    'SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:496:    'SCHEMA_NAME': tokens.Keyword,
+sqlparse/keywords.py:574:    'TRIGGER': tokens.Keyword,
+sqlparse/keywords.py:575:    'TRIGGER_CATALOG': tokens.Keyword,
+sqlparse/keywords.py:576:    'TRIGGER_NAME': tokens.Keyword,
+sqlparse/keywords.py:577:    'TRIGGER_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:601:    'USER_DEFINED_TYPE_SCHEMA': tokens.Keyword,
+sqlparse/keywords.py:825:    'TRIGGERS': tokens.Keyword,
+tests/test_parse.py:170:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $$
+tests/test_parse.py:173:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $$
+tests/test_parse.py:180:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $PROC_1$
+tests/test_parse.py:183:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $PROC_2$
+[0m
+[0m$ [0msed -n '180,230p' sqlparse/keywords.py; echo "===670-710==="; sed -n '670,710p' sqlparse/keywords.py
+'CONDITION_NUMBER': tokens.Keyword,
+    'CONNECT': tokens.Keyword,
+    'CONNECTION': tokens.Keyword,
+    'CONNECTION_NAME': tokens.Keyword,
+    'CONSTRAINT': tokens.Keyword,
+    'CONSTRAINTS': tokens.Keyword,
+    'CONSTRAINT_CATALOG': tokens.Keyword,
+    'CONSTRAINT_NAME': tokens.Keyword,
+    'CONSTRAINT_SCHEMA': tokens.Keyword,
+    'CONSTRUCTOR': tokens.Keyword,
+    'CONTAINS': tokens.Keyword,
+    'CONTINUE': tokens.Keyword,
+    'CONVERSION': tokens.Keyword,
+    'CONVERT': tokens.Keyword,
+    'COPY': tokens.Keyword,
+    'CORRESPONDING': tokens.Keyword,
+    'COUNT': tokens.Keyword,
+    'CREATEDB': tokens.Keyword,
+    'CREATEUSER': tokens.Keyword,
+    'CROSS': tokens.Keyword,
+    'CUBE': tokens.Keyword,
+    'CURRENT': tokens.Keyword,
+    'CURRENT_DATE': tokens.Keyword,
+    'CURRENT_PATH': tokens.Keyword,
+    'CURRENT_ROLE': tokens.Keyword,
+    'CURRENT_TIME': tokens.Keyword,
+    'CURRENT_TIMESTAMP': tokens.Keyword,
+    'CURRENT_USER': tokens.Keyword,
+    'CURSOR': tokens.Keyword,
+    'CURSOR_NAME': tokens.Keyword,
+    'CYCLE': tokens.Keyword,
+
+    'DATA': tokens.Keyword,
+    'DATABASE': tokens.Keyword,
+    'DATETIME_INTERVAL_CODE': tokens.Keyword,
+    'DATETIME_INTERVAL_PRECISION': tokens.Keyword,
+    'DAY': tokens.Keyword,
+    'DEALLOCATE': tokens.Keyword,
+    'DECLARE': tokens.Keyword,
+    'DEFAULT': tokens.Keyword,
+    'DEFAULTS': tokens.Keyword,
+    'DEFERRABLE': tokens.Keyword,
+    'DEFERRED': tokens.Keyword,
+    'DEFINED': tokens.Keyword,
+    'DEFINER': tokens.Keyword,
+    'DELIMITER': tokens.Keyword,
+    'DELIMITERS': tokens.Keyword,
+    'DEREF': tokens.Keyword,
+    'DESC': tokens.Keyword.Order,
+    'DESCRIBE': tokens.Keyword,
+    'DESCRIPTOR': tokens.Keyword,
+===670-710===
+    'UTL_FILE': tokens.Name.Builtin,
+    'VARCHAR': tokens.Name.Builtin,
+    'VARCHAR2': tokens.Name.Builtin,
+    'VARYING': tokens.Name.Builtin,
+}
+
+KEYWORDS_COMMON = {
+    'SELECT': tokens.Keyword.DML,
+    'INSERT': tokens.Keyword.DML,
+    'DELETE': tokens.Keyword.DML,
+    'UPDATE': tokens.Keyword.DML,
+    'UPSERT': tokens.Keyword.DML,
+    'REPLACE': tokens.Keyword.DML,
+    'MERGE': tokens.Keyword.DML,
+    'DROP': tokens.Keyword.DDL,
+    'CREATE': tokens.Keyword.DDL,
+    'ALTER': tokens.Keyword.DDL,
+
+    'WHERE': tokens.Keyword,
+    'FROM': tokens.Keyword,
+    'INNER': tokens.Keyword,
+    'JOIN': tokens.Keyword,
+    'STRAIGHT_JOIN': tokens.Keyword,
+    'AND': tokens.Keyword,
+    'OR': tokens.Keyword,
+    'LIKE': tokens.Keyword,
+    'ON': tokens.Keyword,
+    'IN': tokens.Keyword,
+    'SET': tokens.Keyword,
+
+    'BY': tokens.Keyword,
+    'GROUP': tokens.Keyword,
+    'ORDER': tokens.Keyword,
+    'LEFT': tokens.Keyword,
+    'OUTER': tokens.Keyword,
+    'FULL': tokens.Keyword,
+
+    'IF': tokens.Keyword,
+    'END': tokens.Keyword,
+    'THEN': tokens.Keyword,
+    'LOOP': tokens.Keyword,
+[0m
+[0m$ [0mgrep -n "CREATE\|DATABASE\|SCHEMA\|Keyword.DDL\|DDL" sqlparse/grouping.py | head -40; echo "==="; git log --oneline -5 2>$null; echo "==="; cat CHANGELOG | head -40
+/usr/bin/grep: sqlparse/grouping.py: No such file or directory
+===
+b80e968 exp C3 round 1
+22ca250 exp C2 round 1
+e72485f exp C1 round 1
+7082484 baseline 6b05583^
+===
+Development Version
+-------------------
+
+Notable Changes
+
+* Drop support for Python 3.5, 3.6, and 3.7.
+* Python 3.12 is now supported (pr725, by hugovk).
+
+Enhancements:
+
+* Splitting statements now allows to remove the semicolon at the end.
+  Some database backends love statements without semicolon (issue742).
+* Support TypedLiterals in get_parameters (pr649, by Khrol).
+* Improve splitting of Transact SQL when using GO keyword (issue762).
+
+Bug Fixes
+
+* Ignore dunder attributes when creating Tokens (issue672).
+* Allow operators to precede dollar-quoted strings (issue763).
+* Fix parsing of nested order clauses (issue745, pr746 by john-bodley).
+* Thread-safe initialization of Lexer class (issue730).
+* Fix whitespace removal with nested expressions (issue782).
+
+
+Release 0.4.4 (Apr 18, 2023)
+----------------------------
+
+Notable Changes
+
+* IMPORTANT: This release fixes a security vulnerability in the
+  parser where a regular expression vulnerable to ReDOS (Regular
+  Expression Denial of Service) was used. See the security advisory
+  for details: https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2
+  The vulnerability was discovered by @erik-krogh from GitHub
+  Security Lab (GHSL). Thanks for reporting!
+
+Bug Fixes
+
+* Revert a change from 0.4.0 that changed IN to be a comparison (issue694).
+  The primary expectation is that IN is treated as a keyword and not as a
+[0m
+[0m$ [0mcat tests/test_keywords.py; echo "===tokenize test tail==="; tail -60 tests/test_tokenize.py
+import pytest
+
+from sqlparse import tokens
+from sqlparse.lexer import Lexer
+
+
+class TestSQLREGEX:
+    @pytest.mark.parametrize('number', ['1.0', '-1.0',
+                                        '1.', '-1.',
+                                        '.1', '-.1'])
+    def test_float_numbers(self, number):
+        ttype = next(tt for action, tt in Lexer.get_default_instance()._SQL_REGEX if action(number))
+        assert tokens.Number.Float == ttype
+===tokenize test tail===
+    'v$name',  # issue291
+])
+def test_parse_identifiers(s):
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    token = p.tokens[0]
+    assert str(token) == s
+    assert isinstance(token, sql.Identifier)
+
+
+def test_parse_group_by():
+    p = sqlparse.parse('GROUP BY')[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+def test_parse_order_by():
+    p = sqlparse.parse('ORDER BY')[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+def test_parse_window_as():
+    p = sqlparse.parse('WINDOW w AS')[0]
+    assert len(p.tokens) == 5
+    assert p.tokens[0].ttype is T.Keyword
+
+
+@pytest.mark.parametrize('s', (
+    "LIKE", "ILIKE", "NOT LIKE", "NOT ILIKE",
+    "NOT   LIKE", "NOT    ILIKE",
+))
+def test_like_and_ilike_parsed_as_comparisons(s):
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype == T.Operator.Comparison
+
+
+@pytest.mark.parametrize('s', (
+    "LIKEaaa", "bILIKE", "aaILIKEbb", "NOTLIKE", "NOTILIKE",
+))
+def test_near_like_and_ilike_parsed_appropriately(s):
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    assert isinstance(p.tokens[0], sql.Identifier)
+
+
+@pytest.mark.parametrize('s', (
+    'AT TIME ZONE \'UTC\'',
+))
+def test_parse_tzcast(s):
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype == T.Keyword.TZCast
+
+
+def test_cli_commands():
+    p = sqlparse.parse('\\copy')[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype == T.Command
+[0m
+[0m$ [0mls sqlparse; echo "==="; grep -rn "EXTENSION" . --include=*.py --include=*.sql 2>$null | head
+Ŀ¼: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        2026/11/17     11:46                engine                                                               
+d-----        2026/11/17     11:46                filters                                                              
+-a----        2026/11/17     11:46           5908 cli.py                                                               
+-a----        2026/11/17     11:46            354 exceptions.py                                                        
+-a----        2026/11/17     11:46           7764 formatter.py                                                         
+-a----        2026/11/17     11:46          30482 keywords.py                                                          
+-a----        2026/11/17     11:46           5989 lexer.py                                                             
+-a----        2026/11/17     11:46          21111 sql.py                                                               
+-a----        2026/11/17     11:46           1850 tokens.py                                                            
+-a----        2026/11/17     11:46           3567 utils.py                                                             
+-a----        2026/11/17     11:46           2402 __init__.py                                                          
+-a----        2026/11/17     11:46            632 __main__.py                                                          
+===
+[0m
+[0m$ [0mgit show 7082484:sqlparse/keywords.py 2>$null | grep -n "EXTENSION"; echo "exit $?"; grep -n "EXTENSION" CHANGELOG
+exit False
+[0m
+[0m$ [0mgrep -n "CREATE\|DATABASE\|SCHEMA\|DDL\|EXTENSION" sqlparse/engine/grouping.py | head -50
+173:        ttypes = T.DML, T.DDL, T.CTE
+346:        if tmp_token.value.upper() == 'CREATE':
+[0m
+[0m$ [0mgrep -rn "CREATE EXTENSION\|EXTENSION" docs tests examples 2>$null | head; echo "=== keywords area around E ==="; grep -n "'EX\|'EV\|'EW\|'E" sqlparse/keywords.py | head -50
+=== keywords area around E ===
+11:# use this marker to specify that the given regex in SQL_REGEX
+12:# shall be processed further through a lookup in the KEYWORDS dictionaries
+13:PROCESS_AS_KEYWORD = object()
+16:SQL_REGEX = [
+41:    # FIXME(andi): VALUES shouldn't be listed here
+45:    (r'(CASE|IN|VALUES|USING|FROM|AS)\b', tokens.Keyword),
+53:    # FIXME(atronah): never match,
+58:    (r'-?\d+(\.\d+)?E-?\d+', tokens.Number.Float),
+70:    (r'((LEFT\s+|RIGHT\s+|FULL\s+)?(INNER\s+|OUTER\s+|STRAIGHT\s+)?'
+72:    (r'END(\s+IF|\s+LOOP|\s+WHILE)?\b', tokens.Keyword),
+76:    (r'CREATE(\s+OR\s+REPLACE)?\b', tokens.Keyword.DDL),
+77:    (r'DOUBLE\s+PRECISION\b', tokens.Name.Builtin),
+79:    (r'ORDER\s+BY\b', tokens.Keyword),
+80:    (r'HANDLER\s+FOR\b', tokens.Keyword),
+82:    (r'(LATERAL\s+VIEW\s+)'
+83:     r'(EXPLODE|INLINE|PARSE_URL_TUPLE|POSEXPLODE|STACK)\b',
+85:    (r"(AT|WITH')\s+TIME\s+ZONE\s+'[^']+'", tokens.Keyword.TZCast),
+86:    (r'(NOT\s+)?(LIKE|ILIKE|RLIKE)\b', tokens.Operator.Comparison),
+87:    (r'(NOT\s+)?(REGEXP)\b', tokens.Operator.Comparison),
+90:    (r'\w[$#\w]*', PROCESS_AS_KEYWORD),
+97:KEYWORDS = {
+100:    'ABSOLUTE': tokens.Keyword,
+101:    'ACCESS': tokens.Keyword,
+105:    'AFTER': tokens.Keyword,
+106:    'AGGREGATE': tokens.Keyword,
+109:    'ALLOCATE': tokens.Keyword,
+110:    'ANALYSE': tokens.Keyword,
+111:    'ANALYZE': tokens.Keyword,
+113:    'ARRAYLEN': tokens.Keyword,
+114:    'ARE': tokens.Keyword,
+116:    'ASENSITIVE': tokens.Keyword,
+117:    'ASSERTION': tokens.Keyword,
+118:    'ASSIGNMENT': tokens.Keyword,
+119:    'ASYMMETRIC': tokens.Keyword,
+124:    'AUTO_INCREMENT': tokens.Keyword,
+128:    'BEFORE': tokens.Keyword,
+129:    'BEGIN': tokens.Keyword,
+130:    'BETWEEN': tokens.Keyword,
+132:    'BIT_LENGTH': tokens.Keyword,
+134:    'BREADTH': tokens.Keyword,
+137:    'CACHE': tokens.Keyword,
+139:    'CALLED': tokens.Keyword,
+141:    'CASCADE': tokens.Keyword,
+142:    'CASCADED': tokens.Keyword,
+145:    'CATALOG_NAME': tokens.Keyword,
+147:    'CHARACTERISTICS': tokens.Keyword,
+148:    'CHARACTER_LENGTH': tokens.Keyword,
+149:    'CHARACTER_SET_CATALOG': tokens.Keyword,
+150:    'CHARACTER_SET_NAME': tokens.Keyword,
+151:    'CHARACTER_SET_SCHEMA': tokens.Keyword,
+[0m
+[0m$ [0mpython -c "import urllib.request; u='https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/keywords.py'; d=urllib.request.urlopen(u,timeout=20).read().decode(); import re; [print(l) for l in d.splitlines() if 'EXTENSION' in l]"
+'EXTENSION': tokens.Keyword,
+[0m
+[0m$ [0mpython -c "import urllib.request,json; r=urllib.request.Request('https://api.github.com/search/commits?q=repo:andialbrecht/sqlparse+EXTENSION',headers={'Accept':'application/vnd.github.cloak-preview+json','User-Agent':'x'}); d=json.load(urllib.request.urlopen(r,timeout=20)); [print(i['sha'][:10], i['commit']['message'].splitlines()[0]) for i in d.get('items',[])[:10]]"
+Traceback (most recent call last):
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1367, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1413, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1362, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1122, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1066, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1501, in connect
+    super().connect()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1042, in connect
+    self._tunnel()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1010, in _tunnel
+    raise OSError(f"Tunnel connection failed: {code} {message.strip()}")
+OSError: Tunnel connection failed: 502 Bad Gateway
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import urllib.request,json; r=urllib.request.Request('https://api.github.com/search/commits?q=repo:andialbrecht/sqlparse+EXTENSION',headers={'Accept':'application/vnd.github.cloak-preview+json','User-Agent':'x'}); d=json.load(urllib.request.urlopen(r,timeout=20)); [print(i['sha'][:10], i['commit']['message'].splitlines()[0]) for i in d.get('items',[])[:10]]
+                                                                                                                                                                                                                                      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error Tunnel connection failed: 502 Bad Gateway>
+[0m
+[0m$ [0msed -n '/^    .EX/,/^    .F/p' sqlparse/keywords.py | head -60; echo "=== line numbers ==="; grep -n "EXTRACT\|EXISTS\|EXIT\|EXPLAIN\|EXCEPTION\|EXP'" sqlparse/keywords.py
+'EXCEPT': tokens.Keyword,
+    'EXCEPTION': tokens.Keyword,
+    'EXCLUDING': tokens.Keyword,
+    'EXCLUSIVE': tokens.Keyword,
+    'EXEC': tokens.Keyword,
+    'EXECUTE': tokens.Keyword,
+    'EXISTING': tokens.Keyword,
+    'EXISTS': tokens.Keyword,
+    'EXPLAIN': tokens.Keyword,
+    'EXTERNAL': tokens.Keyword,
+    'EXTRACT': tokens.Keyword,
+
+    'FALSE': tokens.Keyword,
+    'EXCEPTIONS': tokens.Keyword,
+    'EXPLAIN': tokens.Keyword,
+    'EXTENT': tokens.Keyword,
+    'EXTERNALLY': tokens.Keyword,
+
+    'FLUSH': tokens.Keyword,
+    'EXPLODE': tokens.Keyword,
+    'DIRECTORY': tokens.Keyword,
+    'DISTRIBUTE': tokens.Keyword,
+    'INCLUDE': tokens.Keyword,
+    'LOCATE': tokens.Keyword,
+    'OVERWRITE': tokens.Keyword,
+    'POSEXPLODE': tokens.Keyword,
+
+    'ARRAY_CONTAINS': tokens.Keyword,
+    'CMP': tokens.Keyword,
+    'COLLECT_LIST': tokens.Keyword,
+    'CONCAT': tokens.Keyword,
+    'CONDITION': tokens.Keyword,
+    'DATE_ADD': tokens.Keyword,
+    'DATE_SUB': tokens.Keyword,
+    'DECODE': tokens.Keyword,
+    'DBMS_OUTPUT': tokens.Keyword,
+    'ELEMENTS': tokens.Keyword,
+    'EXCHANGE': tokens.Keyword,
+    'EXTENDED': tokens.Keyword,
+    'FLOOR': tokens.Keyword,
+    'EXIT': tokens.Keyword,
+    'BREAK': tokens.Keyword,
+    'LEAVE': tokens.Keyword,
+}
+
+
+KEYWORDS_MSACCESS = {
+    'DISTINCTROW': tokens.Keyword,
+}
+=== line numbers ===
+[0m
+[0m$ [0mgrep -n "^KEYWORDS\|^}" sqlparse/keywords.py; echo "==="; sed -n '240,300p' sqlparse/keywords.py
+===
+    'DO': tokens.Keyword,
+    'DOMAIN': tokens.Keyword,
+    'DYNAMIC': tokens.Keyword,
+    'DYNAMIC_FUNCTION': tokens.Keyword,
+    'DYNAMIC_FUNCTION_CODE': tokens.Keyword,
+
+    'EACH': tokens.Keyword,
+    'ENABLE': tokens.Keyword,
+    'ENCODING': tokens.Keyword,
+    'ENCRYPTED': tokens.Keyword,
+    'END-EXEC': tokens.Keyword,
+    'ENGINE': tokens.Keyword,
+    'EQUALS': tokens.Keyword,
+    'ESCAPE': tokens.Keyword,
+    'EVERY': tokens.Keyword,
+    'EXCEPT': tokens.Keyword,
+    'EXCEPTION': tokens.Keyword,
+    'EXCLUDING': tokens.Keyword,
+    'EXCLUSIVE': tokens.Keyword,
+    'EXEC': tokens.Keyword,
+    'EXECUTE': tokens.Keyword,
+    'EXISTING': tokens.Keyword,
+    'EXISTS': tokens.Keyword,
+    'EXPLAIN': tokens.Keyword,
+    'EXTERNAL': tokens.Keyword,
+    'EXTRACT': tokens.Keyword,
+
+    'FALSE': tokens.Keyword,
+    'FETCH': tokens.Keyword,
+    'FILE': tokens.Keyword,
+    'FINAL': tokens.Keyword,
+    'FIRST': tokens.Keyword,
+    'FORCE': tokens.Keyword,
+    'FOREACH': tokens.Keyword,
+    'FOREIGN': tokens.Keyword,
+    'FORTRAN': tokens.Keyword,
+    'FORWARD': tokens.Keyword,
+    'FOUND': tokens.Keyword,
+    'FREE': tokens.Keyword,
+    'FREEZE': tokens.Keyword,
+    'FULL': tokens.Keyword,
+    'FUNCTION': tokens.Keyword,
+
+    # 'G': tokens.Keyword,
+    'GENERAL': tokens.Keyword,
+    'GENERATED': tokens.Keyword,
+    'GET': tokens.Keyword,
+    'GLOBAL': tokens.Keyword,
+    'GO': tokens.Keyword,
+    'GOTO': tokens.Keyword,
+    'GRANT': tokens.Keyword,
+    'GRANTED': tokens.Keyword,
+    'GROUPING': tokens.Keyword,
+
+    'HAVING': tokens.Keyword,
+    'HIERARCHY': tokens.Keyword,
+    'HOLD': tokens.Keyword,
+    'HOUR': tokens.Keyword,
+    'HOST': tokens.Keyword,
+
+    'IDENTIFIED': tokens.Keyword,
+[0m
+[0m$ [0mpython -c "import urllib.request; d=urllib.request.urlopen('https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/keywords.py',timeout=20).read().decode().splitlines(); [print(i+1,l) for i,l in enumerate(d) if any(k in l for k in ['EXPLAIN','EXTENSION','EXTERNAL','EXTRACT'])]"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import urllib.request; d=urllib.request.urlopen('https://raw.githubusercontent.com/andialbrecht/sqlparse/master/sqlparse/keywords.py',timeout=20).read().decode().splitlines(); [print(i+1,l) for i,l in enumerate(d) if any(k in l for k in ['EXPLAIN','EXTENSION','EXTERNAL','EXTRACT'])]
+                             ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\urllib\request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\socket.py", line 723, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\xzcac\.workbuddy\binaries\python\versions\3.13.12\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+[0m
+[0m$ [0msed -n '150,200p' sqlparse/engine/grouping.py; echo "===330-380==="; sed -n '330,380p' sqlparse/engine/grouping.py; echo "=== sql.py CREATE-ish ==="; grep -n "class Create\|def get_type\|CREATE\|DDL" sqlparse/sql.py | head -30
+# issue261, allow invalid next token
+        return True
+
+    def post(tlist, pidx, tidx, nidx):
+        # next_ validation is being performed here. issue261
+        sqlcls = sql.SquareBrackets, sql.Function
+        ttypes = T.Name, T.String.Symbol, T.Wildcard
+        next_ = tlist[nidx] if nidx is not None else None
+        valid_next = imt(next_, i=sqlcls, t=ttypes)
+
+        return (pidx, nidx) if valid_next else (pidx, tidx)
+
+    _group(tlist, sql.Identifier, match, valid_prev, valid_next, post)
+
+
+def group_as(tlist):
+    def match(token):
+        return token.is_keyword and token.normalized == 'AS'
+
+    def valid_prev(token):
+        return token.normalized == 'NULL' or not token.is_keyword
+
+    def valid_next(token):
+        ttypes = T.DML, T.DDL, T.CTE
+        return not imt(token, t=ttypes) and token is not None
+
+    def post(tlist, pidx, tidx, nidx):
+        return pidx, nidx
+
+    _group(tlist, sql.Identifier, match, valid_prev, valid_next, post)
+
+
+def group_assignment(tlist):
+    def match(token):
+        return token.match(T.Assignment, ':=')
+
+    def valid(token):
+        return token is not None and token.ttype not in (T.Keyword,)
+
+    def post(tlist, pidx, tidx, nidx):
+        m_semicolon = T.Punctuation, ';'
+        snidx, _ = tlist.token_next_by(m=m_semicolon, idx=nidx)
+        nidx = snidx or nidx
+        return pidx, nidx
+
+    valid_prev = valid_next = valid
+    _group(tlist, sql.Assignment, match, valid_prev, valid_next, post)
+
+
+def group_comparison(tlist):
+    sqlcls = (sql.Parenthesis, sql.Function, sql.Identifier,
+===330-380===
+               sql.Operation, sql.Comparison)
+
+    tidx, token = tlist.token_next_by(i=I_ALIAS, t=T.Number)
+    while token:
+        nidx, next_ = tlist.token_next(tidx)
+        if isinstance(next_, sql.Identifier):
+            tlist.group_tokens(sql.Identifier, tidx, nidx, extend=True)
+        tidx, token = tlist.token_next_by(i=I_ALIAS, t=T.Number, idx=tidx)
+
+
+@recurse(sql.Function)
+def group_functions(tlist):
+    has_create = False
+    has_table = False
+    has_as = False
+    for tmp_token in tlist.tokens:
+        if tmp_token.value.upper() == 'CREATE':
+            has_create = True
+        if tmp_token.value.upper() == 'TABLE':
+            has_table = True
+        if tmp_token.value == 'AS':
+            has_as = True
+    if has_create and has_table and not has_as:
+        return
+
+    tidx, token = tlist.token_next_by(t=T.Name)
+    while token:
+        nidx, next_ = tlist.token_next(tidx)
+        if isinstance(next_, sql.Parenthesis):
+            tlist.group_tokens(sql.Function, tidx, nidx)
+        tidx, token = tlist.token_next_by(t=T.Name, idx=tidx)
+
+
+@recurse(sql.Identifier)
+def group_order(tlist):
+    """Group together Identifier and Asc/Desc token"""
+    tidx, token = tlist.token_next_by(t=T.Keyword.Order)
+    while token:
+        pidx, prev_ = tlist.token_prev(tidx)
+        if imt(prev_, i=sql.Identifier, t=T.Number):
+            tlist.group_tokens(sql.Identifier, pidx, tidx)
+            tidx = pidx
+        tidx, token = tlist.token_next_by(t=T.Keyword.Order, idx=tidx)
+
+
+@recurse()
+def align_comments(tlist):
+    tidx, token = tlist.token_next_by(i=sql.Comment)
+    while token:
+        pidx, prev_ = tlist.token_prev(tidx)
+        if isinstance(prev_, sql.TokenList):
+=== sql.py CREATE-ish ===
+406:    def get_type(self):
+410:        the first DML or DDL keyword. If the first token in this group
+411:        isn't a DML or DDL keyword "UNKNOWN" is returned.
+422:        elif token.ttype in (T.Keyword.DML, T.Keyword.DDL):
+454:    def get_typecast(self):
+[0m
+[0m$ [0mgrep -n "get_type\|CREATE\|EXTENSION\|Keyword" tests/test_tokenize.py tests/test_parse.py tests/test_grouping.py | head -60
+tests/test_tokenize.py:18:    assert tokens[0] == (T.Keyword.DML, 'select')
+tests/test_tokenize.py:42:    assert tokens[0][0] == T.Keyword.DDL
+tests/test_tokenize.py:80:    token = sql.Token(T.Keyword, 'foo')
+tests/test_tokenize.py:81:    tst = "<Keyword 'foo' at 0x"
+tests/test_tokenize.py:83:    token = sql.Token(T.Keyword, '1234567890')
+tests/test_tokenize.py:84:    tst = "<Keyword '123456...' at 0x"
+tests/test_tokenize.py:89:    token = sql.Token(T.Keyword, 'foo')
+tests/test_tokenize.py:117:    t1 = sql.Token(T.Keyword, 'foo')
+tests/test_tokenize.py:120:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 0) == t1
+tests/test_tokenize.py:122:    assert x.token_matching([lambda t: t.ttype is T.Keyword], 1) is None
+tests/test_tokenize.py:161:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:167:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:175:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:182:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:202:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:208:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:214:    assert p.tokens[0].ttype is T.Keyword
+tests/test_tokenize.py:242:    assert p.tokens[0].ttype == T.Keyword.TZCast
+tests/test_parse.py:170:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $$
+tests/test_parse.py:173:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $$
+tests/test_parse.py:180:    CREATE OR REPLACE FUNCTION testfunc1(integer) RETURNS integer AS $PROC_1$
+tests/test_parse.py:183:    CREATE OR REPLACE FUNCTION testfunc2(integer) RETURNS integer AS $PROC_2$
+tests/test_parse.py:368:        "|- 4 Keyword 'from'",
+tests/test_parse.py:377:        "|  |  |- 5 Keyword 'from'",
+tests/test_parse.py:387:        "   |- 0 Keyword 'where'",
+tests/test_parse.py:394:        "   |- 4 Keyword 'and'",
+tests/test_parse.py:417:    s = "CREATE TABLE test();"
+tests/test_parse.py:476:    assert stmts[0].tokens[0].ttype == T.Keyword
+tests/test_parse.py:483:    assert stmts[0].tokens[0].ttype == T.Keyword
+tests/test_parse.py:517:        (sqlparse.tokens.Keyword.DML, "select"),
+tests/test_parse.py:519:        (sqlparse.tokens.Keyword, "from"),
+tests/test_parse.py:528:            "SPAM": sqlparse.tokens.Keyword,
+tests/test_parse.py:529:            "EGGS": sqlparse.tokens.Keyword,
+tests/test_parse.py:543:        (sqlparse.tokens.Keyword.DML, "select"),
+tests/test_parse.py:545:        (sqlparse.tokens.Keyword, "from"),
+tests/test_parse.py:548:        (sqlparse.tokens.Keyword, "SPAM"),
+tests/test_parse.py:549:        (sqlparse.tokens.Keyword, "EGGS"),
+tests/test_parse.py:558:    my_regex = (r"ZORDER\s+BY\b", sqlparse.tokens.Keyword)
+tests/test_parse.py:581:    )[4] == (sqlparse.tokens.Keyword, "zorder by")
+tests/test_grouping.py:89:        assert types == [T.DML, T.Keyword, None, None, T.Punctuation]
+tests/test_grouping.py:168:    assert token.ttype == T.Keyword
+tests/test_grouping.py:177:    assert p.tokens[2].ttype == T.Keyword
+tests/test_grouping.py:283:    assert p.tokens[7].ttype == T.Keyword
+tests/test_grouping.py:291:    assert p.tokens[9].ttype == T.Keyword
+tests/test_grouping.py:303:    assert p.tokens[2].get_typecast() == expected
+tests/test_grouping.py:336:    p = sqlparse.parse('CREATE TABLE tbl1 AS SELECT coalesce(t1.col1, 0) AS col1 FROM t1')[0]
+tests/test_grouping.py:387:    assert p.tokens[0].ttype == T.Keyword
+tests/test_grouping.py:396:def test_statement_get_type():
+tests/test_grouping.py:400:    assert f('select * from foo').get_type() == 'SELECT'
+tests/test_grouping.py:401:    assert f('update foo').get_type() == 'UPDATE'
+tests/test_grouping.py:402:    assert f(' update foo').get_type() == 'UPDATE'
+tests/test_grouping.py:403:    assert f('\nupdate foo').get_type() == 'UPDATE'
+tests/test_grouping.py:404:    assert f('foo').get_type() == 'UNKNOWN'
+tests/test_grouping.py:519:        (T.Keyword, "where"),
+tests/test_grouping.py:529:        (T.Keyword, "where"),
+tests/test_grouping.py:599:    assert p.tokens[0].ttype == T.Keyword
+[0m
+[0m$ [0msed -n '145,220p' tests/test_tokenize.py; echo "=== grouping 580-610 ==="; sed -n '580,610p' tests/test_grouping.py
+assert tokens[1][0] == T.Error
+
+
+@pytest.mark.parametrize('expr', [
+    'JOIN',
+    'LEFT JOIN',
+    'LEFT OUTER JOIN',
+    'FULL OUTER JOIN',
+    'NATURAL JOIN',
+    'CROSS JOIN',
+    'STRAIGHT JOIN',
+    'INNER JOIN',
+    'LEFT INNER JOIN'])
+def test_parse_join(expr):
+    p = sqlparse.parse('{} foo'.format(expr))[0]
+    assert len(p.tokens) == 3
+    assert p.tokens[0].ttype is T.Keyword
+
+
+def test_parse_union():  # issue294
+    p = sqlparse.parse('UNION ALL')[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+@pytest.mark.parametrize('s', ['END IF', 'END   IF', 'END\t\nIF',
+                               'END LOOP', 'END   LOOP', 'END\t\nLOOP'])
+def test_parse_endifloop(s):
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+@pytest.mark.parametrize('s', ['NULLS FIRST', 'NULLS LAST'])
+def test_parse_nulls(s):  # issue487
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+@pytest.mark.parametrize('s', [
+    'foo',
+    'Foo',
+    'FOO',
+    'v$name',  # issue291
+])
+def test_parse_identifiers(s):
+    p = sqlparse.parse(s)[0]
+    assert len(p.tokens) == 1
+    token = p.tokens[0]
+    assert str(token) == s
+    assert isinstance(token, sql.Identifier)
+
+
+def test_parse_group_by():
+    p = sqlparse.parse('GROUP BY')[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+def test_parse_order_by():
+    p = sqlparse.parse('ORDER BY')[0]
+    assert len(p.tokens) == 1
+    assert p.tokens[0].ttype is T.Keyword
+
+
+def test_parse_window_as():
+    p = sqlparse.parse('WINDOW w AS')[0]
+    assert len(p.tokens) == 5
+    assert p.tokens[0].ttype is T.Keyword
+
+
+@pytest.mark.parametrize('s', (
+    "LIKE", "ILIKE", "NOT LIKE", "NOT ILIKE",
+    "NOT   LIKE", "NOT    ILIKE",
+))
+=== grouping 580-610 ===
+    assert len(p.tokens) == 1
+    for1 = p.tokens[0]
+    assert for1.tokens[0].value == 'FOR'
+    assert for1.tokens[-1].value == 'END LOOP'
+    for2 = for1.tokens[6]
+    assert isinstance(for2, sql.For)
+    assert for2.tokens[0].value == 'FOR'
+    assert for2.tokens[-1].value == 'END LOOP'
+
+
+def test_begin():
+    p = sqlparse.parse('BEGIN foo END')[0]
+    assert len(p.tokens) == 1
+    assert isinstance(p.tokens[0], sql.Begin)
+
+
+def test_keyword_followed_by_parenthesis():
+    p = sqlparse.parse('USING(somecol')[0]
+    assert len(p.tokens) == 3
+    assert p.tokens[0].ttype == T.Keyword
+    assert p.tokens[1].ttype == T.Punctuation
+
+
+def test_nested_begin():
+    p = sqlparse.parse('BEGIN foo BEGIN bar END END')[0]
+    assert len(p.tokens) == 1
+    outer = p.tokens[0]
+    assert outer.tokens[0].value == 'BEGIN'
+    assert outer.tokens[-1].value == 'END'
+    inner = outer.tokens[4]
+    assert inner.tokens[0].value == 'BEGIN'
+[0m
+[0m← [0mEdit sqlparse/keywords.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\sqlparse\keywords.py
+@@ -260,8 +260,9 @@
+ 'EXECUTE': tokens.Keyword,
+ 'EXISTING': tokens.Keyword,
+ 'EXISTS': tokens.Keyword,
+ 'EXPLAIN': tokens.Keyword,
++'EXTENSION': tokens.Keyword,
+ 'EXTERNAL': tokens.Keyword,
+ 'EXTRACT': tokens.Keyword,
+ 
+ 'FALSE': tokens.Keyword,
+
+[0m
+[0m← [0mEdit tests/test_tokenize.py
+Index: C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py
+===================================================================
+--- C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py
++++ C:\Users\xzcac\AppData\Local\Temp\exp_opencode-deepseek-deepseek-flash-A0-C-r0_s_2uz_ip\tree\tests\test_tokenize.py
+@@ -195,8 +195,14 @@
+     assert str(token) == s
+     assert isinstance(token, sql.Identifier)
+ 
+ 
++def test_parse_extension():
++    p = sqlparse.parse('EXTENSION')[0]
++    assert len(p.tokens) == 1
++    assert p.tokens[0].ttype is T.Keyword
++
++
+ def test_parse_group_by():
+     p = sqlparse.parse('GROUP BY')[0]
+     assert len(p.tokens) == 1
+     assert p.tokens[0].ttype is T.Keyword
+
+[0m
+[0m$ [0mpython -m pytest tests/test_tokenize.py -q
+.........................................................                [100%]
+57 passed in 0.09s
+[0m
+[0m$ [0mpython -m pytest -q
+........................................................................ [ 18%]
+........................................................................ [ 37%]
+........................................................................ [ 56%]
+.............................................................x.......... [ 74%]
+........................................................................ [ 93%]
+.........................                                                [100%]
+384 passed, 1 xfailed in 1.39s
+[0m
+Added `EXTENSION` to `KEYWORDS` as `tokens.Keyword` in sqlparse/keywords.py:266 and a regression test in tests/test_tokenize.py. Full suite: 384 passed, 1 xfailed.

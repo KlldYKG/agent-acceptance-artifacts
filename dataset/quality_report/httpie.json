@@ -1,0 +1,18 @@
+{
+  "repo": "httpie/httpie",
+  "name": "httpie",
+  "head": "5b604c37c6c67e18e7c3e9aee6c88a8c22b98345",
+  "ok_clone": true,
+  "ok_install": true,
+  "ok_pytest": true,
+  "pytest_seconds": 240.7,
+  "passed": 1001,
+  "failed": 4,
+  "errors": null,
+  "skipped": 19,
+  "notes": [],
+  "clone_seconds": 10.2,
+  "install_seconds": 166.1,
+  "installed_packages": 70,
+  "pytest_summary": "4 failed, 1001 passed, 19 skipped, 4 xfailed, 2844 warnings in 237.62s (0:03:57)"
+}

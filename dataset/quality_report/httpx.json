@@ -1,0 +1,18 @@
+{
+  "repo": "encode/httpx",
+  "name": "httpx",
+  "head": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+  "ok_clone": true,
+  "ok_install": true,
+  "ok_pytest": true,
+  "pytest_seconds": 23.7,
+  "passed": 1414,
+  "failed": 3,
+  "errors": null,
+  "skipped": 1,
+  "notes": [],
+  "clone_seconds": 7.6,
+  "install_seconds": 77.6,
+  "installed_packages": 35,
+  "pytest_summary": "3 failed, 1414 passed, 1 skipped in 21.01s"
+}
